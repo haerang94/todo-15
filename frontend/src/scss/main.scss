@@ -1,5 +1,8 @@
+@font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 *{
     outline:none;
+    font-family:"BMHANNAAir";
 }
 ul{
     padding:10px;
@@ -54,10 +57,11 @@ main{
     min-width:250px;
     width:30%;
     max-width:400px;
-    min-height:500px;
+    height:500px;
     background:#eee;
     border-radius: 15px;
     margin:30px 10px;
+    overflow:scroll;
     
     &-header{
         display:flex;
@@ -83,6 +87,17 @@ main{
     list-style:none;
     border-radius:10px;
     padding:10px;
+    // border-bottom: 2px dashed black;
+    box-shadow: 2px 2px 2px darkgray;
+    margin: 15px;
+
+    &:hover{
+        cursor:grab;
+    }
+
+    &:active{
+        cursor:grabbing;
+    }
 
     &-header{
         display:flex;
