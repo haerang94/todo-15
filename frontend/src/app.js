@@ -1,4 +1,5 @@
 let css = require('./scss/main.scss');
+import './normalize.css';
 import congrats from './congrats.gif';
 
 window.addEventListener('DOMContentLoaded', () => {
