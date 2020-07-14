@@ -14,19 +14,20 @@
     <title>TodoList</title>
 </head>
 <body>
-    <header>
-        <div class="header-logo"></div>
-        <input type="button" value="menu" class="header-menu">
+    <div class="flex-container">
+    <header class="menu">
+        <div class="menu-logo menu-item">TODO 서비스</div>
+        <input type="button" value="menu" class="menu-btn menu-item">
     </header>
     <main>
-        <section id="todo" class="todo_container">
+        <section id="todo" class="todo-container">
             <header>
-                <div class="container-header">
-                    <div>
+                <div class="todo-container-header">
+                    <div class="todo-container-part1">
                         <div class="num-of-todos">3</div>
-                        <p class="container-header-title">해야할일</p>
+                        <p class="todo-container-header-title">해야할일</p>
                     </div>
-                    <div>
+                    <div class="todo-container-part2">
                         <input type="button" value="+">
                         <input type="button" value="...">
                     </div>
@@ -35,29 +36,29 @@
             <article>
                <ul>
                 <li class="todo-item">
-                    <div class="item-header">
-                        <div>
-                            <div class="item-logo"></div>
-                            <div class="item-title"></div>
+                    <div class="todo-item-header">
+                        <div class="todo-item-part1">
+                            <div class="todo-item-logo">logo</div>
+                            <div class="todo-item-title">투두 제목</div>
                         </div>
-                        <input type="button" value="x">
+                        <input class="todo-item-part2" type="button" value="x">
                     </div>
-                    <div class="item-content">
+                    <div class="todo-item-content">
                         <p>에베베베베</p>
                     </div>
-                    <div class="author"></div>
+                    <div class="author"><p>Added by</p>sara</div>
                 </li>
                </ul>
             </article>
         </section>
-        <section id="progress" class="todo_container">
+        <section id="progress" class="todo-container">
             <header>
-                <div class="container-header">
-                    <div>
-                        <div class="number-of-todos">3</div>
-                        <p class="container-header-title">해야할일</p>
+                <div class="todo-container-header">
+                    <div class="todo-container-part1">
+                        <div class="num-of-todos">3</div>
+                        <p class="todo-container-header-title">해야할일</p>
                     </div>
-                    <div>
+                    <div class="todo-container-part2">
                         <input type="button" value="+">
                         <input type="button" value="...">
                     </div>
@@ -66,29 +67,29 @@
             <article>
                <ul>
                 <li class="todo-item">
-                    <div class="item-header">
-                        <div>
-                            <div class="item-logo"></div>
-                            <div class="item-title"></div>
+                    <div class="todo-item-header">
+                        <div class="todo-item-part1">
+                            <div class="todo-item-logo">logo</div>
+                            <div class="todo-item-title">투두제목</div>
                         </div>
-                        <input type="button" value="x">
+                        <input class="todo-item-part2" type="button" value="x">
                     </div>
-                    <div class="item-content">
+                    <div class="todo-item-content">
                         <p>에베베베베</p>
                     </div>
-                    <div class="author"></div>
+                    <div class="author"><p>Added by</p>sara</div>
                 </li>
                </ul>
             </article>
         </section>
-        <section id="done" class="todo_container">
+        <section id="done" class="todo-container">
             <header>
-                <div class="container-header">
-                    <div>
+                <div class="todo-container-header">
+                    <div class="todo-container-part1">
                         <div class="num-of-todos">3</div>
-                        <p class="containter-header-title">해야할일</p>
+                        <p class="todo-container-header-title">다했어</p>
                     </div>
-                    <div>
+                    <div class="todo-container-part2">
                         <input type="button" value="+">
                         <input type="button" value="...">
                     </div>
@@ -97,22 +98,23 @@
             <article>
                <ul>
                 <li class="todo-item">
-                    <div class="item-header">
-                        <div>
-                            <div class="item-logo"></div>
-                            <div class="item-title"></div>
+                    <div class="todo-item-header">
+                        <div class="todo-item-part1">
+                            <div class="todo-item-logo">logo</div>
+                            <div class="todo-item-title">투두제목</div>
                         </div>
-                        <input type="button" value="x">
+                        <input class="todo-item-part2" type="button" value="x">
                     </div>
-                    <div class="item-content">
-                        <p>에베베베베</p>
+                    <div class="todo-item-content">
+                        <p>에베베베베Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, recusandae! Deserunt nulla quidem magni quam aut quaerat alias eligendi dicta!</p>
                     </div>
-                    <div class="author"></div>
+                    <div class="author"><p>Added by</p>sara</div>
                 </li>
                </ul>
             </article>
         </section>
     </main>
+</div>
     <footer>
 
     </footer>
