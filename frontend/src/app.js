@@ -1,5 +1,4 @@
-// import MainService from './mainService.js';
-import './app.css';
+let css = require('./scss/main.scss');
 import congrats from './congrats.gif';
 
 window.addEventListener('DOMContentLoaded', () => {
