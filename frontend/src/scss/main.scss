@@ -1,4 +1,5 @@
 @font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import './variables';
 
 *{
     outline:none;
@@ -31,6 +32,8 @@ input[type='button']{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    font-size:$big-font;
+
     &-item{
         margin:0 50px;
     }
@@ -57,27 +60,33 @@ main{
     min-width:250px;
     width:30%;
     max-width:400px;
-    height:500px;
+    height:700px;
     background:#eee;
     border-radius: 15px;
     margin:30px 10px;
     overflow:scroll;
+    box-shadow:  5px 5px 5px darkgray;
     
     &-header{
         display:flex;
         align-items:center;
         justify-content: space-between;
         margin-top:10px;
+        padding:0 15px;
     }
 
     &-part1{
         display:flex;
         align-items:center;
-
+        
     }
 
+    // &-part2{
+    //     margin:0 10px;
+    // }
+
     .num-of-todos, &-header-title{
-        margin: 0 10px;
+        margin: 0 5px;
     }
 
 }
