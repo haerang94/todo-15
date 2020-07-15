@@ -1,9 +1,12 @@
 const mysql = require("mysql2");
-const { host, user, password, database } = require("./config/config.js");
+const { host, port, user, password, database } = require("./config/config.js");
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host,
+  port,
   user,
   password,
   database,
 });
+
+
