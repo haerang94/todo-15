@@ -1,4 +1,4 @@
-const createTODOLISTTable =
+const createTodoListTable =
 `CREATE TABLE TODOLIST (
   ID INT PRIMARY KEY AUTO_INCREMENT,
   TITLE VARCHAR(64),
@@ -7,7 +7,7 @@ const createTODOLISTTable =
   AUTHOR VARCHAR(64)
   );`;
 
-const createUSERTable = 
+const createUserTable = 
 `
 CREATE TABLE USER (
   ID INT PRIMARY KEY AUTO_INCREMENT,
