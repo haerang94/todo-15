@@ -1,10 +1,9 @@
-let css = require('./scss/main.scss');
+const css = require('./scss/main.scss');
+const variable = require('./scss/_variables.scss');
+// import './scss/main.scss';
+// import './scss/_variables.scss';
 import './normalize.css';
-import congrats from './congrats.gif';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const targetEl = document.querySelector('#log');
-  const testHTML = `<span>test</span>
-    <img src="${congrats}" alt="congrats" />`;
-  targetEl.innerHTML = testHTML;
+  
 });
