@@ -1,11 +1,13 @@
 const css = require('./scss/main.scss');
 const variable = require('./scss/_variables.scss');
 import './normalize.css';
-import { renderTodo } from './modules/renderItem.js';
-// import { addContainer } from './modules/addContainer';
+import Container from './modules/container.js';
+// import Item from './modules/item.js';
 
-// window.addEventListener('DOMContentLoaded', () => {
-//   // todo:todo의 모든 아이템을 순환하는 반복문 추가하기
-//   renderTodo('progress', '렌더링테스트', '안녕하세요~', 'haerang');
-//   addContainer();
-// });
+window.addEventListener('DOMContentLoaded', () => {
+  // todo:todo의 모든 아이템을 순환하는 반복문 추가하기
+  //칼럼 추가하는 함수
+  //   new Container().addContainer('4');
+  // 각 투두 아이템을 추가하는 함수
+  //   new Item().addItem('1', '타이틀', '컨텐츠', '작가');
+});
