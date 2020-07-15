@@ -1,19 +1,19 @@
 const createTodoListTable =
 `CREATE TABLE TODOLIST (
-  ID INT PRIMARY KEY AUTO_INCREMENT,
-  TITLE VARCHAR(64),
-  CONTENT TEXT,
-  STATUS VARCHAR(64),
-  AUTHOR VARCHAR(64)
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(64),
+  content TEXT,
+  status VARCHAR(64),
+  author VARCHAR(64)
   );`;
 
 const createUserTable = 
 `
 CREATE TABLE USER (
-  ID INT PRIMARY KEY AUTO_INCREMENT,
-  USERNAME VARCHAR(64),
-  AUTHORIZATION BOOLEAN
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(64),
+  authorization BOOLEAN
   );
 `;
 
-export {createTODOLISTTable, createUSERTable};
+module.exports =  {createTodoListTable, createUserTable};

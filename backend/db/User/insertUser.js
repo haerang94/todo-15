@@ -1,4 +1,4 @@
-const promisePool = require('./connection.js');
+const promisePool = require('../connection.js');
 
 function insertUser(username, authorization){
     const query =  `INSERT INTO USER VALUES(NULL, '${username}', ${authorization});`;
