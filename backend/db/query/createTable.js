@@ -3,7 +3,7 @@ const createTodoListTable =
   id INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(64),
   content TEXT,
-  status VARCHAR(64),
+  status INT,
   author VARCHAR(64)
   );`;
 
