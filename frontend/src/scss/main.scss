@@ -6,12 +6,11 @@
     font-family:"BMHANNAAir";
 }
 ul{
-    padding:10px;
+    padding:5px;
 }
 input[type='button']{
-    background:none;
-    border:none;
     cursor:pointer;
+    margin:10px 0;
 }
 
 
@@ -42,6 +41,8 @@ input[type='button']{
     }
     &-btn{
         color:#fff;
+        background:none;
+        border:none;
     }
     &-btn:hover{
         cursor:pointer;
@@ -81,31 +82,52 @@ main{
         
     }
 
-    // &-part2{
-    //     margin:0 10px;
-    // }
-
     .num-of-todos, &-header-title{
         margin: 0 5px;
     }
 
 }
 
+.add-item{
+    @include todo-item-style;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+    &:hover{
+        @include grabbing-style;
+    }
+
+    &-btns{
+        width:100%;
+        display:flex;
+        justify-content: space-between;
+    }
+
+    &-btn{
+        width:48%;
+        height:40px;
+        border:1px solid darkgray;
+        border-radius:10px;
+    }
+
+    &-btn:first-child{
+        background:greenyellow;
+    }
+
+
+}
+
 .todo-item{
-    background:#fff;
-    list-style:none;
-    border-radius:10px;
-    padding:10px;
-    // border-bottom: 2px dashed black;
-    box-shadow: 2px 2px 2px darkgray;
-    margin: 15px;
+    @include todo-item-style;
 
     &:hover{
         cursor:grab;
     }
 
     &:active{
-        cursor:grabbing;
+        @include grabbing-style;
     }
 
     &-header{

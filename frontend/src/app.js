@@ -4,4 +4,6 @@ const variable = require('./scss/_variables.scss');
 // import './scss/_variables.scss';
 import './normalize.css';
 
-window.addEventListener('DOMContentLoaded', () => {});
+window.addEventListener('DOMContentLoaded', () => {
+  
+});
