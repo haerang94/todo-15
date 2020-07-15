@@ -1,6 +1,6 @@
 const promisePool = require('../connection.js');
 
-function insertTodo({title, content, status, author }){
+function insertTodo({title, content, status, author}){
     const query =  `INSERT INTO TODOLIST VALUES(NULL, '${title}', '${content}', '${status}', '${author}');`;
     return promisePool.execute(query);
 }
@@ -13,7 +13,7 @@ module.exports = insertTodo;
 //     title : "디비를 배우자",
 //     content : "SQL문을 배워보자", 
 //     author : "cc6656",
-//     status : "todo",
+//     status : 1,
 // }
 // insertTodo(input)
 // .then(res => {
