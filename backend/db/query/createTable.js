@@ -6,3 +6,14 @@ const createTODOLISTTable =
   STATUS VARCHAR(64),
   AUTHOR VARCHAR(64)
   );`;
+
+const createUSERTable = 
+`
+CREATE TABLE USER (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERNAME VARCHAR(64),
+  AUTHORIZATION BOOLEAN
+  );
+`;
+
+export {createTODOLISTTable, createUSERTable};
