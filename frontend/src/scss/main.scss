@@ -12,6 +12,10 @@ input[type='button']{
     cursor:pointer;
 }
 
+i:hover{
+    cursor:pointer;
+}
+
 
 .flex-container{
     display:flex;
@@ -23,7 +27,7 @@ input[type='button']{
 }
 
 .menu{
-    width:100%;
+    width:100vw;
     height:70px;
     background:black;
     color:white;
@@ -51,23 +55,21 @@ input[type='button']{
 
 main{
     display:flex;
-    justify-content: space-evenly;
-    align-items:flex-start;
-    width:100%;
-    height:100%;
-    flex-wrap:wrap;
+    width:100vw;
+    height:100vh;
+    overflow-x:scroll;
+
 }
 
 .todo-container{
-    min-width:400px;
-    // width:30%;
-    max-width:400px;
+    width:360px;
     height:700px;
     background:#eee;
     border-radius: 15px;
-    margin:30px 10px;
+    margin:30px;
     overflow:scroll;
     box-shadow:  5px 5px 5px darkgray;
+    flex-shrink: 0;
     
     &-header{
         display:flex;
@@ -155,3 +157,24 @@ main{
         margin: 0 5px;
     }
 }
+
+.hidden{
+    display:none;
+}
+
+
+// aside style
+
+aside div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:360px;
+    height:200px;
+    border:2px dashed darkgray;
+    border-radius: 15px;
+    margin:30px;
+    flex-shrink: 0;
+    color: #3f3f44;
+}
+   
