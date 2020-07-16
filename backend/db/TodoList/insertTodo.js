@@ -13,7 +13,8 @@ module.exports = insertTodo;
 //     title : "디비를 배우자",
 //     content : "SQL문을 배워보자", 
 //     author : "cc6656",
-//     status : 1,
+//     groupId : "todo-3",
+//     idx : 10
 // }
 // insertTodo(input)
 // .then(res => {
