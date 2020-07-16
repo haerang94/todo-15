@@ -4,7 +4,7 @@ const createTodoListTable =
   idx INT,
   title VARCHAR(64),
   content TEXT,
-  group VARCHAR(64),
+  status VARCHAR(64),
   author VARCHAR(64)
   );`;
 
