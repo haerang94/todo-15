@@ -1,3 +1,5 @@
+const baseUrl = 'http://localhost:3000';
+
 const getOptions = {
   method: 'GET',
   headers: {
@@ -14,12 +16,12 @@ const postOptions = {
 };
 
 function getFetchManger(url) {
-  return fetch(url, getOptions);
+  return fetch(baseUrl + url, getOptions);
 }
 
 function postFetchManger(url, body) {
   postOptions['body'] = JSON.stringify(body);
-  return fetch(url, postOptions);
+  return fetch(baseUrl + url, postOptions);
 }
 
 // test
