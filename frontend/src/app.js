@@ -12,10 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
   getFetchManger('http://localhost:3000/api/todo')
     .then((res) => res.json())
     .then((data) => {
+      const item = new Item();
       for (let i = 0; i < data.length; i++) {
         let id = data[i].groupId.split('-')[1];
-        new Item().addItem(id, data[i].title, data[i].content, data[i].author);
+        item.addItem(id, data[i].title, data[i].content, data[i].author);
       }
+      toggle();
     })
     .catch((e) => console.log(e));
 
@@ -24,7 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
   //   new Container().addContainer('4');
 });
 
-toggle();
 //ex)
 
 // 1.POST
