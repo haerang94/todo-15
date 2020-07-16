@@ -1,8 +1,8 @@
-const promisePool = require('../connection.js');
+const promisePool = require("../connection.js");
 
-function insertTodo({idx, title, content, groupId, author}){
-    const query =  `INSERT INTO TODOLIST VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}');`;
-    return promisePool.execute(query);
+function insertTodo({ idx, title, content, groupId, author }) {
+  const query = `INSERT INTO TODOLIST VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}');`;
+  return promisePool.execute(query);
 }
 
 module.exports = insertTodo;
@@ -11,7 +11,7 @@ module.exports = insertTodo;
 
 // const input = {
 //     title : "디비를 배우자",
-//     content : "SQL문을 배워보자", 
+//     content : "SQL문을 배워보자",
 //     author : "cc6656",
 //     groupId : "todo-3",
 //     idx : 10

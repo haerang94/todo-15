@@ -1,5 +1,6 @@
 const getTodoDB = require("../db/TodoList/getTodoList.js");
 const insertTodo = require("../db/TodoList/insertTodo.js");
+const deleteTodo = require("../db/TodoList/deleteTodo.js");
 
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
@@ -8,10 +9,7 @@ async function getTodoCallback(req, res) {
   try {
     const result = await getTodoDB();
     const todoList = result[0];
-    return res
-      .header("Access-Control-Allow-Origin", "http://localhost:9000")
-      .status(statusCode.OK)
-      .json(todoList);
+    return res.status(statusCode.OK).json(todoList);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
@@ -38,9 +36,23 @@ async function postTodoCallback(req, res) {
     const result = await insertTodo(todo);
     return res.sendStatus(statusCode.OK);
   } catch (e) {
-    console.log(e);
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }
 
-module.exports = { getTodoCallback, postTodoCallback, validateTodo };
+async function deleteTodoCallback(req, res) {
+  const id = req.params.id;
+  try {
+    const result = await deleteTodo(id);
+    return res.sendStatus(statusCode.OK);
+  } catch (e) {
+    return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+  }
+}
+
+module.exports = {
+  getTodoCallback,
+  postTodoCallback,
+  validateTodo,
+  deleteTodoCallback,
+};
