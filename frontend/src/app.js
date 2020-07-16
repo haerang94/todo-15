@@ -1,7 +1,8 @@
 const css = require('./scss/main.scss');
 const variable = require('./scss/_variables.scss');
 import './normalize.css';
-import Container from './modules/container.js';
+import { toggle } from './modules/toggleInput.js';
+// import Container from './modules/container.js';
 // import Item from './modules/item.js';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -11,3 +12,5 @@ window.addEventListener('DOMContentLoaded', () => {
   // 각 투두 아이템을 추가하는 함수
   //   new Item().addItem('1', '타이틀', '컨텐츠', '작가');
 });
+
+toggle();

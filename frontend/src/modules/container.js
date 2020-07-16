@@ -15,7 +15,7 @@ export default class Container {
          </div>
      </header>
      <article>
-         <ul>
+         <ul id="input-${id}">
              <li class="add-item">
                  <textarea style="width:100%; height:70px;" placeholder="Enter a note"></textarea>
                  <div class="add-item-btns">
