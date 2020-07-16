@@ -1,4 +1,5 @@
 const getTodoDB = require("../db/TodoList/getTodoList.js");
+const getTodoCount = require("../db/TodoList/getTodoCount.js");
 const insertTodo = require("../db/TodoList/insertTodo.js");
 const deleteTodo = require("../db/TodoList/deleteTodo.js");
 
@@ -50,8 +51,19 @@ async function deleteTodoCallback(req, res) {
   }
 }
 
+async function getTodoCountCallback(req, res) {
+  try {
+    const result = await getTodoCount();
+    const count = result[0].length;
+    return res.status(statusCode.OK).json(count);
+  } catch (e) {
+    return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+  }
+}
+
 module.exports = {
   getTodoCallback,
+  getTodoCountCallback,
   postTodoCallback,
   validateTodo,
   deleteTodoCallback,
