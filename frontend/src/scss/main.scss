@@ -155,3 +155,55 @@ main{
         margin: 0 5px;
     }
 }
+
+
+
+.toggle {
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
+
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  }
+
+
+.toggle {
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
+
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  
+  }
+
+// aside style
+
+aside div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:360px;
+    height:200px;
+    border:2px dashed darkgray;
+    border-radius: 15px;
+    margin:30px;
+    flex-shrink: 0;
+    color: #3f3f44;
+}
+   
