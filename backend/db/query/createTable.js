@@ -1,15 +1,13 @@
-const createTodoListTable =
-`CREATE TABLE TODOLIST (
+const createTodoListTable = `CREATE TABLE TODOLIST (
   id INT PRIMARY KEY AUTO_INCREMENT,
   idx INT,
   title VARCHAR(64),
   content TEXT,
-  group_id VARCHAR(64),
+  groupId VARCHAR(64),
   author VARCHAR(64)
   );`;
 
-const createUserTable = 
-`
+const createUserTable = `
 CREATE TABLE USER (
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(64),
@@ -17,4 +15,4 @@ CREATE TABLE USER (
   );
 `;
 
-module.exports =  {createTodoListTable, createUserTable};
+module.exports = { createTodoListTable, createUserTable };
