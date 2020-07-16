@@ -14,6 +14,7 @@ export default class Container {
              </div>
          </div>
      </header>
+     
      <article>
          <ul id="input-${id}" class="hidden toggle">
              <li class="add-item">
@@ -27,6 +28,7 @@ export default class Container {
         <ul id="ul-${id}">
         </ul>
      </article>
+     <div id="end-of-container">끝</div>
      </section>`;
   }
   addContainer(id) {
