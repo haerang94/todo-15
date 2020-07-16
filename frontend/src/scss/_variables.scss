@@ -16,5 +16,6 @@ $mint-color:#87dfd6;
 }
 @mixin grabbing-style{
     cursor:grabbing;
-    border: 1.5px dashed black;
+    border: 3px solid $mint-color;
+    opacity: 0.6;
 }
