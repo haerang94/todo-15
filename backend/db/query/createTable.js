@@ -1,6 +1,7 @@
 const createTodoListTable =
 `CREATE TABLE TODOLIST (
   id INT PRIMARY KEY AUTO_INCREMENT,
+  idx INT,
   title VARCHAR(64),
   content TEXT,
   status VARCHAR(64),
