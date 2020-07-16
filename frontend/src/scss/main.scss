@@ -21,7 +21,7 @@ i:hover{
     cursor:pointer;
     color:$mint-color;
     transition:1s;
-    transform:rotate(15deg);
+    // transform:rotate(15deg);
 }
 
 
@@ -93,6 +93,15 @@ main{
     &-part1{
         display:flex;
         align-items:center;
+
+        &  div{
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            border:1px solid $mint-color;
+            text-align: center;
+            background:$mint-color;
+        }
         
     }
 
@@ -195,9 +204,9 @@ main{
 
 .toggle {
     overflow: hidden;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     transform: scaleY(1);
-    transform-origin: top;
+    // transform-origin: top;
   
     &.hidden {
       transform: scaleY(0);

@@ -7,10 +7,13 @@ import { getFetchManger, postFetchManger } from './modules/fetchManger.js';
 import Item from './modules/item';
 // import Item from './modules/item.js';
 
+let num_of_columns;
 window.addEventListener('DOMContentLoaded', () => {
   getFetchManger('/api/todo/count')
     .then((res) => res.json())
     .then((data) => {
+      num_of_columns = data;
+      console.log(num_of_columns);
       const col = new Container();
       for (let i = 0; i < data; i++) {
         col.addContainer(i + 1);
@@ -27,8 +30,19 @@ window.addEventListener('DOMContentLoaded', () => {
         item.addItem(groupId, data[i].title, data[i].content, data[i].author); // todo:id추가하는 것 작성 필요
       }
     })
+    .then(() => temp())
     .catch((e) => console.log(e));
 });
+
+// 각 컬럼의 투두리스트 개수를 구하기 위한 임시함수
+const temp = () => {
+  for (let i = 0; i < num_of_columns; i++) {
+    const num_of_items = document.querySelector(`#ul-${i + 1}`);
+    const result = document.querySelector(`.num-of-todos-${i + 1}`);
+    //text 제외한 자식 li태그 개수
+    result.innerText = num_of_items.childNodes.length - 1;
+  }
+};
 
 toggle();
 
