@@ -1,6 +1,15 @@
 @font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import './variables';
 
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
 *{
     outline:none;
     font-family:"BMHANNAAir";
@@ -12,8 +21,15 @@ input[type='button']{
     cursor:pointer;
 }
 
+i{
+    font-size:32px;
+}
+
 i:hover{
     cursor:pointer;
+    color:$mint-color;
+    transition:1s;
+    transform:rotate(15deg);
 }
 
 
@@ -111,13 +127,21 @@ main{
     &-btn{
         width:48%;
         height:40px;
-        border:1px solid darkgray;
+        border:1px solid black;
+        background:black;
         border-radius:10px;
         margin:10px 0;
+        color:white;
     }
 
     &-btn:first-child{
-        background:greenyellow;
+        background:$mint-color;
+        color:black;
+    }
+
+    &-btn:first-child:disabled{
+        color:#ddd;
+        background:#fff;
     }
 
 
@@ -158,10 +182,41 @@ main{
     }
 }
 
-.hidden{
-    display:none;
-}
 
+
+.toggle {
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
+
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  }
+
+
+.toggle {
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
+
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  
+  }
 
 // aside style
 
