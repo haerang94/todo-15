@@ -8,7 +8,7 @@ async function getTodoCallback(req, res){
     try{
         const result = await getTodoDB();
         const todoList = result[0];
-        return res.status(statusCode.OK).json(todoList);
+        return res.header("Access-Control-Allow-Origin", "http://localhost:9000").status(statusCode.OK).json(todoList);
     }catch(e){
         return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
     }
@@ -20,7 +20,7 @@ function validateTodo(req, res, next){
     let check = true;
 
     if(!todo.title) check = false;
-    if(!todo.status) check = false;
+    if(!todo.groupId) check = false;
     if(!todo.author) check = false;
 
     if(!check) return res.status(statusCode.BAD_REQUEST).send(errorMessage.BAD_REQUEST);
@@ -30,6 +30,7 @@ function validateTodo(req, res, next){
 
 async function postTodoCallback(req, res){
     try{
+        const todo = req.body;
         const result = await insertTodo(todo);
         return res.sendStatus(statusCode.OK);
     }catch(e){
