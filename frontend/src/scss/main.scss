@@ -182,10 +182,7 @@ main{
     }
 }
 
-// .hidden{
-//     display:none;
-//     animation:fadeIn 1s ease-in-out;
-// }
+
 
 .toggle {
     overflow: hidden;
@@ -204,7 +201,22 @@ main{
   }
 
 
+.toggle {
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
 
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  
+  }
 
 // aside style
 
