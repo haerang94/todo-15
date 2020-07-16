@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    test: './src/app.js',
+    test: ['./src/app.js', './src/scss/main.scss'],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -15,12 +15,26 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
         exclude: /node_modules/,
       },
       {
         test: /\.(css|s[ca]ss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('node-sass'),
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|jpeg)$/,
