@@ -1,7 +1,7 @@
 const promisePool = require('../connection.js');
 
 function getTodoList(){
-    const query =  `SELECT idx, title, content, group_id, author FROM TODOLIST ORDER BY group_id, idx;`;
+    const query =  `SELECT idx, title, content, groupId, author FROM TODOLIST ORDER BY groupId, idx;`;
     return promisePool.execute(query);
 }
 
