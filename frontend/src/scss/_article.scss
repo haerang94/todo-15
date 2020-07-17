@@ -12,3 +12,12 @@ article{
     color:black;
     margin-bottom:20px;
 }
+
+.add-item-btn:nth-child(2){
+
+    &:hover{
+        color:$mint-color;
+        font-size:$mid-font;
+    }
+
+}
