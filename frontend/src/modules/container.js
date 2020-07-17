@@ -18,7 +18,7 @@ export default class Container {
      <article>
          <ul id="input-todo-${id}" class="hidden toggle">
              <li class="add-item">
-                 <textarea style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
+                 <textarea name="textarea" style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
                  <div class="add-item-btns">
                      <input class="add-item-btn" type="button" value="Add" disabled>
                      <input class="add-item-btn" type="button" value="Cancel">

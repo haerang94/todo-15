@@ -51,6 +51,18 @@ const temp = () => {
 
 toggle();
 
+document.addEventListener('input', (e) => {
+  if (e.target.getAttribute('name') === 'textarea') {
+    console.log(e.target.value.length);
+    const btn = document.querySelectorAll('.add-item-btn')[0];
+    if (e.target.value.length !== 0) {
+      btn.removeAttribute('disabled');
+    } else {
+      btn.setAttribute('disabled', 'true');
+    }
+  }
+});
+
 //ex)
 
 // 1.POST
