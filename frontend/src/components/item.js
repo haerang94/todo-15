@@ -18,6 +18,6 @@ export default class Item {
   addItem(id, groupId, title, content, author) {
     const ul = document.querySelector(`#${groupId}`);
     const item = this.makeItem(id, title, content, author);
-    ul.insertAdjacentHTML('beforeend', item);
+    ul.insertAdjacentHTML('afterbegin', item);
   }
 }
