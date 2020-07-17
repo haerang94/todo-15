@@ -10,7 +10,6 @@ import Item from './modules/item';
 let num_of_columns;
 window.addEventListener('DOMContentLoaded', () => {
   getFetchManger('/api/todo/count')
-    .then((res) => res.json())
     .then((data) => {
       num_of_columns = data;
       console.log(num_of_columns);
@@ -22,7 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
     .catch((e) => console.log(e));
 
   getFetchManger('/api/todo')
-    .then((res) => res.json())
     .then((data) => {
       const item = new Item();
       for (let i = 0; i < data.length; i++) {
