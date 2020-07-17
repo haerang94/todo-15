@@ -4,6 +4,8 @@ export function toggleInput() {
     if (!e.target.classList.contains('fa-plus')) return;
     const id = e.target.id.split('-')[2];
     toggleHidden(id);
+    const inputContainer = document.getElementById(`input-todo-${id}`);
+    inputContainer.scrollIntoView(true);
   });
 
   document.addEventListener('click', (e) => {
