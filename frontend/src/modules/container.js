@@ -1,7 +1,7 @@
 export default class Container {
   makeContainer(id) {
     return `
-     <section id=${id} class="todo-container">
+     <section id="section-${id}" class="todo-container">
      <header>
          <div class="todo-container-header">
              <div class="todo-container-part1">
@@ -16,7 +16,7 @@ export default class Container {
      </header>
      
      <article>
-         <ul id="input-${id}" class="hidden toggle">
+         <ul id="input-todo-${id}" class="hidden toggle">
              <li class="add-item">
                  <textarea style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
                  <div class="add-item-btns">
@@ -25,7 +25,7 @@ export default class Container {
                  </div>
              </li>
          </ul>
-        <ul id="ul-${id}">
+        <ul id="todoList-${id}">
         </ul>
         <div id="end-of-article">끝</div>
      </article>  
