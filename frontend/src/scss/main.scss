@@ -1,14 +1,6 @@
 @font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import './variables';
 
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
 
 *{
     outline:none;
@@ -51,6 +43,7 @@ i:hover{
     justify-content: space-between;
     align-items: center;
     font-size:$big-font;
+    border-bottom: 5px solid $mint-color;
 
     &-item{
         margin:0 50px;
@@ -66,6 +59,7 @@ i:hover{
     }
     &-btn:hover{
         cursor:pointer;
+        color:$mint-color;
     }
 }
 
@@ -115,7 +109,7 @@ main{
     align-items:center;
 
     &:hover{
-        @include grabbing-style;
+        // @include grabbing-style;
     }
 
     &-btns{
@@ -130,7 +124,7 @@ main{
         border:1px solid black;
         background:black;
         border-radius:10px;
-        margin:10px 0;
+        margin:10px 0 0 0;
         color:white;
     }
 
@@ -140,8 +134,10 @@ main{
     }
 
     &-btn:first-child:disabled{
-        color:#ddd;
-        background:#fff;
+        color:darkgray;
+        background:#eee;
+        border:none;
+        cursor:default;
     }
 
 
