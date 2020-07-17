@@ -1,11 +1,11 @@
 const css = require('./scss/main.scss');
 const variable = require('./scss/_variables.scss');
 import './normalize.css';
-import { toggle } from './modules/toggleInput.js';
+import { toggleInput } from './modules/toggleInput.js';
 import Container from './modules/container.js';
 import { getFetchManger, postFetchManger } from './modules/fetchManger.js';
 import Item from './modules/item';
-// import Item from './modules/item.js';
+import { toggleBtn } from './modules/toggleBtn';
 
 let num_of_columns;
 window.addEventListener('DOMContentLoaded', () => {
@@ -47,7 +47,8 @@ const temp = () => {
   }
 };
 
-toggle();
+toggleInput();
+toggleBtn();
 
 //ex)
 
