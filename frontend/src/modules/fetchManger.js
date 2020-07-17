@@ -16,12 +16,12 @@ const postOptions = {
 };
 
 function getFetchManger(url) {
-  return fetch(baseUrl + url, getOptions);
+  return fetch(baseUrl + url, getOptions).then((res) => res.json());
 }
 
 function postFetchManger(url, body) {
   postOptions['body'] = JSON.stringify(body);
-  return fetch(baseUrl + url, postOptions);
+  return fetch(baseUrl + url, postOptions).then((res) => res.json());
 }
 
 // test
