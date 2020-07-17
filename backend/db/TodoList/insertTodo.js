@@ -1,8 +1,8 @@
-const promisePool = require('../connection.js');
+const promisePool = require("../connection.js");
 
-function insertTodo({title, content, status, author }){
-    const query =  `INSERT INTO TODOLIST VALUES(NULL, '${title}', '${content}', '${status}', '${author}');`;
-    return promisePool.execute(query);
+function insertTodo({ idx, title, content, groupId, author }) {
+  const query = `INSERT INTO TODOLIST VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}');`;
+  return promisePool.execute(query);
 }
 
 module.exports = insertTodo;
@@ -10,15 +10,17 @@ module.exports = insertTodo;
 // test
 
 // const input = {
-//     title : "디비를 배우자",
-//     content : "SQL문을 배워보자", 
-//     author : "cc6656",
-//     status : "todo",
-// }
+//   title: "디비를 배우자",
+//   content:
+//     "adfadfadfadsfadfadfasdfadsfadfadfafdsfasdfasdfadfasdfadfgafdkvakjldvclanslkdjhaiou;shdflahsdljkfhakjdhasdfakjsdhlfjkahdjfhasdf",
+//   author: "cc6656",
+//   groupId: "todo-3",
+//   idx: 13,
+// };
 // insertTodo(input)
-// .then(res => {
+//   .then((res) => {
 //     console.log(res);
-// })
-// .catch(e => {
+//   })
+//   .catch((e) => {
 //     console.log(e);
-// })
+//   });

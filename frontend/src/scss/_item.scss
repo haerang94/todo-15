@@ -1,0 +1,60 @@
+.todo-item{
+    @include todo-item-style;
+
+    &:hover{
+        cursor:grab;
+    }
+
+    &:active{
+        @include grabbing-style;
+    }
+
+    &-header{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;
+    }
+
+    &-part1{
+        display:flex;
+        align-items: center;
+    }
+
+    &-logo,&-title{
+        margin:0 5px;
+    }
+    &-content{
+        display:flex;
+        flex-wrap:wrap;
+        p{
+            word-break:break-all;
+        }
+    }
+}
+
+.author{
+    display:flex;
+    p{
+        color:darkgray;
+        margin: 0 5px;
+    }
+}
+
+
+.toggle {
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    transform: scaleY(1);
+    // transform-origin: top;
+  
+    &.hidden {
+      transform: scaleY(0);
+      height:0;
+    }
+
+    &:not(.hidden){
+    transform:scaleY(1);
+    }
+  
+  }

@@ -8,6 +8,8 @@ const promisePool = mysql.createPool({
   database,
 }).promise();
 
+// const {createTodoListTable} = require('./query/createTable');
+// promisePool.execute(createTodoListTable);
 
 
 module.exports =  promisePool;

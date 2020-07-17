@@ -1,6 +1,8 @@
 $big-font:32px;
 $mid-font:20px;
 $small-font:16px;
+$mint-color:#87dfd6;
+
 
  @mixin todo-item-style
 {
@@ -14,5 +16,6 @@ $small-font:16px;
 }
 @mixin grabbing-style{
     cursor:grabbing;
-    border: 1.5px dashed black;
+    border: 3px solid $mint-color;
+    opacity: 0.6;
 }
