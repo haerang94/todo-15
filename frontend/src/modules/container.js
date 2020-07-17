@@ -1,22 +1,22 @@
 export default class Container {
   makeContainer(id) {
     return `
-     <section id=${id} class="todo-container">
+     <section id="section-${id}" class="todo-container">
      <header>
          <div class="todo-container-header">
              <div class="todo-container-part1">
-                 <div class="num-of-todos-${id}"></div>
+                 <div class="num-of-todos-${id}">0</div>
                  <p class="todo-container-header-title">새로 추가된 todo컬럼</p>
              </div>
              <div class="todo-container-part2">
-                 <i id="add-btn-${id}" class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
-                 <i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i>
+                <i id="add-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
              </div>
          </div>
      </header>
      
      <article>
-         <ul id="input-${id}" class="hidden toggle">
+         <ul id="input-todo-${id}" class="hidden toggle">
              <li class="add-item">
                  <textarea style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
                  <div class="add-item-btns">
@@ -25,10 +25,10 @@ export default class Container {
                  </div>
              </li>
          </ul>
-        <ul id="ul-${id}">
+        <ul id="todoList-${id}">
         </ul>
-     </article>
-     <div id="end-of-container">끝</div>
+        <div id="end-of-article">끝</div>
+     </article>  
      </section>`;
   }
   addContainer(id) {

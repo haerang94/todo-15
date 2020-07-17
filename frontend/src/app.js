@@ -24,8 +24,13 @@ window.addEventListener('DOMContentLoaded', () => {
     .then((data) => {
       const item = new Item();
       for (let i = 0; i < data.length; i++) {
-        let groupId = data[i].groupId.split('-')[1];
-        item.addItem(groupId, data[i].title, data[i].content, data[i].author); // todo:id추가하는 것 작성 필요
+        item.addItem(
+          data[i].id,
+          data[i].groupId,
+          data[i].title,
+          data[i].content,
+          data[i].author,
+        );
       }
     })
     .then(() => temp())
@@ -35,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // 각 컬럼의 투두리스트 개수를 구하기 위한 임시함수
 const temp = () => {
   for (let i = 0; i < num_of_columns; i++) {
-    const num_of_items = document.querySelector(`#ul-${i + 1}`);
+    const num_of_items = document.querySelector(`#todoList-${i + 1}`);
     const result = document.querySelector(`.num-of-todos-${i + 1}`);
     //text 제외한 자식 li태그 개수
     result.innerText = num_of_items.childNodes.length - 1;
