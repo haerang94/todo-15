@@ -7,6 +7,7 @@ module.exports = function (api) {
       {
         targets: '>= 1%, not dead',
         useBuiltIns: 'usage',
+        'core-js': 3,
         modules: false,
       },
     ],
