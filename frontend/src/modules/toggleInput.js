@@ -1,5 +1,6 @@
 export function toggleInput() {
-  document.addEventListener('click', (e) => {
+  const main = document.querySelector('main');
+  main.addEventListener('click', (e) => {
     if (!e.target.classList.contains('fa-plus')) return;
     const id = e.target.id.split('-')[2];
     toggleHidden(id);
