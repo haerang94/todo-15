@@ -8,6 +8,7 @@
 }
 ul{
     padding:5px;
+    margin:0;
 }
 input[type='button']{
     cursor:pointer;
@@ -21,7 +22,7 @@ i:hover{
     cursor:pointer;
     color:$mint-color;
     transition:1s;
-    transform:rotate(15deg);
+    // transform:rotate(15deg);
 }
 
 
@@ -43,7 +44,7 @@ i:hover{
     justify-content: space-between;
     align-items: center;
     font-size:$big-font;
-    border-bottom: 5px solid $mint-color;
+    border-bottom: 8px solid $mint-color;
 
     &-item{
         margin:0 50px;
@@ -80,6 +81,7 @@ main{
     overflow:scroll;
     box-shadow:  5px 5px 5px darkgray;
     flex-shrink: 0;
+    border:1px solid black;
     
     &-header{
         display:flex;
@@ -92,6 +94,15 @@ main{
     &-part1{
         display:flex;
         align-items:center;
+
+        &  div{
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            border:1px solid $mint-color;
+            text-align: center;
+            background:$mint-color;
+        }
         
     }
 
@@ -107,6 +118,11 @@ main{
     display:flex;
     flex-direction: column;
     align-items:center;
+
+    & textarea{
+        padding:5px;
+        border-radius:5px;
+    }
 
     &:hover{
         // @include grabbing-style;
@@ -158,6 +174,7 @@ main{
         display:flex;
         align-items:center;
         justify-content:space-between;
+        width:100%;
     }
 
     &-part1{
@@ -167,6 +184,13 @@ main{
 
     &-logo,&-title{
         margin:0 5px;
+    }
+    &-content{
+        display:flex;
+        flex-wrap:wrap;
+        p{
+            word-break:break-all;
+        }
     }
 }
 
@@ -179,27 +203,9 @@ main{
 }
 
 
-
 .toggle {
     overflow: hidden;
-    transition: transform 0.8s ease-in-out;
-    transform: scaleY(1);
-    // transform-origin: top;
-  
-    &.hidden {
-      transform: scaleY(0);
-      height:0;
-    }
-
-    &:not(.hidden){
-    transform:scaleY(1);
-    }
-  }
-
-
-.toggle {
-    overflow: hidden;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     transform: scaleY(1);
     // transform-origin: top;
   
@@ -228,4 +234,12 @@ aside div{
     flex-shrink: 0;
     color: #3f3f44;
 }
-   
+
+#end-of-container{
+    width:100%;
+    height:30px;
+    text-align:center;
+    font-size:30px;
+    color:black;
+    margin-bottom:20px;
+}

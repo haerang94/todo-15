@@ -11,10 +11,11 @@ module.exports = insertTodo;
 
 // const input = {
 //   title: "디비를 배우자",
-//   content: "SQL문을 배워보자",
+//   content:
+//     "adfadfadfadsfadfadfasdfadsfadfadfafdsfasdfasdfadfasdfadfgafdkvakjldvclanslkdjhaiou;shdflahsdljkfhakjdhasdfakjsdhlfjkahdjfhasdf",
 //   author: "cc6656",
 //   groupId: "todo-3",
-//   idx: 12,
+//   idx: 13,
 // };
 // insertTodo(input)
 //   .then((res) => {
