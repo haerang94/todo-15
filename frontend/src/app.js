@@ -18,12 +18,15 @@ document.addEventListener('click', (e) => {
   if (e.target.id.substr(0, 9) === 'input-btn') {
     const groupId = e.target.id.substr(10);
     const ul = document.querySelector(`#todoList-${groupId}`);
-    const id = ul.childNodes.length + 1;
+    const id = ul.childNodes.length + 1; //새로운 id
     const item = new Item();
     const textarea = document.querySelector(`#textarea-${groupId}`);
-    console.log(textarea.value);
-    const title = textarea.value;
-    item.addItem(id, `todoList-${groupId}`, title, title, 'sara');
+    const title = textarea.value.substr(0, 15); //15글자까지는 타이틀
+    const content = textarea.value.substr(15);
+    item.addItem(id, `todoList-${groupId}`, '', '', 'sara');
+    const addedItem = document.getElementById(id);
+    addedItem.childNodes[1].childNodes[1].childNodes[1].innerText = title;
+    addedItem.childNodes[3].childNodes[1].innerText = content;
   }
 });
 
