@@ -16,6 +16,7 @@ export default class Container {
      </header>
      
      <article>
+         <div class="temp"></div>
          <ul id="input-todo-${id}" class="hidden toggle">
              <li class="add-item">
                  <textarea id="textarea-${id}" style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
