@@ -1,4 +1,4 @@
-export function toggle() {
+export function toggleInput() {
   document.addEventListener('click', (e) => {
     if (!e.target.classList.contains('fa-plus')) return;
     const id = e.target.id.split('-')[2];
