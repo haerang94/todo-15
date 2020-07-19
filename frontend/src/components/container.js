@@ -9,7 +9,7 @@ export default class Container {
                  <p class="todo-container-header-title">새로 추가된 todo컬럼</p>
              </div>
              <div class="todo-container-part2">
-                <i id="add-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
+                <i id="input-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
              </div>
          </div>
