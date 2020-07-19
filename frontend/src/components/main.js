@@ -37,6 +37,7 @@ export default class Main {
     results.forEach((data) => {
       item.addItem(
         data.id,
+        data.idx,
         data.groupId,
         data.title,
         data.content,

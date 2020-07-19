@@ -9,15 +9,16 @@ export function addTodoList() {
     const groupId = e.target.id.substr(8);
     const ul = document.querySelector(`#todoList-${groupId}`);
     //새로운 투두리스트의 id이자 idx(순서)
-    const idx = ul.childNodes.length + 1; //새로운 id
+    //id는 실제로 데이터베이스에 전달되지 않으므로 프론트에만 보여주는 임시값이 된다
+    const idx = +ul.firstChild.getAttribute('idx') + 1;
 
     const textarea = document.querySelector(`#textarea-${groupId}`);
     const title = textarea.value.substr(0, 20); //20글자까지는 타이틀
     const content = textarea.value.substr(20);
 
     const item = new Item();
-    item.addItem(idx, `todoList-${groupId}`, '', '', 'sara');
-    const addedItem = document.getElementById(idx);
+    item.addItem(idx, idx, `todoList-${groupId}`, '', '', 'sara');
+    const addedItem = ul.firstChild;
     //title영역
     addedItem.childNodes[1].childNodes[1].childNodes[3].innerText = title;
     //content 영역
@@ -27,12 +28,10 @@ export function addTodoList() {
     const addBtn = textarea.nextElementSibling.firstElementChild;
     addBtn.setAttribute('disabled', 'true');
 
-    // 컬럼 개수 업데이트
-    const num_of_items = document.querySelector(`#todoList-${groupId}`);
+    // 아이템 개수 업데이트
     const result = document.querySelector(`.num-of-todos-${groupId}`);
     //text 제외한 자식 li태그 개수
-    // result.textContent = idx;
-    result.textContent = num_of_items.childNodes.length - 1;
+    result.textContent = idx;
 
     postFetchManger('/api/todo', {
       idx,
@@ -41,6 +40,5 @@ export function addTodoList() {
       author: 'haerang',
       groupId: `todoList-${groupId}`,
     });
-    // console.log(go);
   });
 }

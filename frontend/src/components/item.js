@@ -1,6 +1,6 @@
 export default class Item {
-  makeItem(id, title, content, author) {
-    return `<li id="${id}" class="todo-item">
+  makeItem(id, idx, title, content, author) {
+    return `<li id="${id}" idx=${idx} class="todo-item">
         <div class="todo-item-header">
             <div class="todo-item-part1">
                 <div class="todo-item-logo"><i class="fa fa-list-alt" aria-hidden="true" fa-lg></i></div>
@@ -15,9 +15,9 @@ export default class Item {
       </li>`;
   }
 
-  addItem(id, groupId, title, content, author) {
+  addItem(id, idx, groupId, title, content, author) {
     const ul = document.querySelector(`#${groupId}`);
-    const item = this.makeItem(id, title, content, author);
+    const item = this.makeItem(id, idx, title, content, author);
     ul.insertAdjacentHTML('afterbegin', item);
   }
 }

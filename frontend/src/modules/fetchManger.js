@@ -22,7 +22,7 @@ function getFetchManger(url) {
 function postFetchManger(url, body) {
   postOptions['body'] = JSON.stringify(body);
   return fetch(baseUrl + url, postOptions)
-    .then((res) => console.log(res)) // 이미 json형태로 반환되어 json메소드를 붙이면 에러가 난다
+    .then((res) => res) // 이미 json형태로 반환되어 json메소드를 붙이면 에러가 난다
     .catch((e) => console.log(e));
 }
 
