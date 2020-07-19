@@ -4,8 +4,8 @@ import Main from '../components/main';
 export function addTodoList() {
   // todo: 리팩토링... 어떻게 하지
   document.addEventListener('click', async (e) => {
-    if (e.target.id.substr(0, 9) !== 'input-btn') return;
-    const groupId = e.target.id.substr(10);
+    if (e.target.id.substr(0, 7) !== 'add-btn') return;
+    const groupId = e.target.id.substr(8);
     const ul = document.querySelector(`#todoList-${groupId}`);
     const id = ul.childNodes.length + 1; //새로운 id
 
