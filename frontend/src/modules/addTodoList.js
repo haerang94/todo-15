@@ -9,13 +9,15 @@ export function addTodoList() {
       const id = ul.childNodes.length + 1; //새로운 id
 
       const textarea = document.querySelector(`#textarea-${groupId}`);
-      const title = textarea.value.substr(0, 15); //15글자까지는 타이틀
-      const content = textarea.value.substr(15);
+      const title = textarea.value.substr(0, 20); //20글자까지는 타이틀
+      const content = textarea.value.substr(20);
 
       const item = new Item();
       item.addItem(id, `todoList-${groupId}`, '', '', 'sara');
       const addedItem = document.getElementById(id);
-      addedItem.childNodes[1].childNodes[1].childNodes[1].innerText = title;
+      //title영역
+      addedItem.childNodes[1].childNodes[1].childNodes[3].innerText = title;
+      //content 영역
       addedItem.childNodes[3].childNodes[1].innerText = content;
       textarea.value = '';
       textarea.focus();
