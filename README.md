@@ -1,7 +1,7 @@
 # todo-15
 박지환, 최해랑의 레포지토리
 
-## 1. 기획서
+## 기획서
 [기획서](https://docs.google.com/presentation/d/1AF2MNzwGHh97_6DpIhgM1NHHGggtCBYelHHtwxuQkgA/edit#slide=id.p)
 
 ## 공부한 개념 정리
