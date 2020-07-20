@@ -7,7 +7,7 @@ export default class Item {
                 <i class="fa fa-list-alt" aria-hidden="true" fa-lg></i></div>
                 <div class="todo-item-title">${title}</div>
             </div>
-            <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true"></i>
+            <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true" data-method="delete"></i>
         </div>
         <div class="todo-item-content">
             <p>${content}</p>

@@ -3,6 +3,7 @@ import Container from './container.js';
 import Item from './item.js';
 import 'regenerator-runtime/runtime';
 import addTodo from '../modules/addTodo.js';
+import deleteTodo from '../modules/deleteTodo.js';
 
 export default class Main {
   constructor(main) {
@@ -17,6 +18,7 @@ export default class Main {
     this.renderItems(results);
     //
     this.main.addEventListener('click', addTodo);
+    this.main.addEventListener('click', deleteTodo);
 
     for (let i = 0; i < columns.data.length; i++) {
       this.countTodo(columns.data[i].groupId.substr(9));
