@@ -64,7 +64,7 @@ function fillTitleContent(listUl, { title, content }) {
   const children = addedItem.children;
 
   //title영역
-  children[0].innerText = title;
+  children[0].firstElementChild.textContent = title;
   //content 영역
   children[1].firstElementChild.textContent = content;
 }
