@@ -35,8 +35,10 @@ async function postTodoCallback(req, res) {
   try {
     const todo = req.body;
     const result = await insertTodo(todo);
-    const insertId = result[0].insertId;
-    return res.status(statusCode.OK).json(insertId);
+    const response = {
+      id: result[0].insertId,
+    };
+    return res.status(statusCode.OK).json(response);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
