@@ -3,6 +3,7 @@ const getTodoCount = require("../db/TodoList/getTodoCount.js");
 const insertTodo = require("../db/TodoList/insertTodo.js");
 const deleteTodo = require("../db/TodoList/deleteTodo.js");
 const updateTodo = require("../db/TodoList/updateTodo.js");
+const distinctColumns = require("../db/TodoList/distinctColumns.js");
 
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
@@ -77,6 +78,18 @@ async function patchTodoCallback(req, res) {
   }
 }
 
+async function distinctColumnsCallback(req, res) {
+  try {
+    const result = await distinctColumns();
+    const response = {
+      data: result[0],
+    };
+    return res.status(statusCode.OK).json(response);
+  } catch (e) {
+    return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+  }
+}
+
 module.exports = {
   getTodoCallback,
   getTodoCountCallback,
@@ -84,4 +97,5 @@ module.exports = {
   validateTodo,
   deleteTodoCallback,
   patchTodoCallback,
+  distinctColumnsCallback,
 };
