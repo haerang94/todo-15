@@ -5,7 +5,6 @@ import Main from './components/main.js';
 import 'regenerator-runtime/runtime';
 import { toggleInput } from './modules/toggleInput.js';
 import { toggleBtn } from './modules/toggleBtn';
-import { addTodoList } from './modules/addTodoList';
 import { deleteTodoList } from './modules/deleteTodoList';
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -13,6 +12,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   await main.init();
   toggleInput();
   toggleBtn();
-  addTodoList();
   deleteTodoList();
 });
