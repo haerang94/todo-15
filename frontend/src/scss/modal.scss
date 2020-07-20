@@ -69,7 +69,7 @@
 }
 
 
-#close-modal-btn{
+.close-modal-btn{
     background:$mint-color;
     border:none;
     width:100px;
@@ -80,7 +80,7 @@
     transition:0.2s;
 }
 
-#close-modal-btn:hover{
+.close-modal-btn:hover{
     width:105px;
     height:41px;
     font-size:16px;

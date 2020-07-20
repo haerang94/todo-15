@@ -18,7 +18,6 @@ export default async function addTodo(e) {
   clearTextarea(textarea);
 
   fillTitleContent(listUl, data);
-
   const count = listUl.querySelectorAll('li').length;
   updateCount(groupId, count);
 }

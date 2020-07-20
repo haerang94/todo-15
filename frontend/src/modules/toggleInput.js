@@ -18,7 +18,7 @@ export function toggleInput() {
 
 function toggleHidden(id) {
   const inputContainer = document.getElementById(`input-todo-${id}`);
-  const textarea = document.querySelector(`#textarea-${id}`);``
+  const textarea = document.querySelector(`#textarea-${id}`);
   if (inputContainer.classList.contains('hidden')) {
     textarea.value = '';
     inputContainer.classList.remove('hidden');
