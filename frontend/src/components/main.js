@@ -35,14 +35,15 @@ export default class Main {
   renderItems(results) {
     const item = new Item();
     results.forEach((data) => {
-      item.addItem(
-        data.id,
-        data.idx,
-        data.groupId,
-        data.title,
-        data.content,
-        data.author,
-      );
+      const itemData = {
+        id: data.id,
+        idx: data.idx,
+        groupId: data.groupId,
+        title: data.title,
+        content: data.content,
+        author: data.author,
+      };
+      item.addItem(itemData);
     });
   }
 }

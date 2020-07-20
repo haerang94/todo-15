@@ -16,7 +16,7 @@ export default class Item {
       </li>`;
   }
 
-  addItem(id, idx, groupId, title, content, author) {
+  addItem({ id, idx, groupId, title, content, author }) {
     const ul = document.querySelector(`#${groupId}`);
     const item = this.makeItem(id, idx, title, content, author);
     ul.insertAdjacentHTML('afterbegin', item);
