@@ -10,8 +10,11 @@ export function closeModal() {
   });
 
   document.addEventListener('dblclick', (e) => {
-    if (!e.target.classList.contains('todo-item')) return;
-    console.log(e.target);
+    if (
+      !e.target.classList.contains('todo-item') &&
+      !e.target.parentNode.classList.contains('todo-item')
+    )
+      return;
     modalContainer.classList.remove('hidden');
   });
 }
