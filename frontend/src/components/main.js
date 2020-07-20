@@ -2,6 +2,7 @@ import { getFetchManger } from '../modules/fetchManger.js';
 import Container from './container.js';
 import Item from './item.js';
 import 'regenerator-runtime/runtime';
+import addTodo from '../modules/addTodo.js';
 
 export default class Main {
   constructor(main) {
@@ -14,6 +15,8 @@ export default class Main {
     //아이템 생성
     const results = await getFetchManger('/api/todo');
     this.renderItems(results);
+    //
+    this.main.addEventListener('click', addTodo);
 
     for (let i = 0; i < columns.data.length; i++) {
       this.countTodo(columns.data[i].groupId.substr(9));
@@ -33,15 +36,8 @@ export default class Main {
   }
   renderItems(results) {
     const item = new Item();
-    results.forEach((data) => {
-      item.addItem(
-        data.id,
-        data.idx,
-        data.groupId,
-        data.title,
-        data.content,
-        data.author,
-      );
+    results.forEach(({ id, idx, groupId, title, content, author }) => {
+      item.addItem({ id, idx, groupId, title, content, author });
     });
   }
 }
