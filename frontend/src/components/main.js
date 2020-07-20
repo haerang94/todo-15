@@ -8,9 +8,11 @@ export default class Main {
     this.main = main;
   }
   async init() {
+    //컬럼 생성
     const num_of_columns = await getFetchManger('/api/todo/count');
     this.renderConatiners(num_of_columns);
 
+    //아이템 생성
     const results = await getFetchManger('/api/todo');
     this.renderItems(results);
 
@@ -35,6 +37,7 @@ export default class Main {
     results.forEach((data) => {
       item.addItem(
         data.id,
+        data.idx,
         data.groupId,
         data.title,
         data.content,

@@ -14,21 +14,3 @@ window.addEventListener('DOMContentLoaded', async () => {
   toggleBtn();
   addTodoList();
 });
-
-//ex)
-
-// 1.POST
-
-//const addButton = document.querySelector('.add-item-btn');
-// console.log(addButton);
-// const body = {
-//   title: 'asdf',
-//   content: 'asdf',
-//   author: 'asdf',
-//   groupId: 'todo-3',
-//   idx: 11,
-// };
-// addButton.addEventListener(
-//   'click',
-//   postFetchManger('http://localhost:3000/api/todo', body),
-// );

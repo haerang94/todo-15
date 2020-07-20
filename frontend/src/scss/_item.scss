@@ -7,6 +7,7 @@
 
     &:active{
         @include grabbing-style;
+        transition:none;
     }
 
     &-header{
@@ -44,17 +45,17 @@
 
 .toggle {
     overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-    transform: scaleY(1);
     // transform-origin: top;
+    transition:0.5s;
   
     &.hidden {
       transform: scaleY(0);
       height:0;
     }
-
+    
     &:not(.hidden){
-    transform:scaleY(1);
+        transform:scaleY(1);
+        transition: transform 0.2s ease-in-out;
     }
   
   }

@@ -9,19 +9,19 @@ export default class Container {
                  <p class="todo-container-header-title">새로 추가된 todo컬럼</p>
              </div>
              <div class="todo-container-part2">
-                <i id="add-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
+                <i id="input-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
              </div>
          </div>
      </header>
      
      <article>
-         <div class="temp"></div>
+         <div class="scroll-${id}"></div>
          <ul id="input-todo-${id}" class="hidden toggle">
              <li class="add-item">
                  <textarea id="textarea-${id}" style="width:95%; height:70px;" placeholder="Enter a note"></textarea>
                  <div class="add-item-btns">
-                     <input id="input-btn-${id}" class="add-item-btn" type="button" value="Add" disabled>
+                     <input id="add-btn-${id}" class="add-item-btn" type="button" value="Add" disabled>
                      <input id="cancel-btn-${id}" class="add-item-btn" type="button" value="Cancel">
                  </div>
              </li>
