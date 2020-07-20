@@ -36,16 +36,8 @@ export default class Main {
   }
   renderItems(results) {
     const item = new Item();
-    results.forEach((data) => {
-      const itemData = {
-        id: data.id,
-        idx: data.idx,
-        groupId: data.groupId,
-        title: data.title,
-        content: data.content,
-        author: data.author,
-      };
-      item.addItem(itemData);
+    results.forEach(({ id, idx, groupId, title, content, author }) => {
+      item.addItem({ id, idx, groupId, title, content, author });
     });
   }
 }
