@@ -1,4 +1,4 @@
-export function closeModal() {
+export function toggleModal() {
   const modalContainer = document.querySelector('.modal-container');
   modalContainer.addEventListener('click', (e) => {
     if (
