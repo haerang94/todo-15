@@ -28,8 +28,9 @@ i{
 i:hover{
     cursor:pointer;
     color:$mint-color;
-    transition:1s;
-    // transform:rotate(15deg);
+    transition:0.5s;
+    transform:scale(1.3);
+    // transform:rotate(10deg);
 }
 
 

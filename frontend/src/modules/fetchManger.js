@@ -15,6 +15,13 @@ const postOptions = {
   },
 };
 
+const deleteOptions = {
+  method: 'DELETE',
+  headers: {
+    Origin: 'http://localhost:9000',
+  },
+};
+
 function getFetchManger(url) {
   return fetch(baseUrl + url, getOptions).then((res) => res.json());
 }
@@ -26,6 +33,12 @@ function postFetchManger(url, body) {
     .catch((e) => console.log(e));
 }
 
+function deleteFetchManager(url) {
+  return fetch(baseUrl + url, deleteOptions)
+    .then((res) => res) //
+    .catch((e) => console.log(e));
+}
+
 // test
 
-export { getFetchManger, postFetchManger };
+export { getFetchManger, postFetchManger, deleteFetchManager };
