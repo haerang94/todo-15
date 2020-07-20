@@ -7,6 +7,7 @@ const {
   postTodoCallback,
   validateTodo,
   deleteTodoCallback,
+  distinctColumnsCallback,
 } = require("../functions/todo.js");
 // api 서버
 
@@ -15,5 +16,6 @@ router.post("/", validateTodo, postTodoCallback);
 router.delete("/:id", deleteTodoCallback);
 
 router.get("/count", getTodoCountCallback);
+router.get("/columns", distinctColumnsCallback);
 
 module.exports = router;
