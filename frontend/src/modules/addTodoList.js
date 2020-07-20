@@ -17,7 +17,7 @@ export function addTodoList() {
     const content = textarea.value.substr(20);
 
     const item = new Item();
-    item.addItem(idx, idx, `todoList-${groupId}`, '', '', 'sara');
+    item.addItem(idx, idx, `todoList-${groupId}`, '', '', '윤동주');
     const addedItem = ul.firstChild;
     //title영역
     addedItem.childNodes[1].childNodes[1].childNodes[3].innerText = title;
