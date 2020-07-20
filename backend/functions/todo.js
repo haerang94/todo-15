@@ -48,7 +48,7 @@ async function postTodoCallback(req, res) {
 async function deleteTodoCallback(req, res) {
   const id = req.params.id;
   try {
-    const result = await deleteTodo();
+    const result = await deleteTodo(id);
     return res.sendStatus(statusCode.OK);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
