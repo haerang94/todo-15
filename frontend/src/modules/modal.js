@@ -1,10 +1,12 @@
 import splitText from './utils/splitText.js';
+import patchTodo from './patchTodo.js';
 
 export function toggleModal() {
   const modal = document.querySelector('.modal');
   const contentModal = modal.children[0];
   const columnModal = modal.children[1];
   let targetElement;
+  let liId;
 
   modal.addEventListener('click', closeHandler);
   modal.addEventListener('click', contentUpdateHandler);
@@ -17,14 +19,20 @@ export function toggleModal() {
     closeModal(e);
   }
 
-  function contentUpdateHandler(e) {
+  async function contentUpdateHandler(e) {
     if (e.target.dataset.id !== 'modal-content-update') return;
     const textArea = e.target.previousElementSibling;
     const { title, content } = splitText(textArea.value);
-    targetElement.querySelector('.todo-item-title').textContent = title;
-    targetElement.querySelector('.todo-item-content').textContent = content;
+    const result = await patchTodo({ title, content, author: 'cc6656' }, liId);
+    if (!result) return;
+    updateContentText(title, content);
     textArea.value = '';
     closeModal(e);
+  }
+
+  function updateContentText(title, content) {
+    targetElement.querySelector('.todo-item-title').textContent = title;
+    targetElement.querySelector('.todo-item-content > p').textContent = content;
   }
 
   function columnUpdateHandler(e) {
@@ -36,9 +44,10 @@ export function toggleModal() {
   }
 
   function showContentModalHandler(e) {
+    // console.log(liId);
     const li = e.target.closest('li');
-    if (!li) return;
-    if (li.className !== 'todo-item') return;
+    liId = li.getAttribute('id');
+    if (!li || li.className !== 'todo-item') return;
     targetElement = li;
     contentModal.classList.remove('hidden');
     contentModal.querySelector('textarea').value =
