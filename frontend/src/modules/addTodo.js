@@ -1,5 +1,7 @@
 import Item from '../components/item';
 import { postFetchManger } from './fetchManger';
+import { updateCount } from './utils/updateCount.js';
+import splitText from './utils/splitText.js';
 
 export default async function addTodo(e) {
   //add버튼을 눌렀을 때만 동작
@@ -19,7 +21,7 @@ export default async function addTodo(e) {
 
   fillTitleContent(listUl, data);
   const count = listUl.querySelectorAll('li').length;
-  updateCount(groupId, count);
+  updateCount(listUl);
 }
 
 function clearTextarea(textarea) {
@@ -27,17 +29,9 @@ function clearTextarea(textarea) {
   textarea.focus();
 }
 
-function updateCount(groupId, count) {
-  // 아이템 개수 업데이트
-  const countElement = document.querySelector(`.num-of-todos-${groupId}`);
-  //text 제외한 자식 li태그 개수
-  countElement.textContent = count;
-}
-
 function makeData({ listUl, inputUl, groupId, textarea }) {
   const idx = +listUl.firstElementChild.getAttribute('idx') + 1;
-  const title = textarea.value.substr(0, 20); //20글자까지는 타이틀
-  const content = textarea.value.substr(20);
+  const { title, content } = splitText(textarea.value);
 
   const data = {
     idx,
