@@ -6,7 +6,7 @@ export default class Container {
          <div class="todo-container-header">
              <div class="todo-container-part1">
                  <div class="num-of-todos-${id}">0</div>
-                 <p class="todo-container-header-title">새로 추가된 todo컬럼</p>
+                 <p id="column-title-${id}" class="todo-container-header-title">새로 추가된 todo컬럼</p>
              </div>
              <div class="todo-container-part2">
                 <i id="input-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
