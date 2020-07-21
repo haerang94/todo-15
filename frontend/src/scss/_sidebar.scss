@@ -1,0 +1,46 @@
+
+
+.sidebar{
+    position:fixed;
+    top:0;
+    right:0;
+    width:350px;
+    height:100%;
+    border:2px solid #ddd;
+    z-index:1000;
+
+    
+    &-container{
+        display:flex;
+        flex-direction: column;
+        align-items:flex-start;
+        width:100%;
+        height:100%;
+        background:#fff;
+
+    }
+    
+    &-header{
+        display:flex;
+        width:100%;
+        height:50px;
+        justify-content: space-between;
+        align-items:center;
+        background:#ddd;
+        border-bottom:5px solid $mint-color;
+
+    }
+
+    &-header-row{
+        display:flex;
+        align-items: center;
+        margin:0 10px;
+    }
+
+    &-header i{
+        margin: 0 10px;
+    }
+
+   
+    
+}
