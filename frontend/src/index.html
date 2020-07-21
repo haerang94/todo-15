@@ -31,13 +31,13 @@
         <div class="modal-content">
             <header class="modal-content-header">
                 <p>Edit Note</p>
-                <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true" data-method="update"></i>
+                <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true" data-method="update" data-id="modal-close"></i>
             </header>
             <section>
                 <h3>Note</h3>
                 <textarea name="" id="" style="width:95%; height:200px;" maxlength="
                 500" placeholder="Enter a note" data-textarea="modal"></textarea>
-                <input type="button" value="Save note" class="close-modal-btn">
+                <input type="button" value="Save note" class="close-modal-btn" data-id="modal-content-update">
             </section>
             
         </div>
@@ -48,12 +48,12 @@
         <div class="modal-content" style="height:220px">
             <header class="modal-content-header">
                 <p>Edit 다했어</p>
-                <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true" data-method="update"></i>
+                <i class="fa fa-times-circle-o todo-item-part2 fa-lg" aria-hidden="true" data-method="update" data-id="modal-close"></i>
             </header>
             <section>
                 <h3>Column Name</h3>
                 <input type="text" maxlength="50" style="width:95%;height:2em;">
-                <input type="button" value="Update Column" class="close-modal-btn" style="width:120px;">
+                <input type="button" value="Update Column" class="close-modal-btn" style="width:120px;" data-id="modal-column-update">
             </section>
         </div>
     </div>
