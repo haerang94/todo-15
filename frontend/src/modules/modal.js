@@ -19,6 +19,7 @@ export function toggleModal() {
   });
 }
 
+//왜 안돼
 // export function toggleModal() {
 //   const modal = document.querySelector('.modal');
 
