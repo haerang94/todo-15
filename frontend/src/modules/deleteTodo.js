@@ -1,4 +1,4 @@
-import { deleteFetchManager } from './fetchManger';
+import { deleteFetchManager } from './utils/fetchManger.js';
 import { updateCount } from './utils/updateCount.js';
 const confirmSentence = '선택하신 카드를 삭제하겠습니까?';
 export default async function deleteTodo(e) {

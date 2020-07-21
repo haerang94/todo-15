@@ -1,4 +1,4 @@
-import { getFetchManger } from '../modules/fetchManger.js';
+import { getFetchManger } from '../modules/utils/fetchManger.js';
 import Container from './container.js';
 import Item from './item.js';
 import 'regenerator-runtime/runtime';
