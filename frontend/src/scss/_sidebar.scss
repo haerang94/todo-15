@@ -1,14 +1,16 @@
 
 
 .sidebar{
-    position:fixed;
+    position: absolute!important;
+    width: 400px!important;
+    height: auto!important;
     top:0;
     right:0;
-    width:350px;
-    height:100%;
+    bottom:0;
     z-index:1000;
     list-style: none;
     border-radius:15px 0 0 0;
+    animation: showpane 1s cubic-bezier(0,0,0,1);
     
     &-container{
         display:flex;
@@ -114,4 +116,14 @@
 .log p{
     margin:0 10px 0 0;
     color:blue;
+}
+
+
+@keyframes showpane{
+    0% {
+        transform: translateX(390px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
