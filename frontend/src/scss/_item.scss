@@ -1,6 +1,5 @@
 .todo-item{
     @include todo-item-style;
-
     &:hover{
         cursor:grab;
     }

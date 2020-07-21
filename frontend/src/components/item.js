@@ -13,7 +13,8 @@ export default class Item {
             <p>${content}</p>
         </div>
         <div class="author"><p>Added by</p>${author}</div>
-      </li>`;
+      </li>
+  `;
   }
 
   addItem({ id, idx, groupId, title, content, author }) {
