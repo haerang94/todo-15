@@ -10,6 +10,7 @@ export function toggleModal() {
   });
 
   document.addEventListener('dblclick', (e) => {
+    if (!e.target.closest('li')) return;
     if (e.target.closest('li').className !== 'todo-item') return;
     modalContainer.classList.remove('hidden');
   });
