@@ -21,8 +21,8 @@ export function toggleModal() {
     if (e.target.dataset.id !== 'modal-content-update') return;
     const textArea = e.target.previousElementSibling;
     const { title, content } = splitText(textArea.value);
-    targetElement.previousElementSibling.textContent = title;
-    targetElement.textContent = content;
+    targetElement.querySelector('.todo-item-title').textContent = title;
+    targetElement.querySelector('.todo-item-content').textContent = content;
     textArea.value = '';
     closeModal(e);
   }
@@ -39,7 +39,7 @@ export function toggleModal() {
     const li = e.target.closest('li');
     if (!li) return;
     if (li.className !== 'todo-item') return;
-    targetElement = li.querySelector('.todo-item-content');
+    targetElement = li;
     contentModal.classList.remove('hidden');
     contentModal.querySelector('textarea').value =
       li.querySelector('.todo-item-title').textContent +
