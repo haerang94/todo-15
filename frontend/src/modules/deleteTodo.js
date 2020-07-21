@@ -7,10 +7,10 @@ export default async function deleteTodo(e) {
   const ul = e.target.closest('ul');
   try {
     const result = await deleteFetchManager(`/api/todo/${id}`);
+    if (result.status !== 200) throw new Error();
     deleteItem.remove();
     updateCount(ul);
   } catch (e) {
-    console.log(e);
     alert('다시 시도해주세요');
   }
 }
