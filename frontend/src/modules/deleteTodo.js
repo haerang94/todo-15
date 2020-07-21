@@ -20,6 +20,5 @@ export default async function deleteTodo(e) {
 }
 
 function checkConfirm() {
-  const result = confirm(confirmSentence);
-  return result;
+  return confirm(confirmSentence);
 }
