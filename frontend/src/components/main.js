@@ -28,7 +28,8 @@ export default class Main {
     const num_of_items = this.main.querySelector(`#todoList-${column}`);
     const result = this.main.querySelector(`.num-of-todos-${column}`);
     //text 제외한 자식 li태그 개수
-    result.textContent = num_of_items.childNodes.length - 1;
+    result.textContent = num_of_items.children.length;
+    // console.log(result.textContent);
   }
   renderConatiners(data) {
     const col = new Container();
