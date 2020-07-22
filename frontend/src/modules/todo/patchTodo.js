@@ -14,7 +14,7 @@ export default async function patchTodo(body, id, targetElement) {
 
     updateContentText(targetElement, title, content);
 
-    const log = makeUpdateLog(previousContent, content);
+    const log = makeUpdateLog(previousContent, title);
     addTodoLog(log);
     return true;
   } catch (e) {
@@ -30,7 +30,7 @@ function updateContentText(targetElement, title, content) {
 function makeUpdateLog(previousContent, presentContent) {
   return {
     username: 'cc6656',
-    actionType: actionTypeList.REMOVE,
+    actionType: actionTypeList.UPDATE,
     time: new Date().toString(),
     previousContent,
     presentContent,
