@@ -49,25 +49,37 @@ export function toggleModal() {
   }
 
   function showContentModalHandler(e) {
-    // console.log(liId);
     const li = e.target.closest('li');
     if (!li || li.className !== 'todo-item') return;
     liId = li.getAttribute('id');
     targetElement = li;
-    contentModal.classList.remove('hidden');
-    contentModal.querySelector('textarea').value =
+    renderContentModal(li);
+  }
+
+  function renderContentModal(li) {
+    const textArea = contentModal.querySelector('textarea');
+    const content =
       li.querySelector('.todo-item-title').textContent +
       li.querySelector('.todo-item-content').textContent;
+    renderModal(contentModal, textArea, content);
   }
 
   function showColumnModalHandler(e) {
     if (e.target.className !== 'todo-container-header-title') return;
-    const currentModal = modal.children[1];
     groupId = e.target.id.substr(13);
     targetElement = e.target;
-    columnModal.classList.remove('hidden');
-    columnModal.querySelector('input[type="text"]').value =
-      e.target.textContent;
+    renderColumnModal(e);
+  }
+
+  function renderColumnModal(e) {
+    const inputText = columnModal.querySelector('input[type="text"]');
+    renderModal(columnModal, inputText, e.target.textContent);
+  }
+
+  function renderModal(modal, element, content) {
+    modal.classList.remove('hidden');
+    element.value = content;
+    element.select();
   }
 
   function closeModal(e) {
