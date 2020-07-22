@@ -1,7 +1,8 @@
-import { postFetchManger } from './utils/fetchManger.js';
+import { getFetchManger, postFetchManger } from './utils/fetchManger.js';
 import { todoLogApi } from './utils/routerList.js';
 
 const logUl = document.querySelector('ul.activity-ul');
+let logList = [];
 
 function addTodoLog(data) {
   postFetchManger(todoLogApi, data)
@@ -17,12 +18,34 @@ function addTodoLog(data) {
     });
 }
 
+function getTodoLog() {
+  getFetchManger(todoLogApi)
+    .then((logs) => {
+      logList = logs;
+      logs.forEach((log) => {
+        renderTodoLog(log);
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
+
+function updateTodoLog() {
+  const previousLogs = logUl.children;
+  let time;
+  for (let i = 0; i < previousLogs.length; i++) {
+    time = calculateTime(logList[i].time);
+    previousLogs[i].querySelector('span.time').textContent = time;
+  }
+}
+
+export { addTodoLog, getTodoLog, updateTodoLog };
+
 function renderTodoLog(data) {
   const todoLog = makeTodoLog(data);
   logUl.insertAdjacentHTML('afterbegin', todoLog);
 }
-
-export { addTodoLog, renderTodoLog };
 
 function makeTodoLog(data) {
   const {
