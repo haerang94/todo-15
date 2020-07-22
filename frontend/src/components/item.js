@@ -1,6 +1,8 @@
 export default class Item {
   makeItem(id, idx, title, content, author) {
-    return `<li id="${id}" idx=${idx} class="todo-item">
+    return `
+    <li class="droppable"></li>
+    <li id="${id}" idx=${idx} class="todo-item">
         <div class="todo-item-header">
             <div class="todo-item-part1">
                 <div class="todo-item-logo">

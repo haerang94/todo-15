@@ -26,7 +26,8 @@ export default class Container {
                  </div>
              </li>
          </ul>
-        <ul id="todoList-${id}">
+        <ul id="todoList-${id}" class="todoitem-ul">
+        <li class="droppable"></li>
         </ul>
         <div id="end-of-article">끝</div>
      </article>  

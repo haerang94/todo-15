@@ -52,7 +52,6 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
 async function addItem(data) {
   const result = await postFetchManger(todoApi, data);
   const id = result.id;
-
   const item = new Item();
   data.id = id;
   item.addItem(data);
