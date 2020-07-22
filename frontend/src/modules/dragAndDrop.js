@@ -8,7 +8,7 @@ export default class Draggable {
     this.droppableLists = null;
     this.todoLists = null;
     this.closestLinkIndex = null;
-    this.ul = this.el.closest('ul');
+    this.ul = null;
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -21,6 +21,7 @@ export default class Draggable {
     this.cloneEl = this.el.cloneNode(true);
     this.cloneEl.classList.add('clone');
     this.cloneEl.classList.remove('todo-item');
+    this.ul = this.el.closest('ul');
   }
 
   addEventHandlers() {
@@ -36,6 +37,7 @@ export default class Draggable {
     this.prepareElement();
     this.moveElementTo(e.pageX, e.pageY);
     document.addEventListener('mousemove', this.onMouseMove);
+    console.log(this.cloneEl, this.el.nextSibling);
     this.ul.insertBefore(this.cloneEl, this.el.nextSibling);
   }
 
@@ -106,23 +108,28 @@ export default class Draggable {
     document.removeEventListener('mousemove', this.onMouseMove);
 
     this.el.style.position = 'static';
-    let todolist = this.todoLists[this.closestLinkIndex];
-    if (this.droppableLists !== null) {
+    if (this.droppableLists !== null && this.todoLists !== null) {
+      let todolist = this.todoLists[this.closestLinkIndex];
       Array.from(this.droppableLists).map((list) => {
         if (list.classList.contains('show')) list.classList.remove('show');
       });
 
       if (this.el !== todolist) {
+        this.el.previousElementSibling.remove();
         const ul = todolist.closest('ul');
         ul.insertBefore(this.el, todolist);
         const li = document.createElement('li');
         li.classList.add('droppable');
-        ul.insertBefore(li, todolist);
+        if (this.todoLists.length - 1 !== this.closestLinkIndex) {
+          ul.insertBefore(li, todolist);
+        } else {
+          ul.insertBefore(li, this.el);
+        }
         this.cloneEl.remove();
       } else {
         this.ul.replaceChild(this.el, this.cloneEl);
-        this.init();
       }
+      this.init();
     }
   }
 }
