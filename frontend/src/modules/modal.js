@@ -1,5 +1,5 @@
 import splitText from './utils/splitText.js';
-import patchTodo from './patchTodo.js';
+import patchTodo from '../modules/todo/patchTodo.js';
 
 export function toggleModal() {
   const modal = document.querySelector('.modal');

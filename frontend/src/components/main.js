@@ -2,8 +2,8 @@ import { getFetchManger } from '../modules/utils/fetchManger.js';
 import Container from './container.js';
 import Item from './item.js';
 import 'regenerator-runtime/runtime';
-import addTodo from '../modules/addTodo.js';
-import deleteTodo from '../modules/deleteTodo.js';
+import addTodo from '../modules/todo/addTodo.js';
+import deleteTodo from '../modules/todo/deleteTodo.js';
 import { todoApi, columnApi } from '../modules/utils/routerList.js';
 
 export default class Main {
