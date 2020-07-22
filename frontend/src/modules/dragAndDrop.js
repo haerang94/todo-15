@@ -80,6 +80,15 @@ export default class Draggable {
     });
     // console.log(distances); // 거리보기
     let closestLinkIndex = distances.indexOf(Math.min(...distances));
+
+    // 먼저 show가 있는 것을 검사해 다 지워준다.
+    if (this.droppableLists !== null) {
+      Array.from(this.droppableLists).map((list) => {
+        if (list.classList.contains('show')) list.classList.remove('show');
+      });
+    }
+
+    //현재 위치만 show를 넣어준다.
     if (closestLinkIndex !== distances.length - 1) {
       this.todoLists[closestLinkIndex].previousElementSibling.classList.add(
         'show',
@@ -87,20 +96,17 @@ export default class Draggable {
     } else {
       this.todoLists[closestLinkIndex].classList.add('show');
     }
-
-    Array.from(this.todoLists)
-      .filter((el, idx) => idx !== closestLinkIndex)
-      .map((link) => {
-        link.previousElementSibling.classList.remove('show');
-      });
   }
 
   onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
     document.removeEventListener('mousemove', this.onMouseMove);
-    Array.from(this.droppableLists).map((list) => {
-      if (list.classList.contains('show')) list.classList.remove('show');
-    });
+
+    if (this.droppableLists !== null) {
+      Array.from(this.droppableLists).map((list) => {
+        if (list.classList.contains('show')) list.classList.remove('show');
+      });
+    }
 
     this.el.style.position = 'static';
     this.ul.replaceChild(this.el, this.cloneEl);
