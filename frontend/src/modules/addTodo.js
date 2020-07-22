@@ -1,6 +1,6 @@
 import Item from '../components/item';
 import { postFetchManger } from './utils/fetchManger.js';
-
+import { todoApi } from './utils/routerList.js';
 import { updateCount } from './utils/updateCount.js';
 import splitText from './utils/splitText.js';
 
@@ -50,7 +50,7 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
 }
 
 async function addItem(data) {
-  const result = await postFetchManger('/api/todo', data);
+  const result = await postFetchManger(todoApi, data);
   const id = result.id;
 
   const item = new Item();
