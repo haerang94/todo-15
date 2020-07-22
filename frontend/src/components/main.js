@@ -29,13 +29,12 @@ export default class Main {
     const result = this.main.querySelector(`.num-of-todos-${column}`);
     //text 제외한 자식 li태그 개수
     result.textContent = num_of_items.children.length;
-    // console.log(result.textContent);
   }
-  renderConatiners(data) {
+  renderConatiners(dataList) {
     const col = new Container();
-    for (let i = 0; i < data.length; i++) {
-      col.addContainer(data[i].groupId.substr(9));
-    }
+    dataList.forEach((data) => {
+      col.addContainer(data);
+    });
   }
   renderItems(results) {
     const item = new Item();
