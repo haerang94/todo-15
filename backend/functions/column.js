@@ -21,9 +21,10 @@ async function patchColumnsCallback(req, res) {
     const groupId = req.params.groupId;
     const groupTitle = req.body.groupTitle;
     const result = await patchColumn(groupId, groupTitle);
-    if (result[0].affectedRows !== 1) throw new Error();
+    if (result[0].affectedRows < 1) throw new Error();
     return res.sendStatus(statusCode.OK);
   } catch (e) {
+    console.log(e);
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }

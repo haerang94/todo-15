@@ -56,16 +56,6 @@ async function deleteTodoCallback(req, res) {
   }
 }
 
-// async function getTodoCountCallback(req, res) {
-//   try {
-//     const result = await getTodoCount();
-//     const count = result[0].length;
-//     return res.status(statusCode.OK).json(count);
-//   } catch (e) {
-//     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
-//   }
-// }
-
 async function patchTodoCallback(req, res) {
   const { title, content, author } = req.body;
   const id = req.params.id;
