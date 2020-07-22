@@ -1,0 +1,55 @@
+@font-face { font-family: 'BMHANNAAir'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import './_variables';
+@import './_container';
+@import './_item';
+@import './_aside.scss';
+@import './_article.scss';
+@import './_menu.scss';
+@import './_modal.scss';
+@import './sidebar.scss';
+@import './droppable';
+
+
+*{
+    outline:none;
+    font-family:"BMHANNAAir";
+    scroll-behavior: smooth;
+    transition:1s;
+}
+ul{
+    padding:5px;
+    margin:0;
+}
+input[type='button']{
+    cursor:pointer;
+    caret-color:transparent;
+}
+
+i{
+    font-size:32px;
+}
+
+i:hover{
+    cursor:pointer;
+    color:$mint-color;
+    transition:0.5s;
+    transform:scale(1.3);
+    // transform:rotate(10deg);
+}
+
+
+.flex-container{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction:column;
+    height:100vh;
+    width:100vw;
+}
+
+
+
+
+
+
+

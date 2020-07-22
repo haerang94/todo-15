@@ -1,0 +1,21 @@
+$big-font:32px;
+$mid-font:20px;
+$small-font:16px;
+$mint-color:#87dfd6;
+
+
+ @mixin todo-item-style
+{
+    background:#fff;
+    list-style:none;
+    border-radius:10px;
+    padding:10px;
+    
+    box-shadow: 2px 2px 2px darkgray;
+    margin: 15px;
+}
+@mixin grabbing-style{
+    cursor:grabbing;
+    border: 3px solid $mint-color;
+    opacity: 0.6;
+}
