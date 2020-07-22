@@ -31,7 +31,7 @@ function clearTextarea(textarea) {
 }
 
 function makeData({ listUl, inputUl, groupId, textarea }) {
-  const idx = +listUl.firstElementChild.getAttribute('idx') + 1;
+  const idx = +listUl.children[1].getAttribute('idx') + 1;
   const groupTitle = listUl
     .closest('section')
     .querySelector('.todo-container-header-title').textContent;
