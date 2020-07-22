@@ -20,20 +20,26 @@ export default async function addTodo(e) {
   const data = makeData({ listUl, inputUl, groupId, textarea });
 
   await addItem(data);
-  const log = {
-    username: 'cc6656',
-    actionType: actionTypeList.ADD,
-    time: new Date().toString(),
-    presentContent: data.title,
-    presentColumn: data.groupTitle,
-  };
   clearTextarea(textarea);
 
   fillTitleContent(listUl, data);
   const count = listUl.querySelectorAll('li').length;
   updateCount(listUl);
 
+  const log = makeAddLog(data.title, data.groupTitle);
   addTodoLog(log);
+}
+
+function makeAddLog(title, groupTitle) {
+  return {
+    username: 'cc6656',
+    actionType: actionTypeList.ADD,
+    time: new Date().toString(),
+    previousContent: null,
+    presentContent: title,
+    previousColumn: null,
+    presentColumn: groupTitle,
+  };
 }
 
 function clearTextarea(textarea) {
