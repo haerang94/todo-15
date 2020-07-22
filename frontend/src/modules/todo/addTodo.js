@@ -55,6 +55,7 @@ async function addItem(data) {
   const item = new Item();
   data.id = id;
   item.addItem(data);
+  
 }
 
 function fillTitleContent(listUl, { title, content }) {

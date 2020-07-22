@@ -13,7 +13,9 @@ export default async function deleteTodo(e) {
   try {
     const result = await deleteFetchManager(`${todoApi}/${id}`);
     if (result.status !== 200) throw new Error();
+    deleteItem.previousElementSibling.remove();
     deleteItem.remove();
+
     updateCount(ul);
   } catch (e) {
     alert('다시 시도해주세요');

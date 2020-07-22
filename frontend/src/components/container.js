@@ -29,7 +29,7 @@ export default class Container {
         <ul id="todoList-${id}" class="todoitem-ul">
         <li class="droppable todo-item"></li>
         </ul>
-        <div id="end-of-article">끝</div>
+        <div id="end-of-article">끝 이라오</div>
      </article>  
      </section>`;
   }

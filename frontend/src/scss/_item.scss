@@ -4,6 +4,7 @@
     min-height:60px;
     margin-top:0;
     margin-bottom:0;
+    transition:none;
 
     &:hover{
         cursor:grab;
@@ -11,8 +12,6 @@
 
     &:active{
         @include grabbing-style;
-        transition:none;
-        width:300px;
         min-height:50px;
     }
 

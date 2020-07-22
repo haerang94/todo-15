@@ -1,3 +1,5 @@
+import Draggable from '../modules/dragAndDrop';
+
 export default class Item {
   makeItem(id, idx, title, content, author) {
     return `
@@ -23,5 +25,6 @@ export default class Item {
     const ul = document.querySelector(`#${groupId}`);
     const item = this.makeItem(id, idx, title, content, author);
     ul.insertAdjacentHTML('afterbegin', item);
+    new Draggable(ul.children[1]);
   }
 }
