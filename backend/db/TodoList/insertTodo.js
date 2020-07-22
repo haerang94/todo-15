@@ -1,7 +1,7 @@
 const promisePool = require("../connection.js");
 
-function insertTodo({ idx, title, content, groupId, author }) {
-  const query = `INSERT INTO TODOLIST VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}');`;
+function insertTodo({ idx, title, content, groupId, author, groupTitle }) {
+  const query = `INSERT INTO TODOLIST VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}', '${groupTitle}');`;
   return promisePool.execute(query);
 }
 
