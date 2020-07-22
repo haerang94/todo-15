@@ -32,6 +32,9 @@ function clearTextarea(textarea) {
 
 function makeData({ listUl, inputUl, groupId, textarea }) {
   const idx = +listUl.firstElementChild.getAttribute('idx') + 1;
+  const groupTitle = listUl
+    .closest('section')
+    .querySelector('.todo-container-header-title').textContent;
   const { title, content } = splitText(textarea.value);
 
   const data = {
@@ -40,6 +43,7 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
     content,
     author: 'haerang',
     groupId: `todoList-${groupId}`,
+    groupTitle,
   };
 
   return data;
