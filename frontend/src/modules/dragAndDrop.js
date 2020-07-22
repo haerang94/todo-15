@@ -7,6 +7,7 @@ export default class Draggable {
     this.droppable = null;
     this.droppableLists = null;
     this.todoLists = null;
+    this.closestLinkIndex = null;
     this.ul = this.el.closest('ul');
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -51,16 +52,7 @@ export default class Draggable {
     this.el.style.zIndex = 999;
   }
 
-  moveElementTo(x, y) {
-    const leftPosition = x - this.shiftX < 0 ? 0 : x - this.shiftX;
-    const topPosition = y - this.shiftY < 0 ? 0 : y - this.shiftY;
-    this.el.style.left = `${x - this.el.offsetWidth / 2}px`;
-    this.el.style.top = `${y - this.el.offsetHeight / 2}px`;
-  }
-
-  onMouseMove(e) {
-    this.moveElementTo(e.pageX, e.pageY);
-
+  closestTodoList(e) {
     this.todoLists = document.querySelectorAll('.todo-item');
     this.droppableLists = document.querySelectorAll('.droppable');
     let elements = Array.from(this.todoLists);
@@ -79,7 +71,7 @@ export default class Draggable {
       distances.push(parseInt(distance));
     });
     // console.log(distances); // 거리보기
-    let closestLinkIndex = distances.indexOf(Math.min(...distances));
+    this.closestLinkIndex = distances.indexOf(Math.min(...distances));
 
     // 먼저 show가 있는 것을 검사해 다 지워준다.
     if (this.droppableLists !== null) {
@@ -87,29 +79,50 @@ export default class Draggable {
         if (list.classList.contains('show')) list.classList.remove('show');
       });
     }
-
     //현재 위치만 show를 넣어준다.
-    if (closestLinkIndex !== distances.length - 1) {
-      this.todoLists[closestLinkIndex].previousElementSibling.classList.add(
-        'show',
-      );
+    if (this.closestLinkIndex !== distances.length - 1) {
+      this.todoLists[
+        this.closestLinkIndex
+      ].previousElementSibling.classList.add('show');
     } else {
-      this.todoLists[closestLinkIndex].classList.add('show');
+      this.todoLists[this.closestLinkIndex].classList.add('show');
     }
+  }
+
+  moveElementTo(x, y) {
+    const leftPosition = x - this.shiftX < 0 ? 0 : x - this.shiftX;
+    const topPosition = y - this.shiftY < 0 ? 0 : y - this.shiftY;
+    this.el.style.left = `${x - this.el.offsetWidth / 2}px`;
+    this.el.style.top = `${y - this.el.offsetHeight / 2}px`;
+  }
+
+  onMouseMove(e) {
+    this.moveElementTo(e.pageX, e.pageY);
+    this.closestTodoList(e);
   }
 
   onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
     document.removeEventListener('mousemove', this.onMouseMove);
 
+    this.el.style.position = 'static';
+    let todolist = this.todoLists[this.closestLinkIndex];
     if (this.droppableLists !== null) {
       Array.from(this.droppableLists).map((list) => {
         if (list.classList.contains('show')) list.classList.remove('show');
       });
-    }
 
-    this.el.style.position = 'static';
-    this.ul.replaceChild(this.el, this.cloneEl);
-    this.init();
+      if (this.el !== todolist) {
+        const ul = todolist.closest('ul');
+        ul.insertBefore(this.el, todolist);
+        const li = document.createElement('li');
+        li.classList.add('droppable');
+        ul.insertBefore(li, todolist);
+        this.cloneEl.remove();
+      } else {
+        this.ul.replaceChild(this.el, this.cloneEl);
+        this.init();
+      }
+    }
   }
 }
