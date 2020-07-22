@@ -6,6 +6,7 @@ export default class Draggable {
     this.shiftY = null;
     this.droppable = null;
     this.droppableLists = null;
+    this.todoLists = null;
     this.ul = this.el.closest('ul');
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -15,9 +16,10 @@ export default class Draggable {
   }
 
   init() {
+    //필수
     this.cloneEl = this.el.cloneNode(true);
     this.cloneEl.classList.add('clone');
-    this.droppableLists = document.querySelectorAll('.droppable');
+    this.cloneEl.classList.remove('todo-item');
   }
 
   addEventHandlers() {
@@ -54,20 +56,14 @@ export default class Draggable {
     const topPosition = y - this.shiftY < 0 ? 0 : y - this.shiftY;
     this.el.style.left = `${x - this.el.offsetWidth / 2}px`;
     this.el.style.top = `${y - this.el.offsetHeight / 2}px`;
-
-    // console.log(this.el.closest('.droppable'));
-    // if (this.el.closest('li').contains('droppable')) {
-    //   if (this.el.droppable !== this.el.closest('li')) {
-    //     this.el.droppable.classList.remove('show');
-    //   }
-    //   this.el.droppable = this.el.closest('li');
-    //   this.el.droppable.classList.add('show');
   }
 
   onMouseMove(e) {
     this.moveElementTo(e.pageX, e.pageY);
 
-    let elements = Array.from(this.droppableLists);
+    this.todoLists = document.querySelectorAll('.todo-item');
+    this.droppableLists = document.querySelectorAll('.droppable');
+    let elements = Array.from(this.todoLists);
 
     let linkCoords = elements.map((link) => {
       let rect = link.getBoundingClientRect();
@@ -82,20 +78,29 @@ export default class Draggable {
       );
       distances.push(parseInt(distance));
     });
-
+    // console.log(distances); // 거리보기
     let closestLinkIndex = distances.indexOf(Math.min(...distances));
-    console.log(this.droppable, this.droppableLists[closestLinkIndex]);
-
-    if (!this.droppableLists[closestLinkIndex].classList.contains('show')) {
-      this.droppableLists[closestLinkIndex].classList.add('show');
+    if (closestLinkIndex !== distances.length - 1) {
+      this.todoLists[closestLinkIndex].previousElementSibling.classList.add(
+        'show',
+      );
     } else {
-      this.droppableLists[closestLinkIndex].classList.remove('show');
+      this.todoLists[closestLinkIndex].classList.add('show');
     }
+
+    Array.from(this.todoLists)
+      .filter((el, idx) => idx !== closestLinkIndex)
+      .map((link) => {
+        link.previousElementSibling.classList.remove('show');
+      });
   }
 
   onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
     document.removeEventListener('mousemove', this.onMouseMove);
+    Array.from(this.droppableLists).map((list) => {
+      if (list.classList.contains('show')) list.classList.remove('show');
+    });
 
     this.el.style.position = 'static';
     this.ul.replaceChild(this.el, this.cloneEl);
