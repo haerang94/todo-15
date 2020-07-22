@@ -58,11 +58,9 @@ async function addItem(data) {
 }
 
 function fillTitleContent(listUl, { title, content }) {
-  const addedItem = listUl.firstElementChild;
-  const children = addedItem.children;
-
+  const addedItem = listUl.querySelector('li:nth-child(2)');
   //title영역
-  children[0].querySelector('.todo-item-title').textContent = title;
+  addedItem.querySelector('.todo-item-title').textContent = title;
   //content 영역
-  children[1].firstElementChild.textContent = content;
+  addedItem.querySelector('.todo-item-content > p').textContent = content;
 }

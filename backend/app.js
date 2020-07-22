@@ -4,8 +4,6 @@ const cors = require("cors");
 
 const todoRouter = require("./routes/todo.js");
 const columnRouter = require("./routes/column.js");
-// const userRouter = require("./routes/user.js");
-
 const allowOrigin = "http://localhost:9000";
 var app = express();
 
