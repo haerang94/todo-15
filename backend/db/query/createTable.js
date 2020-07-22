@@ -15,4 +15,16 @@ CREATE TABLE USER (
   );
 `;
 
+const createLogTable = `
+CREATE TABLE LOG (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(64) not null,
+  actionType VARCHAR(32) not null,
+  time VARCHAR(32) not null,
+  previousContent VARCHAR(64),
+  presentContent VARCHAR(64) not null,
+  previousColumn VARCHAR(64),
+  presentColumn VARCHAR(64)
+  );
+`;
 module.exports = { createTodoListTable, createUserTable };
