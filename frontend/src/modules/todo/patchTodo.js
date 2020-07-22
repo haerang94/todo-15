@@ -1,5 +1,6 @@
-import { patchFetchManger } from './utils/fetchManger.js';
-import { todoApi } from './utils/routerList.js';
+import { patchFetchManger } from '../utils/fetchManger.js';
+import { todoApi } from '../utils/routerList.js';
+
 export default async function patchTodo(body, id) {
   try {
     const result = await patchFetchManger(`${todoApi}/${id}`, body);
