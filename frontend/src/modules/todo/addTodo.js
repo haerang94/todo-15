@@ -1,7 +1,8 @@
-import Item from '../components/item';
-import { postFetchManger } from './utils/fetchManger.js';
-import { updateCount } from './utils/updateCount.js';
-import splitText from './utils/splitText.js';
+import Item from '../../components/item';
+import { postFetchManger } from '../utils/fetchManger.js';
+import { todoApi } from '../utils/routerList.js';
+import { updateCount } from '../utils/updateCount.js';
+import splitText from '../utils/splitText.js';
 
 export default async function addTodo(e) {
   //add버튼을 눌렀을 때만 동작
@@ -49,7 +50,7 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
 }
 
 async function addItem(data) {
-  const result = await postFetchManger('/api/todo', data);
+  const result = await postFetchManger(todoApi, data);
   const id = result.id;
   const item = new Item();
   data.id = id;

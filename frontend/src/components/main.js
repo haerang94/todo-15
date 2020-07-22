@@ -2,8 +2,9 @@ import { getFetchManger } from '../modules/utils/fetchManger.js';
 import Container from './container.js';
 import Item from './item.js';
 import 'regenerator-runtime/runtime';
-import addTodo from '../modules/addTodo.js';
-import deleteTodo from '../modules/deleteTodo.js';
+import addTodo from '../modules/todo/addTodo.js';
+import deleteTodo from '../modules/todo/deleteTodo.js';
+import { todoApi, columnApi } from '../modules/utils/routerList.js';
 
 export default class Main {
   constructor(main) {
@@ -11,10 +12,10 @@ export default class Main {
   }
   async init() {
     //컬럼 생성
-    const columns = await getFetchManger('/api/todo/columns');
+    const columns = await getFetchManger(columnApi);
     this.renderConatiners(columns.data);
     //아이템 생성
-    const results = await getFetchManger('/api/todo');
+    const results = await getFetchManger(todoApi);
     this.renderItems(results);
     //
     this.main.addEventListener('click', addTodo);
@@ -29,13 +30,12 @@ export default class Main {
     const result = this.main.querySelector(`.num-of-todos-${column}`);
     //text 제외한 자식 li태그 개수
     result.textContent = num_of_items.children.length;
-    // console.log(result.textContent);
   }
-  renderConatiners(data) {
+  renderConatiners(dataList) {
     const col = new Container();
-    for (let i = 0; i < data.length; i++) {
-      col.addContainer(data[i].groupId.substr(9));
-    }
+    dataList.forEach((data) => {
+      col.addContainer(data);
+    });
   }
   renderItems(results) {
     const item = new Item();

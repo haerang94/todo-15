@@ -3,7 +3,6 @@ const router = express.Router();
 
 const {
   getTodoCallback,
-  getTodoCountCallback,
   postTodoCallback,
   validateTodo,
   deleteTodoCallback,
@@ -16,8 +15,5 @@ router.get("/", getTodoCallback);
 router.post("/", validateTodo, postTodoCallback);
 router.delete("/:id", deleteTodoCallback);
 router.patch("/:id", patchTodoCallback);
-
-router.get("/count", getTodoCountCallback);
-router.get("/columns", distinctColumnsCallback);
 
 module.exports = router;

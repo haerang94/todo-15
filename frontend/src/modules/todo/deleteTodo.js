@@ -1,5 +1,6 @@
-import { deleteFetchManager } from './utils/fetchManger.js';
-import { updateCount } from './utils/updateCount.js';
+import { deleteFetchManager } from '../utils/fetchManger.js';
+import { updateCount } from '../utils/updateCount.js';
+import { todoApi, columnApi } from '../utils/routerList.js';
 const confirmSentence = '선택하신 카드를 삭제하겠습니까?';
 export default async function deleteTodo(e) {
   if (e.target.dataset.method !== 'delete') return;
@@ -10,7 +11,7 @@ export default async function deleteTodo(e) {
   const ul = e.target.closest('ul');
 
   try {
-    const result = await deleteFetchManager(`/api/todo/${id}`);
+    const result = await deleteFetchManager(`${todoApi}/${id}`);
     if (result.status !== 200) throw new Error();
     deleteItem.remove();
     updateCount(ul);

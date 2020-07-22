@@ -1,12 +1,12 @@
 export default class Container {
-  makeContainer(id) {
+  makeContainer(id, groupTitle) {
     return `
      <section id="section-${id}" class="todo-container">
      <header>
          <div class="todo-container-header">
              <div class="todo-container-part1">
                  <div class="num-of-todos-${id}">0</div>
-                 <p id="column-title-${id}" class="todo-container-header-title">새로 추가된 todo컬럼</p>
+                 <p id="column-title-${id}" class="todo-container-header-title">${groupTitle}</p>
              </div>
              <div class="todo-container-part2">
                 <i id="input-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
@@ -33,9 +33,13 @@ export default class Container {
      </article>  
      </section>`;
   }
-  addContainer(id) {
+  addContainer(data) {
+    const id = data.groupId.substr(9);
+    const groupTitle = data.groupTitle;
+
     const aside = document.querySelector('aside');
-    const newContainer = this.makeContainer(id);
+    const newContainer = this.makeContainer(id, groupTitle);
+
     aside.insertAdjacentHTML('beforebegin', newContainer);
   }
 }
