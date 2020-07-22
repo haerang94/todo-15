@@ -7,7 +7,7 @@ import 'regenerator-runtime/runtime';
 import { toggleInput } from './modules/toggleInput.js';
 import { toggleBtn } from './modules/toggleBtn';
 import { toggleModal } from './modules/modal';
-import { openSidebar, closeSidebar } from './modules/sidebar';
+import sidebar from './modules/sidebar';
 // import { dragAndDrop } from './modules/dragAndDrop';
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -21,6 +21,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   toggleInput();
   toggleBtn();
   toggleModal();
-  openSidebar();
-  closeSidebar();
+  sidebar();
 });
