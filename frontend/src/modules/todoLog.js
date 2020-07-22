@@ -1,23 +1,28 @@
 import { postFetchManger } from './utils/fetchManger.js';
 import { todoLogApi } from './utils/routerList.js';
 
+const logUl = document.querySelector('ul.activity-ul');
+
 function addTodoLog(data) {
-  const logUl = document.querySelector('ul.activity-ul');
   postFetchManger(todoLogApi, data)
     .then((res) => {
       if (res.status !== 200) throw new Error();
       return res.json();
     })
     .then((res) => {
-      const todoLog = makeTodoLog(data);
-      logUl.insertAdjacentHTML('afterbegin', todoLog);
+      renderTodoLog(data);
     })
     .catch((e) => {
       console.log(e);
     });
 }
 
-export { addTodoLog };
+function renderTodoLog(data) {
+  const todoLog = makeTodoLog(data);
+  logUl.insertAdjacentHTML('afterbegin', todoLog);
+}
+
+export { addTodoLog, renderTodoLog };
 
 function makeTodoLog(data) {
   const {
@@ -64,9 +69,9 @@ function calculateTime(pastTimeString) {
   const diffDate = Math.floor(diffHour / dateUnit);
 
   if (diffDate > 0) return `${diffDate} days`;
-  else if (diffHour > 0) return `${diffHour} hours`;
-  else if (diffMinute > 0) return `${diffMinute} hours`;
-  else return `${diffSecond} seconds`;
+  if (diffHour > 0) return `${diffHour} hours`;
+  if (diffMinute > 0) return `${diffMinute} minutes`;
+  return `${diffSecond} seconds`;
 }
 
 function makeTemplate(username, content, time) {
