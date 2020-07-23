@@ -16,7 +16,7 @@ function patchMoveTodoCallback(req, res) {
   idxUpdateTodos({ groupId, idx })
     .then((result) => {
       if (result[0].affectedRows === 0) throw new Error();
-      return idxUpdate({ groupId, idx, id, groupTitle });
+      return idxUpdate({ groupId, idx, id });
     })
     .then((result) => {
       if (result[0].affectedRows === 0) throw new Error();

@@ -1,7 +1,7 @@
 const promisePool = require("../connection.js");
-
+import { todo } from "../tableList.js";
 function deleteTodo(id) {
-  const query = `DELETE FROM TODOLIST WHERE id=${id}`;
+  const query = `DELETE FROM ${todo} WHERE id=${id}`;
   return promisePool.execute(query);
 }
 

@@ -1,7 +1,7 @@
 const promisePool = require("../connection.js");
-
+import { todoLog } from "../tableList.js";
 function getTodoLog() {
-  const query = `SELECT * FROM LOG ORDER BY id;`;
+  const query = `SELECT * FROM ${todoLog} ORDER BY id;`;
   return promisePool.execute(query);
 }
 

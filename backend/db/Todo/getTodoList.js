@@ -1,7 +1,8 @@
 const promisePool = require("../connection.js");
+import { todo } from "../tableList.js";
 
 function getTodoList() {
-  const query = `SELECT * FROM TODOLIST ORDER BY groupId, idx;`;
+  const query = `SELECT * FROM ${todo} ORDER BY groupId, idx;`;
   return promisePool.execute(query);
 }
 
