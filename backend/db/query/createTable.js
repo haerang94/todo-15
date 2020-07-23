@@ -4,7 +4,8 @@ const createTodoTable = `CREATE TABLE TODO (
   title VARCHAR(64),
   content TEXT,
   groupId VARCHAR(64),
-  author VARCHAR(64)
+  author VARCHAR(64),
+  foreign key(groupId) references TODOLIST(groupId) on delete cascade
   );`;
 
 const createUserTable = `
