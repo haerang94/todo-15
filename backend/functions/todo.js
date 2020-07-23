@@ -2,9 +2,30 @@ const getTodoDB = require("../db/Todo/getTodoList.js");
 const insertTodo = require("../db/Todo/insertTodo.js");
 const deleteTodo = require("../db/Todo/deleteTodo.js");
 const updateTodo = require("../db/Todo/updateTodo.js");
-
+const {
+  idxUpdate,
+  idxUpdateTodos,
+} = require("../db/Todo/updateTodoPosition.js");
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
+
+function patchMoveTodoCallback(req, res) {
+  const id = req.params.id;
+  const { idx, groupId } = req.body;
+
+  idxUpdateTodos({ groupId, idx })
+    .then((result) => {
+      if (result[0].affectedRows === 0) throw new Error();
+      return idxUpdate({ groupId, idx, id });
+    })
+    .then((result) => {
+      if (result[0].affectedRows === 0) throw new Error();
+      return res.sendStatus(statusCode.OK);
+    })
+    .catch((e) => {
+      return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+    });
+}
 
 async function getTodoCallback(req, res) {
   try {
@@ -74,4 +95,5 @@ module.exports = {
   validateTodo,
   deleteTodoCallback,
   patchTodoCallback,
+  patchMoveTodoCallback,
 };
