@@ -1,4 +1,4 @@
-const getTodoDB = require("../db/Todo/getTodoList.js");
+const getTodoDB = require("../db/Todo/getTodo.js");
 const insertTodo = require("../db/Todo/insertTodo.js");
 const deleteTodo = require("../db/Todo/deleteTodo.js");
 const updateTodo = require("../db/Todo/updateTodo.js");
