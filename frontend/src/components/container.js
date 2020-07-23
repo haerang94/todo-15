@@ -10,7 +10,7 @@ export default class Container {
              </div>
              <div class="todo-container-part2">
                 <i id="input-btn-${id}" class="fa fa-plus" aria-hidden="true"></i>
-                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
              </div>
          </div>
      </header>

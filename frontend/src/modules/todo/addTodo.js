@@ -17,10 +17,11 @@ export default async function addTodo(e) {
   const listUl = inputUl.nextElementSibling;
   const groupId = listUl.id;
   const textarea = inputUl.querySelector('textarea');
-
+  console.log(inputUl, groupId, textarea);
   const data = makeData({ listUl, inputUl, groupId, textarea });
-
+  console.log('data:', data);
   const result = await addItem(data);
+  console.log(result);
   const id = result.id;
   const item = new Item();
   data.id = id;
