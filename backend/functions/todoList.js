@@ -47,8 +47,9 @@ async function patchTodoListsCallback(req, res) {
 async function deleteTodoListCallback(req, res) {
   try {
     const groupId = req.params.groupId;
+    console.log("백엔드", groupId);
     const result = await deleteTodoList(groupId);
-    if (result[0].affectedRows < 1) throw new Error();
+    // if (result[0].affectedRows < 1) throw new Error();
     return res.sendStatus(statusCode.OK);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);

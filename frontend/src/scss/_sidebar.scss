@@ -10,7 +10,7 @@
     z-index:1000;
     list-style: none;
     border-radius:15px 0 0 0;
-    animation: showpane 1s cubic-bezier(0,0,0,1);
+    animation: showpane 0.5s cubic-bezier(0,0,0,1);
     
     &-container{
         display:flex;

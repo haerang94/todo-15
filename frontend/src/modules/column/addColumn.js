@@ -5,7 +5,10 @@ export default function addColumn() {
   document.getElementById('add-column').addEventListener('click', () => {
     const newColumn = new Container();
     const columnLists = document.querySelectorAll('.todo-container');
-    const newId = +columnLists[columnLists.length - 1].id.substr(8) + 1;
+    let newId = 1;
+    if (columnLists.length !== 0) {
+      newId = +columnLists[columnLists.length - 1].id.substr(8) + 1;
+    }
     const data = {
       groupId: `todoList-${newId}`,
       groupTitle: '새로운 컬럼',
@@ -14,7 +17,7 @@ export default function addColumn() {
     postFetchManger('/api/todolist', data)
       .then((res) => {
         if (res.status !== 200) throw new Error();
-        return res.json();
+        return res;
       })
       .then((res) => {
         console.log(res);
