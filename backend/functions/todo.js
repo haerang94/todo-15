@@ -11,12 +11,12 @@ const errorMessage = require("../utils/errorMessage.js");
 
 function patchMoveTodoCallback(req, res) {
   const id = req.params.id;
-  const { idx, groupId } = req.body;
+  const { idx, groupId, groupTitle } = req.body;
 
   idxUpdateTodos({ groupId, idx })
     .then((result) => {
       if (result[0].affectedRows === 0) throw new Error();
-      return idxUpdate({ groupId, idx, id });
+      return idxUpdate({ groupId, idx, id, groupTitle });
     })
     .then((result) => {
       if (result[0].affectedRows === 0) throw new Error();
