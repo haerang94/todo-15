@@ -9,7 +9,11 @@ const options = {
 };
 const getOptions = { ...options, method: 'GET' };
 const postOptions = { ...options, method: 'POST' };
-const deleteOptions = { ...options, method: 'DELETE' };
+const deleteOptions = {
+  ...options,
+  method: 'DELETE',
+  'Access-Control-Allow-Origin': '*',
+};
 const patchOptions = { ...options, method: 'PATCH' };
 
 function getFetchManger(url) {

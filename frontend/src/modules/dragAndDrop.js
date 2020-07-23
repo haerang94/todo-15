@@ -125,6 +125,7 @@ export default class Draggable {
         if (list.classList.contains('show')) list.classList.remove('show');
       });
 
+      //다른 곳으로 이동한다면
       if (this.el !== todolist) {
         this.el.previousElementSibling.remove();
         const ul = todolist.closest('ul');
@@ -159,7 +160,7 @@ export default class Draggable {
         groupId: this.ul.id,
         groupTitle: document.getElementById(`column-title-${id}`).textContent,
       };
-      console.log(data.idx, data.groupId, data.groupTitle);
+
       patchFetchManger(`/api/todos/move/${this.el.id}`, data)
         .then((res) => {
           if (res.status !== 200) throw new Error();
