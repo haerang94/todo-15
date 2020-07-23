@@ -22,7 +22,9 @@ export default async function deleteTodo(e) {
   try {
     const result = await deleteFetchManager(`${todoApi}/${id}`);
     if (result.status !== 200) throw new Error();
+    deleteItem.previousElementSibling.remove();
     deleteItem.remove();
+
     updateCount(ul);
     const log = makeRemoveLog(title, groupTitle);
     addTodoLog(log);

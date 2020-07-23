@@ -9,10 +9,10 @@ export default class Draggable {
     this.todoLists = null;
     this.closestLinkIndex = null;
     this.ul = null;
+    this.time = 0;
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
-    this.init();
     this.addEventHandlers();
   }
 
@@ -27,17 +27,26 @@ export default class Draggable {
   addEventHandlers() {
     this.el.addEventListener('mousedown', this.onMouseDown);
     this.el.addEventListener('dragstart', (e) => e.preventDefault());
-    this.cloneEl.addEventListener('dragstart', (e) => e.preventDefault());
+    // this.cloneEl.addEventListener('dragstart', (e) => e.preventDefault());
     this.el.addEventListener('mouseup', this.onMouseUp);
   }
 
   onMouseDown(e) {
+    e.preventDefault();
     if (e.target.dataset.method === 'delete') return;
+    if (new Date().getTime() < this.time + 400) {
+      //버그 해결
+      document.removeEventListener('mousemove', this.onMouseMove);
+      this.cloneEl.remove();
+      return;
+    }
+    this.time = new Date().getTime();
+
+    this.init();
     this.getDragPointer(e.clientX, e.clientY);
     this.prepareElement();
     this.moveElementTo(e.pageX, e.pageY);
     document.addEventListener('mousemove', this.onMouseMove);
-    console.log(this.cloneEl, this.el.nextSibling);
     this.ul.insertBefore(this.cloneEl, this.el.nextSibling);
   }
 
@@ -74,6 +83,7 @@ export default class Draggable {
     });
     // console.log(distances); // 거리보기
     this.closestLinkIndex = distances.indexOf(Math.min(...distances));
+    // console.log(Math.min(...distances));
 
     // 먼저 show가 있는 것을 검사해 다 지워준다.
     if (this.droppableLists !== null) {
@@ -94,8 +104,10 @@ export default class Draggable {
   moveElementTo(x, y) {
     const leftPosition = x - this.shiftX < 0 ? 0 : x - this.shiftX;
     const topPosition = y - this.shiftY < 0 ? 0 : y - this.shiftY;
-    this.el.style.left = `${x - this.el.offsetWidth / 2}px`;
-    this.el.style.top = `${y - this.el.offsetHeight / 2}px`;
+    // this.el.style.left = `${x - this.el.offsetWidth / 2}px`;
+    // this.el.style.top = `${y - this.el.offsetHeight / 2}px`;
+    this.el.style.left = `${leftPosition}px`;
+    this.el.style.top = `${topPosition}px`;
   }
 
   onMouseMove(e) {
@@ -116,8 +128,11 @@ export default class Draggable {
 
       if (this.el !== todolist) {
         this.el.previousElementSibling.remove();
+        const groupId = this.ul.id.substr(9);
+        // console.log(groupId);
         const ul = todolist.closest('ul');
         ul.insertBefore(this.el, todolist);
+        //droppable추가
         const li = document.createElement('li');
         li.classList.add('droppable');
         if (this.todoLists.length - 1 !== this.closestLinkIndex) {
@@ -125,10 +140,8 @@ export default class Draggable {
         } else {
           ul.insertBefore(li, this.el);
         }
-        this.cloneEl.remove();
-      } else {
-        this.ul.replaceChild(this.el, this.cloneEl);
       }
+      this.cloneEl.remove();
       this.init();
     }
   }

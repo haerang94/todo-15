@@ -1,3 +1,5 @@
+import Draggable from '../modules/dragAndDrop.js';
+
 export default class Item {
   makeItem(id, idx, title, content, author) {
     return `

@@ -3,6 +3,7 @@ import { postFetchManger } from '../utils/fetchManger.js';
 import { todoApi } from '../utils/routerList.js';
 import { updateCount } from '../utils/updateCount.js';
 import splitText from '../utils/splitText.js';
+import Draggable from '../dragAndDrop';
 import { addTodoLog } from '../todoLog.js';
 import actionTypeList from '../utils/actionTypeList.js';
 
@@ -23,9 +24,10 @@ export default async function addTodo(e) {
   clearTextarea(textarea);
 
   fillTitleContent(listUl, data);
-  const count = listUl.querySelectorAll('li').length;
   updateCount(listUl);
 
+  const newItem = listUl.children[1];
+  new Draggable(newItem);
   const log = makeLog(data.title, data.groupTitle);
   addTodoLog(log);
 }
