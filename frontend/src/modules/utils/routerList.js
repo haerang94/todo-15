@@ -1,5 +1,5 @@
 const todoApi = '/api/todos';
-const columnApi = '/api/columns';
+const todoListApi = '/api/todolist';
 const todoLogApi = '/api/todo-logs';
 const todoMoveApi = '/api/todos/move';
-export { todoApi, columnApi, todoLogApi, todoMoveApi };
+export { todoApi, todoListApi, todoLogApi, todoMoveApi };

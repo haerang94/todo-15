@@ -1,6 +1,6 @@
 import splitText from './utils/splitText.js';
 import patchTodo from './todo/patchTodo.js';
-import patchColumn from './column/patchColumn.js';
+import patchTodoList from './todoList/patchTodoList';
 
 export function toggleModal() {
   const modal = document.querySelector('.modal');
@@ -39,7 +39,7 @@ export function toggleModal() {
     if (e.target.dataset.id !== 'modal-column-update') return;
     const textArea = e.target.previousElementSibling;
     const groupTitle = textArea.value;
-    const result = await patchColumn({ groupTitle }, groupId);
+    const result = await patchTodoList({ groupTitle }, groupId);
     if (!result) return;
     targetElement.textContent = groupTitle;
     textArea.value = '';
