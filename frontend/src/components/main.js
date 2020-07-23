@@ -4,7 +4,11 @@ import Item from './item.js';
 import 'regenerator-runtime/runtime';
 import addTodo from '../modules/todo/addTodo.js';
 import deleteTodo from '../modules/todo/deleteTodo.js';
-import { todoApi, columnApi, todoLogApi } from '../modules/utils/routerList.js';
+import {
+  todoApi,
+  todoListApi,
+  todoLogApi,
+} from '../modules/utils/routerList.js';
 import { getTodoLog, updateTodoLog } from '../modules/todoLog.js';
 
 export default class Main {
@@ -13,7 +17,7 @@ export default class Main {
   }
   async init() {
     //컬럼 생성
-    const columns = await getFetchManger(columnApi);
+    const columns = await getFetchManger(todoListApi);
     this.renderConatiners(columns.data);
     //아이템 생성
     const results = await getFetchManger(todoApi);
