@@ -1,11 +1,11 @@
 const promisePool = require("../connection.js");
 const { todo } = require("../tableList.js");
-function getTodoList() {
+function getTodo() {
   const query = `SELECT * FROM ${todo} ORDER BY groupId, idx;`;
   return promisePool.execute(query);
 }
 
-module.exports = getTodoList;
+module.exports = getTodo;
 
 // test
 
