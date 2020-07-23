@@ -1,8 +1,8 @@
 const promisePool = require("../connection.js");
 const { todoList } = require("../tableList.js");
 
-function patchTodoList(id, groupTitle) {
-  const query = `update ${todoList} set groupTitle='${groupTitle}' where id=${id}`;
+function patchTodoList(groupId, groupTitle) {
+  const query = `update ${todoList} set groupTitle='${groupTitle}' where groupId='${groupId}'`;
   return promisePool.execute(query);
 }
 

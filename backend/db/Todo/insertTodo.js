@@ -1,7 +1,7 @@
 const promisePool = require("../connection.js");
 const { todo } = require("../tableList.js");
 function insertTodo({ idx, title, content, groupId, author }) {
-  const query = `INSERT INTO ${todo} VALUES(NULL, ${idx}, '${title}', '${content}', '${groupId}', '${author}');`;
+  const query = `INSERT INTO ${todo} VALUES(NULL, '${title}', '${content}', '${groupId}', '${author}', ${idx});`;
   return promisePool.execute(query);
 }
 

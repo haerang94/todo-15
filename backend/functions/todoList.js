@@ -12,13 +12,14 @@ async function getTodoListCallback(req, res) {
     };
     return res.status(statusCode.OK).json(response);
   } catch (e) {
+    console.log(e);
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }
 
 async function patchTodoListsCallback(req, res) {
   try {
-    const id = req.params.id;
+    const groupId = req.params.groupId;
     const groupTitle = req.body.groupTitle;
     const result = await patchTodoList(groupId, groupTitle);
     if (result[0].affectedRows < 1) throw new Error();
