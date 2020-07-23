@@ -3,6 +3,7 @@ import { postFetchManger } from '../utils/fetchManger.js';
 import { todoApi } from '../utils/routerList.js';
 import { updateCount } from '../utils/updateCount.js';
 import splitText from '../utils/splitText.js';
+import Draggable from '../dragAndDrop';
 
 export default async function addTodo(e) {
   //add버튼을 눌렀을 때만 동작
@@ -21,8 +22,10 @@ export default async function addTodo(e) {
   clearTextarea(textarea);
 
   fillTitleContent(listUl, data);
-  const count = listUl.querySelectorAll('li').length;
   updateCount(listUl);
+
+  const newItem = listUl.children[1];
+  new Draggable(newItem);
 }
 
 function clearTextarea(textarea) {
@@ -55,7 +58,6 @@ async function addItem(data) {
   const item = new Item();
   data.id = id;
   item.addItem(data);
-  
 }
 
 function fillTitleContent(listUl, { title, content }) {

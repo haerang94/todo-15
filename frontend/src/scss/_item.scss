@@ -12,6 +12,7 @@
 
     &:active{
         @include grabbing-style;
+        transition:none;
         min-height:50px;
     }
 

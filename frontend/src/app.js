@@ -8,7 +8,6 @@ import { toggleInput } from './modules/toggleInput.js';
 import { toggleBtn } from './modules/toggleBtn';
 import { toggleModal } from './modules/modal';
 import { openSidebar, closeSidebar } from './modules/sidebar';
-// import { dragAndDrop } from './modules/dragAndDrop';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const main = new Main(document.querySelector('main'));
@@ -17,7 +16,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   for (let draggable of draggables) {
     new Draggable(draggable);
   }
-
   toggleInput();
   toggleBtn();
   toggleModal();

@@ -29,7 +29,7 @@ export default class Main {
     const num_of_items = this.main.querySelector(`#todoList-${column}`);
     const result = this.main.querySelector(`.num-of-todos-${column}`);
     //text 제외한 자식 li태그 개수
-    result.textContent = num_of_items.children.length;
+    result.textContent = num_of_items.querySelectorAll('.todo-item').length - 1;
   }
   renderConatiners(dataList) {
     const col = new Container();

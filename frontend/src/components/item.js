@@ -1,4 +1,4 @@
-import Draggable from '../modules/dragAndDrop';
+import Draggable from '../modules/dragAndDrop.js';
 
 export default class Item {
   makeItem(id, idx, title, content, author) {
@@ -25,6 +25,5 @@ export default class Item {
     const ul = document.querySelector(`#${groupId}`);
     const item = this.makeItem(id, idx, title, content, author);
     ul.insertAdjacentHTML('afterbegin', item);
-    new Draggable(ul.children[1]);
   }
 }
