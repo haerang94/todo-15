@@ -1,4 +1,4 @@
-const createTodoListTable = `CREATE TABLE TODOLIST (
+const createTodoTable = `CREATE TABLE TODO (
   id INT PRIMARY KEY AUTO_INCREMENT,
   idx INT,
   title VARCHAR(64),
@@ -13,6 +13,15 @@ CREATE TABLE USER (
   username VARCHAR(64),
   authorization BOOLEAN
   );
+`;
+
+const createTodoListTable = `
+CREATE TABLE TODOLIST (
+  id int AUTO_INCREMENT,
+  groupId varchar(64),
+  groupTitle varchar(64),
+  PRIMARY KEY (id, groupId)
+);
 `;
 
 const createLogTable = `

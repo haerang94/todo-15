@@ -1,6 +1,6 @@
 import splitText from './utils/splitText.js';
 import patchTodo from './todo/patchTodo.js';
-import patchColumn from './column/patchColumn.js';
+import patchTodoList from './todoList/patchTodoList';
 
 export function toggleModal() {
   const modal = document.querySelector('.modal');
@@ -8,7 +8,7 @@ export function toggleModal() {
   const columnModal = modal.children[1];
   let targetElement;
   let liId;
-  let groupId;
+  let id;
 
   modal.addEventListener('click', closeHandler);
   modal.addEventListener('click', contentUpdateHandler);
@@ -39,7 +39,8 @@ export function toggleModal() {
     if (e.target.dataset.id !== 'modal-column-update') return;
     const textArea = e.target.previousElementSibling;
     const groupTitle = textArea.value;
-    const result = await patchColumn({ groupTitle }, groupId);
+    const groupId = `todoList-${id}`;
+    const result = await patchTodoList({ groupTitle }, groupId);
     if (!result) return;
     targetElement.textContent = groupTitle;
     textArea.value = '';
@@ -64,7 +65,7 @@ export function toggleModal() {
 
   function showColumnModalHandler(e) {
     if (e.target.className !== 'todo-container-header-title') return;
-    groupId = e.target.id.substr(13);
+    id = e.target.id.substr(13);
     targetElement = e.target;
     renderColumnModal(e);
   }
