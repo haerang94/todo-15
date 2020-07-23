@@ -1,8 +1,8 @@
 const promisePool = require("../connection.js");
-import { todo } from "../tableList.js";
+const { todo } = require("../tableList.js");
 
 function idxUpdateTodos({ groupId, idx }) {
-  const query = `UPDATE ${todo} SET idx=idx+1 WHERE groupId='${groupId}' and idx>=${idx}`;
+  const query = `UPDATE ${todo} SET idx=idx-1 WHERE groupId='${groupId}' and idx>=${idx}`;
   return promisePool.execute(query);
 }
 
