@@ -1,6 +1,7 @@
 import { patchFetchManger } from '../modules/utils/fetchManger.js';
 import { todoMoveApi } from '../modules/utils/routerList.js';
 import 'regenerator-runtime/runtime';
+import { updateCount } from './utils/updateCount';
 
 export default class Draggable {
   constructor(el) {
@@ -136,6 +137,12 @@ export default class Draggable {
       }
       this.cloneEl.remove();
       this.init();
+      const ulList = document.querySelectorAll('.todoitem-ul');
+      console.log(ulList);
+      for (let ul of ulList) {
+        updateCount(ul);
+        console.log(ul);
+      }
     }
   }
 }
