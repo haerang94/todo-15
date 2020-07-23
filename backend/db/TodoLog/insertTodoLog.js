@@ -1,5 +1,5 @@
 const promisePool = require("../connection.js");
-import { todoLog } from "../tableList.js";
+const { todoLog } = require("../tableList.js");
 
 function insertLog({
   username,
