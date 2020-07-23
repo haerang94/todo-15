@@ -109,6 +109,11 @@
     align-items: flex-start;
     width:100%;
     margin:0 10px;
+    color:#323232;
+
+    & div:nth-child(2){
+        color:#116979;
+    }
 }
 
 .log{
@@ -121,6 +126,8 @@
     margin:0 10px 0 0;
     color:blue;
 }
+
+
 
 
 @keyframes showpane{
