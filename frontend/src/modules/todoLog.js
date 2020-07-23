@@ -1,23 +1,54 @@
-import { postFetchManger } from './utils/fetchManger.js';
+import { getFetchManger, postFetchManger } from './utils/fetchManger.js';
 import { todoLogApi } from './utils/routerList.js';
 
+const logUl = document.querySelector('ul.activity-ul');
+let logList = [];
+
 function addTodoLog(data) {
-  const logUl = document.querySelector('ul.activity-ul');
   postFetchManger(todoLogApi, data)
     .then((res) => {
       if (res.status !== 200) throw new Error();
       return res.json();
     })
     .then((res) => {
-      const todoLog = makeTodoLog(data);
-      logUl.insertAdjacentHTML('afterbegin', todoLog);
+      renderTodoLog(data);
     })
     .catch((e) => {
       console.log(e);
     });
 }
 
-export { addTodoLog };
+function getTodoLog() {
+  getFetchManger(todoLogApi)
+    .then((logs) => {
+      logList = logs;
+      logs.forEach((log) => {
+        renderTodoLog(log);
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
+
+function updateTodoLog() {
+  const previousLogs = logUl.children;
+  let time;
+  let previousTime;
+  for (let i = 0; i < previousLogs.length; i++) {
+    time = calculateTime(logList[i].time);
+    previousTime = previousLogs[i].querySelector('span.time');
+    if (previousTime.textContent !== time)
+      previousLogs[i].querySelector('span.time').textContent = time;
+  }
+}
+
+export { addTodoLog, getTodoLog, updateTodoLog };
+
+function renderTodoLog(data) {
+  const todoLog = makeTodoLog(data);
+  logUl.insertAdjacentHTML('beforeend', todoLog);
+}
 
 function makeTodoLog(data) {
   const {
@@ -64,9 +95,9 @@ function calculateTime(pastTimeString) {
   const diffDate = Math.floor(diffHour / dateUnit);
 
   if (diffDate > 0) return `${diffDate} days`;
-  else if (diffHour > 0) return `${diffHour} hours`;
-  else if (diffMinute > 0) return `${diffMinute} hours`;
-  else return `${diffSecond} seconds`;
+  if (diffHour > 0) return `${diffHour} hours`;
+  if (diffMinute > 0) return `${diffMinute} minutes`;
+  return `${diffSecond} seconds`;
 }
 
 function makeTemplate(username, content, time) {
