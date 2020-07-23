@@ -1,7 +1,7 @@
 const promisePool = require("../connection.js");
 
 function getTodoLog() {
-  const query = `SELECT * FROM LOG ORDER BY time DESC;`;
+  const query = `SELECT * FROM LOG ORDER BY id;`;
   return promisePool.execute(query);
 }
 

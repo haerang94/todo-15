@@ -47,7 +47,7 @@ export { addTodoLog, getTodoLog, updateTodoLog };
 
 function renderTodoLog(data) {
   const todoLog = makeTodoLog(data);
-  logUl.insertAdjacentHTML('beforeend', todoLog);
+  logUl.insertAdjacentHTML('afterbegin', todoLog);
 }
 
 function makeTodoLog(data) {
