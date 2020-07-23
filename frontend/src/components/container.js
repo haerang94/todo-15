@@ -27,7 +27,8 @@ export default class Container {
              </li>
          </ul>
         <ul id="todoList-${id}" class="todoitem-ul">
-        <li class="droppable todo-item"></li>
+        <li class="droppable"></li>
+        <li class="todo-item" style="visibility:hidden"></li>
         </ul>
         <div id="end-of-article">끝 이라오</div>
      </article>  
