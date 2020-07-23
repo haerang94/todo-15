@@ -1,3 +1,7 @@
+import { patchFetchManger } from '../modules/utils/fetchManger.js';
+import { todoMoveApi } from '../modules/utils/routerList.js';
+import 'regenerator-runtime/runtime';
+
 export default class Draggable {
   constructor(el) {
     this.el = el;
@@ -115,13 +119,31 @@ export default class Draggable {
     this.closestTodoList(e);
   }
 
-  onMouseUp(e) {
+  async onMouseUp(e) {
+    console.log('마우스');
     if (e.target.dataset.method === 'delete') return;
     document.removeEventListener('mousemove', this.onMouseMove);
+    const id = this.el.getAttribute('id');
+    let todolist = this.todoLists[this.closestLinkIndex];
 
+    console.log(todolist);
+
+    const data = {
+      idx: todolist.getAttribute('idx'),
+      groupId: todolist.closest('ul').getAttribute('id'),
+      groupTitle: todolist
+        .closest('section')
+        .querySelector('.todo-container-header-title').textContent,
+    };
+    try {
+      const result = await patchFetchManger(`${todoMoveApi}/${id}`, data);
+      if (result.status !== 200) throw new Error();
+    } catch (e) {
+      return alert('다시 시도해주세요');
+    }
     this.el.style.position = 'static';
     if (this.droppableLists !== null && this.todoLists !== null) {
-      let todolist = this.todoLists[this.closestLinkIndex];
+      todolist = this.todoLists[this.closestLinkIndex];
       Array.from(this.droppableLists).map((list) => {
         if (list.classList.contains('show')) list.classList.remove('show');
       });
