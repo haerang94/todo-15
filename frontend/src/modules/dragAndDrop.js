@@ -114,26 +114,57 @@ export default class Draggable {
     this.closestTodoList(e);
   }
 
-  onMouseUp(e) {
+  async onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
     document.removeEventListener('mousemove', this.onMouseMove);
 
     this.el.style.position = 'static';
     if (this.droppableLists !== null && this.todoLists !== null) {
-      let todolist = this.todoLists[this.closestLinkIndex];
+      let todolist = this.todoLists[this.closestLinkIndex]; // 가장 가까운 투두리스트
       Array.from(this.droppableLists).map((list) => {
+        // show 속성을 가진 것은 지워준다.
         if (list.classList.contains('show')) list.classList.remove('show');
       });
 
       //다른 곳으로 이동한다면
       if (this.el !== todolist) {
-        this.el.previousElementSibling.remove();
-        const ul = todolist.closest('ul');
+        this.el.previousElementSibling.remove(); // 클론 제거
+        const ul = todolist.closest('ul'); // 이동할 곳의 ul
         ul.insertBefore(this.el, todolist);
         //droppable추가
         const li = document.createElement('li');
         li.classList.add('droppable');
         ul.insertBefore(li, todolist);
+
+        // 정보 업데이트
+        const id = ul.id.substr(9);
+
+        let curIdx;
+        console.log(this.el, ul.children[1]);
+        if (this.el === ul.children[1]) {
+          console.log(true);
+          curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
+        } else {
+          curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
+            'idx',
+          );
+        }
+
+        const data = {
+          idx: curIdx,
+          groupId: ul.id,
+          groupTitle: document.getElementById(`column-title-${id}`).textContent,
+        };
+
+        try {
+          const result = await patchFetchManger(
+            `/api/todos/move/${this.el.id}`,
+            data,
+          );
+          if (result.status !== 200) throw new Error();
+        } catch {
+          throw new Error();
+        }
       }
       this.cloneEl.remove();
       this.init();
@@ -141,37 +172,6 @@ export default class Draggable {
       for (let ul of ulList) {
         updateCount(ul);
       }
-
-      const id = this.ul.id.substr(9);
-
-      let curIdx;
-      console.log(this.el, this.ul.children[1]);
-      if (this.el === this.ul.children[1]) {
-        console.log(true);
-        curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
-      } else {
-        curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
-          'idx',
-        );
-      }
-      console.log(curIdx);
-      const data = {
-        idx: curIdx,
-        groupId: this.ul.id,
-        groupTitle: document.getElementById(`column-title-${id}`).textContent,
-      };
-
-      patchFetchManger(`/api/todos/move/${this.el.id}`, data)
-        .then((res) => {
-          if (res.status !== 200) throw new Error();
-          return res.json();
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
     }
   }
 }
