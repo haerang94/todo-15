@@ -4,14 +4,15 @@ const createTodoTable = `CREATE TABLE TODO (
   title VARCHAR(64),
   content TEXT,
   groupId VARCHAR(64),
-  author VARCHAR(64)
+  author VARCHAR(64),
+  foreign key(groupId) references TODOLIST(groupId) on delete cascade
   );`;
 
 const createUserTable = `
 CREATE TABLE USER (
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(64),
-  authorization BOOLEAN
+  authorization tinyint(1) DEFAULT 0
   );
 `;
 

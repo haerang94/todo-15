@@ -1,6 +1,7 @@
 const getTodoList = require("../db/TodoList/getTodoList.js");
 const patchTodoList = require("../db/TodoList/patchTodoList.js");
 const insertTodoList = require("../db/TodoList/insertTodoList.js");
+const deleteTodoList = require("../db/TodoList/deleteTodoList.js");
 
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
@@ -43,8 +44,20 @@ async function patchTodoListsCallback(req, res) {
   }
 }
 
+async function deleteTodoListCallback(req, res) {
+  try {
+    const groupId = req.params.groupId;
+    const result = await deleteTodoList(groupId);
+    if (result[0].affectedRows < 1) throw new Error();
+    return res.sendStatus(statusCode.OK);
+  } catch (e) {
+    return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+  }
+}
+
 module.exports = {
   getTodoListCallback,
   patchTodoListsCallback,
   postTodoListCallback,
+  deleteTodoListCallback,
 };
