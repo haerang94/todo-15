@@ -8,6 +8,7 @@ import { toggleInput } from './modules/toggleInput.js';
 import { toggleBtn } from './modules/toggleBtn';
 import { toggleModal } from './modules/modal';
 import sidebar from './modules/sidebar';
+import AddColumn from './modules/column/addColumn';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const main = new Main(document.querySelector('main'));
@@ -20,4 +21,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   toggleBtn();
   toggleModal();
   sidebar();
+  AddColumn();
 });
