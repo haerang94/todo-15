@@ -1,7 +1,8 @@
 const promisePool = require("../connection.js");
 
-function getColumns() {
-  const query = `select distinct groupId, groupTitle from TODOLIST order by groupId`;
+const { todoList } = require("../tableList.js");
+function getTodoList() {
+  const query = `select * from ${todoList} order by groupId`;
   return promisePool.execute(query);
 }
 
