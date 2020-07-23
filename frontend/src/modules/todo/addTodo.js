@@ -26,11 +26,11 @@ export default async function addTodo(e) {
   const count = listUl.querySelectorAll('li').length;
   updateCount(listUl);
 
-  const log = makeAddLog(data.title, data.groupTitle);
+  const log = makeLog(data.title, data.groupTitle);
   addTodoLog(log);
 }
 
-function makeAddLog(title, groupTitle) {
+function makeLog(title, groupTitle) {
   return {
     username: 'cc6656',
     actionType: actionTypeList.ADD,
