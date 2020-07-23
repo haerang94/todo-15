@@ -22,7 +22,10 @@ async function postLogsCallback(req, res) {
     const log = req.body;
     const result = await insertTodoLog(log);
     if (result[0].affectedRows !== 1) throw new Error();
-    return res.sendStatus(statusCode.OK);
+    const response = {
+      id: result[0].insertId,
+    };
+    return res.status(statusCode.OK).json(response);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }

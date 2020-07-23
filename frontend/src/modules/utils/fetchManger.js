@@ -18,9 +18,7 @@ function getFetchManger(url) {
 
 function postFetchManger(url, body) {
   postOptions['body'] = JSON.stringify(body);
-  return fetch(baseUrl + url, postOptions)
-    .then((res) => res.json())
-    .catch((e) => console.log(e));
+  return fetch(baseUrl + url, postOptions);
 }
 
 function deleteFetchManager(url) {

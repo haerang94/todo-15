@@ -25,16 +25,14 @@ export function toggleModal() {
     if (e.target.dataset.id !== 'modal-content-update') return;
     const textArea = e.target.previousElementSibling;
     const { title, content } = splitText(textArea.value);
-    const result = await patchTodo({ title, content, author: 'cc6656' }, liId);
+    const result = await patchTodo(
+      { title, content, author: 'cc6656' },
+      liId,
+      targetElement,
+    );
     if (!result) return;
-    updateContentText(title, content);
     textArea.value = '';
     closeModal(e);
-  }
-
-  function updateContentText(title, content) {
-    targetElement.querySelector('.todo-item-title').textContent = title;
-    targetElement.querySelector('.todo-item-content > p').textContent = content;
   }
 
   async function columnUpdateHandler(e) {
