@@ -12,6 +12,7 @@ async function getColumnsCallback(req, res) {
     };
     return res.status(statusCode.OK).json(response);
   } catch (e) {
+    console.log(e);
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }
