@@ -15,7 +15,7 @@ export default async function addTodo(e) {
 
   const inputUl = e.target.closest('ul');
   const listUl = inputUl.nextElementSibling;
-  const groupId = e.target.id.substr(8);
+  const groupId = listUl.id;
   const textarea = inputUl.querySelector('textarea');
 
   const data = makeData({ listUl, inputUl, groupId, textarea });
@@ -65,7 +65,7 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
     title,
     content,
     author: 'haerang',
-    groupId: `todoList-${groupId}`,
+    groupId,
     groupTitle,
   };
 

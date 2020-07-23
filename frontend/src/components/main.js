@@ -32,14 +32,15 @@ export default class Main {
     this.main.addEventListener('click', deleteTodo);
 
     for (let i = 0; i < columns.data.length; i++) {
-      this.countTodo(columns.data[i].groupId.substr(9));
+      this.countTodo(columns.data[i].groupId);
     }
   }
-  countTodo(column) {
-    const num_of_items = this.main.querySelector(`#todoList-${column}`);
-    const result = this.main.querySelector(`.num-of-todos-${column}`);
+  countTodo(groupId) {
+    const ul = this.main.querySelector(`#${groupId}`);
+    const section = ul.closest('section');
+    const result = section.querySelector('header > div> div > div');
     //text 제외한 자식 li태그 개수
-    result.textContent = num_of_items.querySelectorAll('.todo-item').length - 1;
+    result.textContent = ul.querySelectorAll('.todo-item').length - 1;
   }
   renderConatiners(dataList) {
     const col = new Container();

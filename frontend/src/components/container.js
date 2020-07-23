@@ -1,5 +1,5 @@
 export default class Container {
-  makeContainer(id, groupTitle) {
+  makeContainer(id, groupTitle, groupId) {
     return `
      <section id="section-${id}" class="todo-container">
      <header>
@@ -26,7 +26,7 @@ export default class Container {
                  </div>
              </li>
          </ul>
-        <ul id="todoList-${id}" class="todoitem-ul">
+        <ul id="${groupId}" class="todoitem-ul">
         <li class="droppable"></li>
         <li class="todo-item" style="visibility:hidden"></li>
         </ul>
@@ -35,11 +35,12 @@ export default class Container {
      </section>`;
   }
   addContainer(data) {
+    const groupId = data.groupId;
     const id = data.groupId.substr(9);
     const groupTitle = data.groupTitle;
 
     const aside = document.querySelector('aside');
-    const newContainer = this.makeContainer(id, groupTitle);
+    const newContainer = this.makeContainer(id, groupTitle, groupId);
 
     aside.insertAdjacentHTML('beforebegin', newContainer);
   }
