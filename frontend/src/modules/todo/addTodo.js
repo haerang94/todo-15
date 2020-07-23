@@ -4,6 +4,8 @@ import { todoApi } from '../utils/routerList.js';
 import { updateCount } from '../utils/updateCount.js';
 import splitText from '../utils/splitText.js';
 import Draggable from '../dragAndDrop';
+import { addTodoLog } from '../todoLog.js';
+import actionTypeList from '../utils/actionTypeList.js';
 
 export default async function addTodo(e) {
   //add버튼을 눌렀을 때만 동작
@@ -26,6 +28,20 @@ export default async function addTodo(e) {
 
   const newItem = listUl.children[1];
   new Draggable(newItem);
+  const log = makeLog(data.title, data.groupTitle);
+  addTodoLog(log);
+}
+
+function makeLog(title, groupTitle) {
+  return {
+    username: 'cc6656',
+    actionType: actionTypeList.ADD,
+    time: new Date().toString(),
+    previousContent: null,
+    presentContent: title,
+    previousColumn: null,
+    presentColumn: groupTitle,
+  };
 }
 
 function clearTextarea(textarea) {
@@ -52,12 +68,21 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
   return data;
 }
 
-async function addItem(data) {
-  const result = await postFetchManger(todoApi, data);
-  const id = result.id;
-  const item = new Item();
-  data.id = id;
-  item.addItem(data);
+function addItem(data) {
+  postFetchManger(todoApi, data)
+    .then((res) => {
+      if (res.status !== 200) throw new Error();
+      return res.json();
+    })
+    .then((result) => {
+      const id = result.id;
+      const item = new Item();
+      data.id = id;
+      item.addItem(data);
+    })
+    .catch((e) => {
+      alert('다시 해주세요');
+    });
 }
 
 function fillTitleContent(listUl, { title, content }) {

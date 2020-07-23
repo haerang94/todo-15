@@ -1,6 +1,8 @@
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
+
 const insertTodoLog = require("../db/TodoLog/insertTodoLog.js");
+const getTodoLog = require("../db/TodoLog/getTodoLog.js");
 
 function validateTodoLog(req, res, next) {
   const todoLog = req.body;
@@ -22,10 +24,23 @@ async function postLogsCallback(req, res) {
     const log = req.body;
     const result = await insertTodoLog(log);
     if (result[0].affectedRows !== 1) throw new Error();
-    return res.sendStatus(statusCode.OK);
+    const response = {
+      id: result[0].insertId,
+    };
+    return res.status(statusCode.OK).json(response);
   } catch (e) {
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }
 
-module.exports = { postLogsCallback, validateTodoLog };
+async function getLogsCallback(req, res) {
+  try {
+    const result = await getTodoLog();
+    return res.status(statusCode.OK).json(result[0]);
+  } catch (e) {
+    console.log(e);
+    return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
+  }
+}
+
+module.exports = { postLogsCallback, validateTodoLog, getLogsCallback };

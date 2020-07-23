@@ -4,7 +4,8 @@ import Item from './item.js';
 import 'regenerator-runtime/runtime';
 import addTodo from '../modules/todo/addTodo.js';
 import deleteTodo from '../modules/todo/deleteTodo.js';
-import { todoApi, columnApi } from '../modules/utils/routerList.js';
+import { todoApi, columnApi, todoLogApi } from '../modules/utils/routerList.js';
+import { getTodoLog, updateTodoLog } from '../modules/todoLog.js';
 
 export default class Main {
   constructor(main) {
@@ -18,6 +19,11 @@ export default class Main {
     const results = await getFetchManger(todoApi);
     this.renderItems(results);
     //
+    getTodoLog();
+    setInterval(async function () {
+      updateTodoLog();
+    }, 60000);
+
     this.main.addEventListener('click', addTodo);
     this.main.addEventListener('click', deleteTodo);
 
