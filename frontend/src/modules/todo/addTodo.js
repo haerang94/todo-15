@@ -20,7 +20,11 @@ export default async function addTodo(e) {
 
   const data = makeData({ listUl, inputUl, groupId, textarea });
 
-  await addItem(data);
+  const result = await addItem(data);
+  const id = result.id;
+  const item = new Item();
+  data.id = id;
+  item.addItem(data);
   clearTextarea(textarea);
 
   fillTitleContent(listUl, data);
@@ -69,16 +73,13 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
 }
 
 function addItem(data) {
-  postFetchManger(todoApi, data)
+  return postFetchManger(todoApi, data)
     .then((res) => {
       if (res.status !== 200) throw new Error();
       return res.json();
     })
     .then((result) => {
-      const id = result.id;
-      const item = new Item();
-      data.id = id;
-      item.addItem(data);
+      return result;
     })
     .catch((e) => {
       alert('다시 해주세요');
@@ -86,7 +87,8 @@ function addItem(data) {
 }
 
 function fillTitleContent(listUl, { title, content }) {
-  const addedItem = listUl.querySelector('li:nth-child(2)');
+  console.log(listUl);
+  const addedItem = listUl.querySelector('.todo-item');
   //title영역
   addedItem.querySelector('.todo-item-title').textContent = title;
   //content 영역
