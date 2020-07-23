@@ -11,7 +11,7 @@ const createUserTable = `
 CREATE TABLE USER (
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(64),
-  authorization BOOLEAN
+  authorization tinyint(1) DEFAULT 0
   );
 `;
 
