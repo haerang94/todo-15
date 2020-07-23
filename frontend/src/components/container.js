@@ -28,7 +28,7 @@ export default class Container {
          </ul>
         <ul id="${groupId}" class="todoitem-ul">
         <li class="droppable"></li>
-        <li class="todo-item" style="visibility:hidden"></li>
+        <li class="todo-item" style="visibility:hidden" idx="-1"></li>
         </ul>
         <div id="end-of-article">끝 이라오</div>
      </article>  
