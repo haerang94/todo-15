@@ -87,7 +87,7 @@ function addItem(data) {
 }
 
 function fillTitleContent(listUl, { title, content }) {
-  console.log(listUl);
+  // console.log(listUl);
   const addedItem = listUl.querySelector('.todo-item');
   //title영역
   addedItem.querySelector('.todo-item-title').textContent = title;

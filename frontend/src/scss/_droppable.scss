@@ -21,6 +21,9 @@
 
 .show{
     @include check-drop;
+    width:300px;
+    min-height:60px;
+   
 }
 
 .clone{

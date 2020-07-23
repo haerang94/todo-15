@@ -127,7 +127,6 @@ export default class Draggable {
 
       if (this.el !== todolist) {
         this.el.previousElementSibling.remove();
-        const groupId = this.ul.id.substr(9);
         const ul = todolist.closest('ul');
         ul.insertBefore(this.el, todolist);
         //droppable추가
@@ -138,11 +137,40 @@ export default class Draggable {
       this.cloneEl.remove();
       this.init();
       const ulList = document.querySelectorAll('.todoitem-ul');
-      console.log(ulList);
       for (let ul of ulList) {
         updateCount(ul);
-        console.log(ul);
       }
+
+      const id = this.ul.id.substr(9);
+
+      let curIdx;
+      console.log(this.el, this.ul.children[1]);
+      if (this.el === this.ul.children[1]) {
+        console.log(true);
+        curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
+      } else {
+        curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
+          'idx',
+        );
+      }
+      console.log(curIdx);
+      const data = {
+        idx: curIdx,
+        groupId: this.ul.id,
+        groupTitle: document.getElementById(`column-title-${id}`).textContent,
+      };
+      console.log(data.idx, data.groupId, data.groupTitle);
+      patchFetchManger(`/api/todos/move/${this.el.id}`, data)
+        .then((res) => {
+          if (res.status !== 200) throw new Error();
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
   }
 }
