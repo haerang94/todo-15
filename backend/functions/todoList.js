@@ -1,12 +1,12 @@
-const getColumns = require("../db/Column/getColumn.js");
-const patchColumn = require("../db/Column/patchColumn.js");
+const getTodoList = require("../db/TodoList/getTodoList.js");
+const patchTodoList = require("../db/TodoList/patchTodoList.js");
 
 const statusCode = require("../utils/statusCode.js");
 const errorMessage = require("../utils/errorMessage.js");
 
-async function getColumnsCallback(req, res) {
+async function getTodoListCallback(req, res) {
   try {
-    const result = await getColumns();
+    const result = await getTodoList();
     const response = {
       data: result[0],
     };
@@ -17,11 +17,11 @@ async function getColumnsCallback(req, res) {
   }
 }
 
-async function patchColumnsCallback(req, res) {
+async function patchTodoListsCallback(req, res) {
   try {
     const groupId = req.params.groupId;
     const groupTitle = req.body.groupTitle;
-    const result = await patchColumn(groupId, groupTitle);
+    const result = await patchTodoList(groupId, groupTitle);
     if (result[0].affectedRows < 1) throw new Error();
     return res.sendStatus(statusCode.OK);
   } catch (e) {
@@ -30,4 +30,4 @@ async function patchColumnsCallback(req, res) {
   }
 }
 
-module.exports = { getColumnsCallback, patchColumnsCallback };
+module.exports = { getTodoListCallback, patchTodoListsCallback };

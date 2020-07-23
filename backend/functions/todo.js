@@ -1,4 +1,4 @@
-const getTodoDB = require("../db/Todo/getTodoList.js");
+const getTodoDB = require("../db/Todo/getTodo.js");
 const insertTodo = require("../db/Todo/insertTodo.js");
 const deleteTodo = require("../db/Todo/deleteTodo.js");
 const updateTodo = require("../db/Todo/updateTodo.js");
@@ -15,7 +15,8 @@ function patchMoveTodoCallback(req, res) {
 
   idxUpdateTodos({ groupId, idx })
     .then((result) => {
-      return idxUpdate({ groupId, idx, id, groupTitle });
+      if (result[0].affectedRows === 0) throw new Error();
+      return idxUpdate({ groupId, idx, id });
     })
     .then((result) => {
       if (result[0].affectedRows === 0) throw new Error();

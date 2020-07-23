@@ -1,4 +1,5 @@
 const promisePool = require("../connection.js");
+const { todoLog } = require("../tableList.js");
 
 function insertLog({
   username,
@@ -9,7 +10,7 @@ function insertLog({
   previousColumn,
   presentColumn,
 }) {
-  const query = `INSERT INTO LOG VALUES(NULL, '${username}', '${actionType}', '${time}', '${previousContent}', '${presentContent}', '${previousColumn}', '${presentColumn}')`;
+  const query = `INSERT INTO ${todoLog} VALUES(NULL, '${username}', '${actionType}', '${time}', '${previousContent}', '${presentContent}', '${previousColumn}', '${presentColumn}')`;
   return promisePool.execute(query);
 }
 
