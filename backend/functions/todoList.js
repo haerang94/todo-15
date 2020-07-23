@@ -18,7 +18,7 @@ async function getTodoListCallback(req, res) {
 
 async function patchTodoListsCallback(req, res) {
   try {
-    const groupId = req.params.groupId;
+    const id = req.params.id;
     const groupTitle = req.body.groupTitle;
     const result = await patchTodoList(groupId, groupTitle);
     if (result[0].affectedRows < 1) throw new Error();
