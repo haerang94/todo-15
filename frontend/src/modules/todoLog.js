@@ -34,9 +34,12 @@ function getTodoLog() {
 function updateTodoLog() {
   const previousLogs = logUl.children;
   let time;
+  let previousTime;
   for (let i = 0; i < previousLogs.length; i++) {
     time = calculateTime(logList[i].time);
-    previousLogs[i].querySelector('span.time').textContent = time;
+    previousTime = previousLogs[i].querySelector('span.time');
+    if (previousTime.textContent !== time)
+      previousLogs[i].querySelector('span.time').textContent = time;
   }
 }
 
