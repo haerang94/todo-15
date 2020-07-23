@@ -10,6 +10,7 @@ export default class Draggable {
     this.closestLinkIndex = null;
     this.ul = null;
     this.time = 0;
+    this.clickCount = 0;
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -27,7 +28,6 @@ export default class Draggable {
   addEventHandlers() {
     this.el.addEventListener('mousedown', this.onMouseDown);
     this.el.addEventListener('dragstart', (e) => e.preventDefault());
-    // this.cloneEl.addEventListener('dragstart', (e) => e.preventDefault());
     this.el.addEventListener('mouseup', this.onMouseUp);
   }
 
