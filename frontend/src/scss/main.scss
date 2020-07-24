@@ -8,7 +8,8 @@
 @import './_modal.scss';
 @import './sidebar.scss';
 @import './droppable';
-
+@import './login';
+@import './footer';
 
 *{
     outline:none;
@@ -48,8 +49,18 @@ i:hover{
 }
 
 
+footer{
+    position: fixed;
+    bottom:0;
+    left:0;
+    font-size:28px;
+    height:5%;
+    width:100vw;
+}
 
-
+.hidden{
+    display:none;
+}
 
 
 
