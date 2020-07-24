@@ -12,18 +12,22 @@ export default function addColumn() {
     const data = {
       groupId: `todoList-${newId}`,
       groupTitle: '새로운 컬럼',
+      userId: localStorage.getItem('userId'),
     };
 
     postFetchManger('/api/todolist', data)
       .then((res) => {
-        if (res.status !== 200) throw new Error();
+        if (res.status !== 200) {
+          if (res.status === 401) throw new Error('쓰기 모드가 아닙니다');
+          else throw new Error('다시 해주세요');
+        }
         return res;
       })
       .then((res) => {
         console.log(res);
       })
       .catch((e) => {
-        console.log(e);
+        alert(e);
       });
 
     newColumn.addContainer(data);
