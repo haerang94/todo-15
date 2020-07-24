@@ -17,6 +17,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   const draggables = document.querySelectorAll('.todo-item');
   for (let draggable of draggables) {
     new Draggable(draggable);
+
+    const beforelogin = document.getElementById('beforelogin');
+    const afterlogin = document.getElementById('afterlogin');
+    const storedUsername = localStorage.getItem('username');
+    console.log(storedUsername);
+    if (storedUsername === '' || storedUsername === null) {
+      beforelogin.style.display = 'flex';
+      afterlogin.classList.add('hidden');
+    } else {
+      beforelogin.style.display = 'none';
+      afterlogin.classList.remove('hidden');
+    }
   }
   login();
   toggleInput();
