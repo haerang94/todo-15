@@ -17,8 +17,8 @@ export default function login() {
         return res.json();
       })
       .then((data) => {
-        localStorage.setItem('authorization', authorziation);
-        localStorage.setItem('username', username);
+        localStorage.setItem('authorization', data.authorziation);
+        localStorage.setItem('username', data.username);
         localStorage.setItem('userId', data.id);
       })
       .catch((e) => {

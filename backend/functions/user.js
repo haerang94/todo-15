@@ -9,6 +9,7 @@ async function postUserCallback(req, res) {
     const response = {
       authorization: data.authorziation,
       id: result[0].insertId,
+      username: data.username,
     };
     return res.status(statusCode.OK).json(response);
   } catch (e) {
