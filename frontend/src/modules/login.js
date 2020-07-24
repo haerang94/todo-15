@@ -1,11 +1,14 @@
 import { postFetchManger } from './utils/fetchManger.js';
 import { userApi } from './utils/routerList.js';
 export default function login() {
-  document.getElementById('login-btn').addEventListener('click', loginHandler);
+  const Header = document.querySelector('header');
+  Header.querySelector("input[type='button']").addEventListener(
+    'click',
+    loginHandler,
+  );
   function loginHandler(e) {
     e.preventDefault();
 
-    const Header = document.querySelector('header');
     const username = Header.querySelector('#username').value;
     const authorziation = Header.querySelector('#authorization').checked;
 
