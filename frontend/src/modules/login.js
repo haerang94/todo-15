@@ -1,7 +1,5 @@
 import { postFetchManger } from './utils/fetchManger.js';
 import { userApi } from './utils/routerList.js';
-const statusCode = require('../utils/statusCode.js');
-const errorMessage = require('../utils/errorMessage.js');
 
 export default function login() {
   const Header = document.querySelector('header');
