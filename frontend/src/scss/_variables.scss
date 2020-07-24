@@ -4,6 +4,25 @@ $small-font:16px;
 $mint-color:#87dfd6;
 
 
+@mixin login-btn-style{
+    width:110px;
+    height:40px;
+    font-size:1em;
+    // font-weight: 600;
+    color:#fff;
+    background:none;
+    border:1px solid #fff;
+    font-size:0.9em;
+}
+
+@mixin login-hover-btn-style{
+    background:mediumseagreen;
+    border:none;
+    cursor:pointer;
+    font-size:1em;
+    width:115px;
+}
+
  @mixin todo-item-style
 {
     background:#fff;
