@@ -11,23 +11,27 @@ import sidebar from './modules/sidebar';
 import addColumn from './modules/column/addColumn';
 import deleteColumn from './modules/column/deleteColumn';
 import login from './modules/login.js';
-import { loginRender, logoutRender } from './modules/utils/loginRender.js';
 window.addEventListener('DOMContentLoaded', async () => {
   document.addEventListener('contextmenu', (e) => {
     return e.preventDefault();
   });
+
   const beforelogin = document.getElementById('beforelogin');
   const afterlogin = document.getElementById('afterlogin');
-
   const storedUsername = localStorage.getItem('username');
+  const Header = document.querySelector('header');
   if (storedUsername === '' || storedUsername === null) {
+    //로그인 안함
     beforelogin.style.display = 'flex';
     afterlogin.classList.add('hidden');
-    loginRender();
+    Header.querySelector('p').classList.add('hidden');
+    Header.querySelector('form').style.display = 'flex';
   } else {
+    //  로그인 함
     beforelogin.style.display = 'none';
     afterlogin.classList.remove('hidden');
-    logoutRender();
+    Header.querySelector('p').classList.remove('hidden');
+    Header.querySelector('form').style.display = 'none';
   }
 
   const main = new Main(document.querySelector('main'));
@@ -35,24 +39,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   const draggables = document.querySelectorAll('.todo-item');
   for (let draggable of draggables) {
     new Draggable(draggable);
-
-    const beforelogin = document.getElementById('beforelogin');
-    const afterlogin = document.getElementById('afterlogin');
-    const storedUsername = localStorage.getItem('username');
-    const Header = document.querySelector('header');
-    if (storedUsername === '' || storedUsername === null) {
-      //로그인 안함
-      beforelogin.style.display = 'flex';
-      afterlogin.classList.add('hidden');
-      Header.querySelector('p').classList.add('hidden');
-      Header.querySelector('form').style.display = 'flex';
-    } else {
-      //  로그인 함
-      beforelogin.style.display = 'none';
-      afterlogin.classList.remove('hidden');
-      Header.querySelector('p').classList.remove('hidden');
-      Header.querySelector('form').style.display = 'none';
-    }
   }
   login();
   toggleInput();

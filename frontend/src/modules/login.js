@@ -1,6 +1,5 @@
 import { postFetchManger } from './utils/fetchManger.js';
 import { userApi } from './utils/routerList.js';
-import { loginRender, logoutRender } from './utils/loginRender.js';
 
 export default function login() {
   const Header = document.querySelector('header');
@@ -36,7 +35,6 @@ export default function login() {
     beforelogin.style.display = 'none';
     afterlogin.classList.remove('hidden');
     postLogin(username, authorziation);
-    logoutRender();
   }
   function postLogin(username, authorziation) {
     postFetchManger(userApi, { username, authorziation })
