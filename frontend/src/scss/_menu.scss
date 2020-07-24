@@ -4,12 +4,14 @@
     background:black;
     color:white;
     display:flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     font-size:$big-font;
     border-bottom: 8px solid $mint-color;
 
-
+ & p{
+     margin-right:0.5em;
+ }
     &-item{
         margin:0 50px;
     }
@@ -17,12 +19,14 @@
         flex-shrink: 0;
         cursor:default;
         width:200px;
+        // justify-self:flex-start;
     }
     &-btn{
         color:#fff;
         background:none;
         border:none;
         margin:10px;
+        justify-self:flex-end;
     }
     &-btn:hover{
         cursor:pointer;
