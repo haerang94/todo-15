@@ -50,6 +50,8 @@ export function toggleModal() {
   function showContentModalHandler(e) {
     const li = e.target.closest('li');
     if (!li || li.className !== 'todo-item') return;
+    if (localStorage.getItem('authorization') !== 'true')
+      return alert('쓰기모드가 아닙니다');
     liId = li.getAttribute('id');
     targetElement = li;
     renderContentModal(li);
@@ -65,6 +67,8 @@ export function toggleModal() {
 
   function showColumnModalHandler(e) {
     if (e.target.className !== 'todo-container-header-title') return;
+    if (localStorage.getItem('authorization') !== 'true')
+      return alert('쓰기모드가 아닙니다');
     id = e.target.id.substr(13);
     targetElement = e.target;
     renderColumnModal(e);

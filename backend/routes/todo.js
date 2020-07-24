@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const authenticate = require("../middleware/authenticate.js");
 const {
   getTodoCallback,
   postTodoCallback,
@@ -12,10 +13,10 @@ const {
 // api 서버
 
 router.get("/", getTodoCallback);
-router.post("/", validateTodo, postTodoCallback);
-router.delete("/:id", deleteTodoCallback);
-router.patch("/:id", patchTodoCallback);
+router.post("/", authenticate, validateTodo, postTodoCallback);
+router.delete("/:id", authenticate, deleteTodoCallback);
+router.patch("/:id", authenticate, patchTodoCallback);
 
-router.patch("/move/:id", patchMoveTodoCallback);
+router.patch("/move/:id", authenticate, patchMoveTodoCallback);
 
 module.exports = router;

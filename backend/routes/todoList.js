@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authenticate = require("../middleware/authenticate.js");
 
 const {
   getTodoListCallback,
@@ -9,8 +10,8 @@ const {
 } = require("../functions/todoList.js");
 
 router.get("/", getTodoListCallback);
-router.post("/", postTodoListCallback);
-router.patch("/:groupId", patchTodoListsCallback);
-router.delete("/:groupId", deleteTodoListCallback);
+router.post("/", authenticate, postTodoListCallback);
+router.patch("/:groupId", authenticate, patchTodoListsCallback);
+router.delete("/:groupId", authenticate, deleteTodoListCallback);
 
 module.exports = router;

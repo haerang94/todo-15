@@ -110,61 +110,35 @@ export default class Draggable {
   }
 
   onMouseMove(e) {
+    if (localStorage.getItem('authorization') !== 'true') {
+      location.reload();
+      return alert('쓰기모드가 아닙니다');
+    }
     this.moveElementTo(e.pageX, e.pageY);
     this.closestTodoList(e);
   }
 
-  async onMouseUp(e) {
+  onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
+
     document.removeEventListener('mousemove', this.onMouseMove);
 
     this.el.style.position = 'static';
     if (this.droppableLists !== null && this.todoLists !== null) {
-      let todolist = this.todoLists[this.closestLinkIndex]; // 가장 가까운 투두리스트
+      let todolist = this.todoLists[this.closestLinkIndex];
       Array.from(this.droppableLists).map((list) => {
-        // show 속성을 가진 것은 지워준다.
         if (list.classList.contains('show')) list.classList.remove('show');
       });
 
       //다른 곳으로 이동한다면
       if (this.el !== todolist) {
-        this.el.previousElementSibling.remove(); // 클론 제거
-        const ul = todolist.closest('ul'); // 이동할 곳의 ul
+        this.el.previousElementSibling.remove();
+        const ul = todolist.closest('ul');
         ul.insertBefore(this.el, todolist);
         //droppable추가
         const li = document.createElement('li');
         li.classList.add('droppable');
         ul.insertBefore(li, todolist);
-
-        // 정보 업데이트
-        const id = ul.id.substr(9);
-
-        let curIdx;
-        console.log(this.el, ul.children[1]);
-        if (this.el === ul.children[1]) {
-          console.log(true);
-          curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
-        } else {
-          curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
-            'idx',
-          );
-        }
-
-        const data = {
-          idx: curIdx,
-          groupId: ul.id,
-          groupTitle: document.getElementById(`column-title-${id}`).textContent,
-        };
-
-        try {
-          const result = await patchFetchManger(
-            `/api/todos/move/${this.el.id}`,
-            data,
-          );
-          if (result.status !== 200) throw new Error();
-        } catch {
-          throw new Error();
-        }
       }
       this.cloneEl.remove();
       this.init();
@@ -172,6 +146,38 @@ export default class Draggable {
       for (let ul of ulList) {
         updateCount(ul);
       }
+
+      const id = this.ul.id.substr(9);
+
+      let curIdx;
+      console.log(this.el, this.ul.children[1]);
+      if (this.el === this.ul.children[1]) {
+        console.log(true);
+        curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
+      } else {
+        curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
+          'idx',
+        );
+      }
+      console.log(curIdx);
+      const data = {
+        idx: curIdx,
+        groupId: this.ul.id,
+        groupTitle: document.getElementById(`column-title-${id}`).textContent,
+        userId: localStorage.getItem('userId'),
+      };
+
+      patchFetchManger(`/api/todos/move/${this.el.id}`, data)
+        .then((res) => {
+          if (res.status !== 200) {
+            if (res.status === 401) throw new Error('쓰기 모드가 아닙니다');
+            else throw new Error('다시 해주세요');
+          }
+        })
+        .catch((e) => {
+          alert(e);
+          location.reload();
+        });
     }
   }
 }

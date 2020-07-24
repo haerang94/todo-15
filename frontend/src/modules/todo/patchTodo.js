@@ -5,9 +5,14 @@ import { addTodoLog } from '../todoLog.js';
 import actionTypeList from '../utils/actionTypeList.js';
 
 export default async function patchTodo(body, id, targetElement) {
+  const userId = localStorage.getItem('userId');
+  body['userId'] = userId;
   try {
     const result = await patchFetchManger(`${todoApi}/${id}`, body);
-    if (result.status !== 200) throw new Error();
+    if (result.status !== 200) {
+      if (result.status === 401) throw new Error('쓰기 모드가 아닙니다');
+      else throw new Error('다시 해주세요');
+    }
     const { title, content, author } = body;
     const previousContent = targetElement.querySelector('.todo-item-title')
       .textContent;
@@ -18,7 +23,7 @@ export default async function patchTodo(body, id, targetElement) {
     addTodoLog(log);
     return true;
   } catch (e) {
-    alert('다시 해주세요');
+    alert(e);
   }
 }
 
