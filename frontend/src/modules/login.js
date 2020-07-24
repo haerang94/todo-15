@@ -12,6 +12,8 @@ export default function login() {
     const username = Header.querySelector('#username').value;
     const authorziation = Header.querySelector('#authorization').checked;
 
+    document.getElementById('beforelogin').style.display = 'none';
+    document.getElementById('afterlogin').classList.remove('hidden');
     postLogin(username, authorziation);
   }
   function postLogin(username, authorziation) {
