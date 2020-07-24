@@ -5,6 +5,10 @@
     & input{
         margin:0 10px;
     }
+
+    & label{
+        width:240px;
+    }
     
     & input[type=checkbox] + label {
         display: block;
@@ -49,7 +53,7 @@
           }
 
           & input[type=button]{
-            width:105px;
+            width:110px;
             height:40px;
             font-size:1em;
             // font-weight: 600;
@@ -65,6 +69,7 @@
             border:none;
             cursor:pointer;
             font-size:1em;
+            width:115px;
           }
     
 }
@@ -79,6 +84,7 @@
     align-items: center;
     position: relative;
     background:#fff;
+    
 
    & h2{
     font-size:52px;
@@ -86,6 +92,7 @@
    }
 
    & div{
+       min-width:600px;
     height:65%;
     width:50%;
     box-shadow:5px 5px 5px darkgray;
@@ -93,6 +100,7 @@
    }
 
    & div img{
+       min-width:600px;
        width:100%;
        height:100%;
    }

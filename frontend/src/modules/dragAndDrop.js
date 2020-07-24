@@ -1,5 +1,4 @@
 import { patchFetchManger } from '../modules/utils/fetchManger.js';
-import { todoMoveApi } from '../modules/utils/routerList.js';
 import 'regenerator-runtime/runtime';
 import { updateCount } from './utils/updateCount';
 
@@ -139,6 +138,36 @@ export default class Draggable {
         const li = document.createElement('li');
         li.classList.add('droppable');
         ul.insertBefore(li, todolist);
+        const id = this.ul.id.substr(9);
+
+        let curIdx;
+        if (this.el === ul.children[1]) {
+          // console.log(true);
+          curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
+        } else {
+          curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
+            'idx',
+          );
+        }
+
+        const data = {
+          idx: curIdx,
+          groupId: ul.id,
+          groupTitle: document.getElementById(`column-title-${id}`).textContent,
+          userId: localStorage.getItem('userId'),
+        };
+
+        patchFetchManger(`/api/todos/move/${this.el.id}`, data)
+          .then((res) => {
+            if (res.status !== 200) {
+              if (res.status === 401) throw new Error('쓰기 모드가 아닙니다');
+              else throw new Error('다시 해주세요');
+            }
+          })
+          .catch((e) => {
+            alert(e);
+            location.reload();
+          });
       }
       this.cloneEl.remove();
       this.init();
@@ -146,38 +175,6 @@ export default class Draggable {
       for (let ul of ulList) {
         updateCount(ul);
       }
-
-      const id = this.ul.id.substr(9);
-
-      let curIdx;
-      console.log(this.el, this.ul.children[1]);
-      if (this.el === this.ul.children[1]) {
-        console.log(true);
-        curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
-      } else {
-        curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(
-          'idx',
-        );
-      }
-      console.log(curIdx);
-      const data = {
-        idx: curIdx,
-        groupId: this.ul.id,
-        groupTitle: document.getElementById(`column-title-${id}`).textContent,
-        userId: localStorage.getItem('userId'),
-      };
-
-      patchFetchManger(`/api/todos/move/${this.el.id}`, data)
-        .then((res) => {
-          if (res.status !== 200) {
-            if (res.status === 401) throw new Error('쓰기 모드가 아닙니다');
-            else throw new Error('다시 해주세요');
-          }
-        })
-        .catch((e) => {
-          alert(e);
-          location.reload();
-        });
     }
   }
 }

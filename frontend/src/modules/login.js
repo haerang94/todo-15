@@ -6,12 +6,17 @@ export default function login() {
     'click',
     loginHandler,
   );
+
+    Header.getElementById
+
   function loginHandler(e) {
     e.preventDefault();
 
     const username = Header.querySelector('#username').value;
     const authorziation = Header.querySelector('#authorization').checked;
 
+    document.getElementById('beforelogin').style.display = 'none';
+    document.getElementById('afterlogin').classList.remove('hidden');
     postLogin(username, authorziation);
   }
   function postLogin(username, authorziation) {
