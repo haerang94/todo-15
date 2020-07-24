@@ -34,7 +34,7 @@ function updateContentText(targetElement, title, content) {
 
 function makeUpdateLog(previousContent, presentContent) {
   return {
-    username: 'cc6656',
+    username: localStorage.getItem('username'),
     actionType: actionTypeList.UPDATE,
     time: new Date().toString(),
     previousContent,

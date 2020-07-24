@@ -5,6 +5,7 @@ const logUl = document.querySelector('ul.activity-ul');
 let logList = [];
 
 function addTodoLog(data) {
+  data['userId'] = localStorage.getItem('userId');
   postFetchManger(todoLogApi, data)
     .then((res) => {
       if (res.status !== 200) throw new Error();

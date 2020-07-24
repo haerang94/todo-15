@@ -18,13 +18,16 @@
     <div class="flex-container">
     <header class="menu">
         <div class="menu-logo menu-item">TODO 서비스</div>
-            <form id="login-form">
-                <input type="text" name="username" id="username">
-                <input type="checkbox" id="authorization" name="authorization" value="쓰기권한">
-                <label for="authorization">편집도 할래요!!</label>
-                <input id="login-btn" type="button" value="로그인">
-                <input id="logout-btn" type="button" value="로그아웃">
-              </form>
+        <form id="login-form">
+            <input type="text" name="username" id="username">
+            <input type="checkbox" id="authorization" name="authorization" value="쓰기권한">
+            <label for="authorization">편집도 할래요!!</label>
+            <input id="login-btn" type="button" value="로그인">
+        </form>
+        <div id="logout-form">
+            안녕하세요.
+            <input id="logout-btn" type="button" value="로그아웃">
+        </div>
         <input type="button" value="menu" class="menu-btn menu-item">
     </header>
     <main id="afterlogin" class="hidden">

@@ -42,7 +42,7 @@ export default async function deleteTodo(e) {
 
 function makeRemoveLog(title, groupTitle) {
   return {
-    username: 'cc6656',
+    username: localStorage.getItem('username'),
     actionType: actionTypeList.REMOVE,
     time: new Date().toString(),
     previousContent: null,

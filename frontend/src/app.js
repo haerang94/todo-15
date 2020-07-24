@@ -11,24 +11,30 @@ import sidebar from './modules/sidebar';
 import addColumn from './modules/column/addColumn';
 import deleteColumn from './modules/column/deleteColumn';
 import login from './modules/login.js';
+import { loginRender, logoutRender } from './modules/utils/loginRender.js';
 window.addEventListener('DOMContentLoaded', async () => {
+  document.addEventListener('contextmenu', (e) => {
+    return e.preventDefault();
+  });
+  const beforelogin = document.getElementById('beforelogin');
+  const afterlogin = document.getElementById('afterlogin');
+
+  const storedUsername = localStorage.getItem('username');
+  if (storedUsername === '' || storedUsername === null) {
+    beforelogin.style.display = 'flex';
+    afterlogin.classList.add('hidden');
+    loginRender();
+  } else {
+    beforelogin.style.display = 'none';
+    afterlogin.classList.remove('hidden');
+    logoutRender();
+  }
+
   const main = new Main(document.querySelector('main'));
   await main.init();
   const draggables = document.querySelectorAll('.todo-item');
   for (let draggable of draggables) {
     new Draggable(draggable);
-
-    const beforelogin = document.getElementById('beforelogin');
-    const afterlogin = document.getElementById('afterlogin');
-    const storedUsername = localStorage.getItem('username');
-    console.log(storedUsername);
-    if (storedUsername === '' || storedUsername === null) {
-      beforelogin.style.display = 'flex';
-      afterlogin.classList.add('hidden');
-    } else {
-      beforelogin.style.display = 'none';
-      afterlogin.classList.remove('hidden');
-    }
   }
   login();
   toggleInput();

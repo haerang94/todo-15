@@ -39,7 +39,7 @@ export default async function addTodo(e) {
 
 function makeLog(title, groupTitle) {
   return {
-    username: 'cc6656',
+    username: localStorage.getItem('username'),
     actionType: actionTypeList.ADD,
     time: new Date().toString(),
     previousContent: null,
@@ -65,7 +65,7 @@ function makeData({ listUl, inputUl, groupId, textarea }) {
     idx,
     title,
     content,
-    author: 'haerang',
+    author: localStorage.getItem('username'),
     groupId,
     groupTitle,
     userId,
