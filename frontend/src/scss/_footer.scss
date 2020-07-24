@@ -1,0 +1,27 @@
+footer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:20px;
+    height:100px;
+ 
+}
+
+  
+  .beating-icon div {
+      height:100%;
+      width:100%;
+    animation: beat 0.35s infinite;
+  }
+  
+  .beating-icon div i {
+    color: salmon;
+    animation: beat 0.7s infinite;
+  }
+  
+  @keyframes beat {
+    50% {
+      transform: scale(1.3);
+    }
+  }
+  
