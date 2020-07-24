@@ -6,13 +6,3 @@ function getTodoLog() {
 }
 
 module.exports = getTodoLog;
-
-// test
-
-// getTodoList()
-// .then(res => {
-//     console.log(res[0]);
-// })
-// .catch(e => {
-//     console.log(e);
-// })

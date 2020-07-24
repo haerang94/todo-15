@@ -6,13 +6,3 @@ function getTodoList() {
 }
 
 module.exports = getTodoList;
-
-// test
-
-// deleteTodo(24)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });

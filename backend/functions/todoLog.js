@@ -38,7 +38,6 @@ async function getLogsCallback(req, res) {
     const result = await getTodoLog();
     return res.status(statusCode.OK).json(result[0]);
   } catch (e) {
-    console.log(e);
     return res.status(statusCode.DB_ERROR).send(errorMessage.DB_ERROR);
   }
 }

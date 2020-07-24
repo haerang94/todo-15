@@ -13,7 +13,6 @@ async function postUserCallback(req, res) {
     };
     return res.status(statusCode.OK).json(response);
   } catch (e) {
-    console.log(e);
     return res
       .status(statusCode.INTERNAL_SERVER_ERROR)
       .send(errorMessage.SERVER_ERROR);

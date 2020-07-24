@@ -6,13 +6,3 @@ function insertUser({ username, authorziation }) {
 }
 
 module.exports = insertUser;
-
-// test
-
-// insertUser("cc6656", false)
-// .then(res => {
-//     console.log(res);
-// })
-// .catch(e => {
-//     console.log(e);
-// })
