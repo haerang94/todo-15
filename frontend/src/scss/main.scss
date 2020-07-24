@@ -8,13 +8,14 @@
 @import './_modal.scss';
 @import './sidebar.scss';
 @import './droppable';
-
+@import './login';
+@import './footer';
 
 *{
     outline:none;
     font-family:"BMHANNAAir";
     scroll-behavior: smooth;
-    transition:1s;
+    transition:0.3s;
 }
 ul{
     padding:5px;
@@ -48,8 +49,18 @@ i:hover{
 }
 
 
+footer{
+    position: fixed;
+    bottom:0;
+    left:0;
+    font-size:28px;
+    height:5%;
+    width:100vw;
+}
 
-
+.hidden{
+    display:none;
+}
 
 
 

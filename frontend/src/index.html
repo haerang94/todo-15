@@ -18,10 +18,21 @@
     <div class="flex-container">
     <header class="menu">
         <div class="menu-logo menu-item">TODO 서비스</div>
+            <form id="login-form">
+                <input type="text" name="username" id="username">
+                <input type="checkbox" id="authorization" name="authorization" value="쓰기권한">
+                <label for="authorization">편집도 할래요!!</label>
+                <input type="button" value="로그인">
+              </form>
         <input type="button" value="menu" class="menu-btn menu-item">
     </header>
-    <main>
+    <main id="afterlogin" class="hidden">
         <aside><div id="add-column">+ Add Column</div></aside>
+    </main>
+    <main id="beforelogin">
+        <h2>로그인...해주라 💦</h2>
+        <div><img src="http://www.shinailbo.co.kr/news/photo/201810/1109816_396047_344.jpg" alt="열어줘.."></div>
+        
     </main>
     </div>
     <!-- 모달 -->
@@ -78,8 +89,10 @@
         </div>
         
     </section>
+
     <footer>
-        
+        <div class="beating-icon"><div><i class="fa fa-heart"></i></div></div>
+        <div>&copy; 우아한테크캠프 3기 15조 최해랑 박지환 </div>
     </footer>
 </body>
 </html>

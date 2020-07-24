@@ -1,0 +1,99 @@
+#login-form{
+    display:flex;
+    align-items: center;
+
+    & input{
+        margin:0 10px;
+    }
+    
+    & input[type=checkbox] + label {
+        display: block;
+        cursor: pointer;
+      }
+      
+
+    
+       & input[type=checkbox] {
+            display: none;
+          }
+          
+       & input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid mediumseagreen;
+            border-radius: 0.2em;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+            font-size:0.8em;
+            padding:0.1em;
+        
+          }
+          
+          & input[type=checkbox] + label:active:before {
+            transform: scale(0);
+            border:1px solid mediumseagreen;
+          }
+          
+         &  input[type=checkbox]:checked + label:before {
+            background-color: MediumSeaGreen;
+            color: #fff;
+          }
+        
+          & input[type=text]{
+            border-radius:5px;
+            padding: 0 5px;
+          }
+
+          & input[type=button]{
+            width:105px;
+            height:40px;
+            font-size:1em;
+            // font-weight: 600;
+            color:#fff;
+            background:none;
+            border:1px solid #fff;
+            font-size:0.9em;
+            
+          }
+
+          & input[type=button]:hover{
+            background:mediumseagreen;
+            border:none;
+            cursor:pointer;
+            font-size:1em;
+          }
+    
+}
+
+
+
+
+#beforelogin{
+    display:flex;
+    flex-direction: column;
+    flex-direction: center;
+    align-items: center;
+    position: relative;
+    background:#fff;
+
+   & h2{
+    font-size:52px;
+
+   }
+
+   & div{
+    height:65%;
+    width:50%;
+    box-shadow:5px 5px 5px darkgray;
+    border:2px solid black;
+   }
+
+   & div img{
+       width:100%;
+       height:100%;
+   }
+}
