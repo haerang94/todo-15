@@ -10,7 +10,7 @@ import { toggleModal } from './modules/modal';
 import sidebar from './modules/sidebar';
 import addColumn from './modules/column/addColumn';
 import deleteColumn from './modules/column/deleteColumn';
-
+import login from './modules/login.js';
 window.addEventListener('DOMContentLoaded', async () => {
   const main = new Main(document.querySelector('main'));
   await main.init();
@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   for (let draggable of draggables) {
     new Draggable(draggable);
   }
+  login();
   toggleInput();
   toggleBtn();
   toggleModal();
