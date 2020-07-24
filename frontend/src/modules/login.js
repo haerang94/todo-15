@@ -19,6 +19,8 @@ export default function login() {
     localStorage.setItem('userId', '');
     beforelogin.style = '';
     afterlogin.classList.add('hidden');
+    Header.querySelector('p').classList.add('hidden');
+    Header.querySelector('form').style.display = 'flex';
   }
 
   function loginHandler(e) {
@@ -26,6 +28,8 @@ export default function login() {
 
     const username = Header.querySelector('#username').value;
     const authorziation = Header.querySelector('#authorization').checked;
+    Header.querySelector('p').classList.remove('hidden');
+    Header.querySelector('form').style.display = 'none';
 
     beforelogin.style.display = 'none';
     afterlogin.classList.remove('hidden');

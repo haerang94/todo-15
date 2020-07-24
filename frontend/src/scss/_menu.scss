@@ -4,16 +4,19 @@
     background:black;
     color:white;
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     font-size:$big-font;
     border-bottom: 8px solid $mint-color;
+
 
     &-item{
         margin:0 50px;
     }
     &-logo{
+        flex-shrink: 0;
         cursor:default;
+        width:200px;
     }
     &-btn{
         color:#fff;
@@ -48,9 +51,6 @@ main{
         border-radius:5px;
     }
 
-    &:hover{
-        // @include grabbing-style;
-    }
 
     &-btns{
         width:100%;
