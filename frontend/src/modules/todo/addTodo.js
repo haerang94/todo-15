@@ -10,8 +10,7 @@ import actionTypeList from '../utils/actionTypeList.js';
 export default async function addTodo(e) {
   //add버튼을 눌렀을 때만 동작
   if (e.target.value !== 'Add') return;
-  if (localStorage.getItem('authorization') !== 'true')
-    return alert('쓰기모드가 아닙니다');
+
   e.target.setAttribute('disabled', 'true');
 
   const inputUl = e.target.closest('ul');

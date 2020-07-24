@@ -3,6 +3,8 @@ export function toggleInput() {
   main.addEventListener('click', (e) => {
     //+ 버튼을 눌렀을 때 토글시키기
     if (!e.target.classList.contains('fa-plus')) return;
+    if (localStorage.getItem('authorization') !== 'true')
+      return alert('쓰기모드가 아닙니다');
     const id = e.target.id.split('-')[2];
     toggleHidden(id);
     const scrollPoint = document.querySelector(`.scroll-${id}`);

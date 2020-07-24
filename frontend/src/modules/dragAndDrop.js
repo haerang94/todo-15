@@ -110,12 +110,17 @@ export default class Draggable {
   }
 
   onMouseMove(e) {
+    if (localStorage.getItem('authorization') !== 'true') {
+      location.reload();
+      return alert('쓰기모드가 아닙니다');
+    }
     this.moveElementTo(e.pageX, e.pageY);
     this.closestTodoList(e);
   }
 
   onMouseUp(e) {
     if (e.target.dataset.method === 'delete') return;
+
     document.removeEventListener('mousemove', this.onMouseMove);
 
     this.el.style.position = 'static';
@@ -159,18 +164,19 @@ export default class Draggable {
         idx: curIdx,
         groupId: this.ul.id,
         groupTitle: document.getElementById(`column-title-${id}`).textContent,
+        userId: localStorage.getItem('userId'),
       };
 
       patchFetchManger(`/api/todos/move/${this.el.id}`, data)
         .then((res) => {
-          if (res.status !== 200) throw new Error();
-          return res.json();
-        })
-        .then((res) => {
-          console.log(res);
+          if (res.status !== 200) {
+            if (res.status === 401) throw new Error('쓰기 모드가 아닙니다');
+            else throw new Error('다시 해주세요');
+          }
         })
         .catch((e) => {
-          console.log(e);
+          alert(e);
+          location.reload();
         });
     }
   }
