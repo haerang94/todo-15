@@ -25,9 +25,7 @@ export default function addColumn() {
         }
         return res;
       })
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => {})
       .catch((e) => {
         alert(e);
       });

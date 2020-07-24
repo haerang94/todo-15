@@ -6,13 +6,3 @@ function deleteTodo(id) {
 }
 
 module.exports = deleteTodo;
-
-// test
-
-// deleteTodo(24)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });

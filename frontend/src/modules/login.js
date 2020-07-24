@@ -1,5 +1,7 @@
 import { postFetchManger } from './utils/fetchManger.js';
 import { userApi } from './utils/routerList.js';
+const statusCode = require('../utils/statusCode.js');
+const errorMessage = require('../utils/errorMessage.js');
 
 export default function login() {
   const Header = document.querySelector('header');
@@ -47,7 +49,9 @@ export default function login() {
         localStorage.setItem('userId', data.id);
       })
       .catch((e) => {
-        console.log(e);
+        return res
+          .status(statusCode.INTERNAL_SERVER_ERROR)
+          .send(errorMessage.SERVER_ERROR);
       });
   }
 }

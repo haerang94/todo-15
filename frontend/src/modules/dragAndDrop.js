@@ -89,9 +89,7 @@ export default class Draggable {
       );
       distances.push(parseInt(distance));
     });
-    // console.log(distances); // 거리보기
     this.closestLinkIndex = distances.indexOf(Math.min(...distances));
-    // console.log(Math.min(...distances));
 
     // 먼저 show가 있는 것을 검사해 다 지워준다.
     if (this.droppableLists !== null) {
@@ -142,7 +140,6 @@ export default class Draggable {
 
         let curIdx;
         if (this.el === ul.children[1]) {
-          // console.log(true);
           curIdx = +this.el.nextSibling.nextSibling.getAttribute('idx') + 1;
         } else {
           curIdx = +this.el.previousElementSibling.previousElementSibling.getAttribute(

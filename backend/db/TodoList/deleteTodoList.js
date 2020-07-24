@@ -7,13 +7,3 @@ function deleteTodoList(groupId) {
 }
 
 module.exports = deleteTodoList;
-
-// test
-
-// deleteTodo(24)
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });

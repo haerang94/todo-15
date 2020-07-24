@@ -7,9 +7,7 @@ export default function deleteColumn() {
     if (localStorage.getItem('authorization') !== 'true')
       return alert('쓰기모드가 아닙니다');
     const id = e.target.closest('section').id.substr(8);
-    console.log(id);
     const groupId = `todoList-${id}`;
-    console.log(groupId);
     const userId = localStorage.getItem('userId');
     try {
       const result = await deleteFetchManager(`${todoListApi}/${groupId}`, {
