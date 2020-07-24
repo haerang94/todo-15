@@ -6,9 +6,9 @@ async function postUserCallback(req, res) {
   try {
     const data = req.body;
     const result = await insertUser(data);
-    const authorization = data.authorization;
     const response = {
-      authorization,
+      authorization: data.authorziation,
+      id: result[0].insertId,
     };
     return res.status(statusCode.OK).json(response);
   } catch (e) {
@@ -18,3 +18,5 @@ async function postUserCallback(req, res) {
       .send(errorMessage.SERVER_ERROR);
   }
 }
+
+module.exports = { postUserCallback };
