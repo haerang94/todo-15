@@ -8,6 +8,6 @@ const {
 } = require("../functions/todoLog.js");
 // api 서버
 
-router.post("/", validateTodoLog, postLogsCallback);
+router.post("/", authenticate, validateTodoLog, postLogsCallback);
 router.get("/", getLogsCallback);
 module.exports = router;
