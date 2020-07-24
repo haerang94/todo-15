@@ -10,4 +10,6 @@ module.exports = {
   MISS_MATCH_PW: "비밀번호가 맞지 않습니다.",
   // 서버
   SERVER_ERROR: "서버에러입니다.",
+  // 인증
+  UNAUTHORIZED: "로그인을 해주세요",
 };
