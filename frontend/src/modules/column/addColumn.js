@@ -3,6 +3,8 @@ import { postFetchManger } from '../utils/fetchManger.js';
 
 export default function addColumn() {
   document.getElementById('add-column').addEventListener('click', () => {
+    if (localStorage.getItem('authorization') !== 'true')
+      return alert('쓰기모드가 아닙니다');
     const newColumn = new Container();
     const columnLists = document.querySelectorAll('.todo-container');
     let newId = 1;

@@ -17,7 +17,7 @@ export default function login() {
         return res.json();
       })
       .then((data) => {
-        localStorage.setItem('authorization', data.authorziation);
+        localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('username', data.username);
         localStorage.setItem('userId', data.id);
       })

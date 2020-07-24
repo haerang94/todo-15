@@ -88,7 +88,7 @@ function addItem(data) {
       return result;
     })
     .catch((e) => {
-      return alert(e);
+      alert(e);
     });
 }
 
