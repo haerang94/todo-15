@@ -1,5 +1,4 @@
 import { patchFetchManger } from '../modules/utils/fetchManger.js';
-import { todoMoveApi } from '../modules/utils/routerList.js';
 import 'regenerator-runtime/runtime';
 import { updateCount } from './utils/updateCount';
 
@@ -150,7 +149,7 @@ export default class Draggable {
             'idx',
           );
         }
-        // console.log(curIdx);
+
         const data = {
           idx: curIdx,
           groupId: ul.id,

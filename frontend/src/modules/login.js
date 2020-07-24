@@ -6,6 +6,9 @@ export default function login() {
     'click',
     loginHandler,
   );
+
+    Header.getElementById
+
   function loginHandler(e) {
     e.preventDefault();
 
