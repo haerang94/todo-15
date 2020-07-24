@@ -36,6 +36,10 @@ export default class Draggable {
 
   onMouseDown(e) {
     e.preventDefault();
+    if (localStorage.getItem('authorization') !== 'true') {
+      alert('쓰기모드가 아닙니다');
+      return;
+    }
     if (e.target.dataset.method === 'delete') return;
 
     if (new Date().getTime() < this.time + 400) {
@@ -109,10 +113,6 @@ export default class Draggable {
   }
 
   onMouseMove(e) {
-    if (localStorage.getItem('authorization') !== 'true') {
-      location.reload();
-      return alert('쓰기모드가 아닙니다');
-    }
     this.moveElementTo(e.pageX, e.pageY);
     this.closestTodoList(e);
   }
@@ -166,7 +166,7 @@ export default class Draggable {
           })
           .catch((e) => {
             alert(e);
-            location.reload();
+            return;
           });
       }
       this.cloneEl.remove();
