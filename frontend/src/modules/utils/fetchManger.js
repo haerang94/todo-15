@@ -25,7 +25,8 @@ function postFetchManger(url, body) {
   return fetch(baseUrl + url, postOptions);
 }
 
-function deleteFetchManager(url) {
+function deleteFetchManager(url, body) {
+  if (body) deleteOptions['body'] = JSON.stringify(body);
   return fetch(baseUrl + url, deleteOptions)
     .then((res) => res)
     .catch((e) => console.log(e));

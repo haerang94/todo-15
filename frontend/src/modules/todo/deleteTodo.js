@@ -9,6 +9,8 @@ const confirmSentence = '선택하신 카드를 삭제하겠습니까?';
 
 export default async function deleteTodo(e) {
   if (e.target.dataset.method !== 'delete') return;
+  if (localStorage.getItem('authorization') !== 'true')
+    return alert('쓰기모드가 아닙니다');
   if (!checkConfirm()) return;
 
   const deleteItem = e.target.closest('li');
@@ -19,9 +21,14 @@ export default async function deleteTodo(e) {
   const id = deleteItem.id;
   const ul = e.target.closest('ul');
 
+  const userId = localStorage.getItem('userId');
+
   try {
-    const result = await deleteFetchManager(`${todoApi}/${id}`);
-    if (result.status !== 200) throw new Error();
+    const result = await deleteFetchManager(`${todoApi}/${id}`, { userId });
+    if (result.status !== 200) {
+      if (result.status === 401) throw new Error('쓰기 모드가 아닙니다');
+      else throw new Error('다시 해주세요');
+    }
     deleteItem.previousElementSibling.remove();
     deleteItem.remove();
 
@@ -29,7 +36,7 @@ export default async function deleteTodo(e) {
     const log = makeRemoveLog(title, groupTitle);
     addTodoLog(log);
   } catch (e) {
-    alert('다시 시도해주세요');
+    return alert(e);
   }
 }
 
