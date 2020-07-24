@@ -9,17 +9,24 @@
     font-size:$big-font;
     border-bottom: 8px solid $mint-color;
 
+ & p{
+     margin-right:0.5em;
+ }
     &-item{
         margin:0 50px;
     }
     &-logo{
+        flex-shrink: 0;
         cursor:default;
+        width:200px;
+        // justify-self:flex-start;
     }
     &-btn{
         color:#fff;
         background:none;
         border:none;
         margin:10px;
+        justify-self:flex-end;
     }
     &-btn:hover{
         cursor:pointer;
@@ -48,9 +55,6 @@ main{
         border-radius:5px;
     }
 
-    &:hover{
-        // @include grabbing-style;
-    }
 
     &-btns{
         width:100%;
