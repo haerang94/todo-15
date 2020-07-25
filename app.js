@@ -7,7 +7,7 @@ const todoRouter = require("./routes/todo.js");
 const todoListRouter = require("./routes/todoList.js");
 const todoLogRouter = require("./routes/todoLog.js");
 const userRouter = require("./routes/user.js");
-const allowOrigin = "http://localhost:9000";
+const allowOrigin = "*";
 var app = express();
 
 app.use(express.json());
