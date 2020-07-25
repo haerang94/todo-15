@@ -1,0 +1,12 @@
+require("dotenv").config();
+// const host = "52.79.104.239";
+// const port = "3306";
+// const user = "cc6656";
+// const password = "rla48625";
+// const database = "db2";
+const host = process.env.host;
+const port = process.env.port;
+const user = process.env.user;
+const password = process.env.password;
+const database = process.env.database;
+module.exports = { host, port, user, password, database };
