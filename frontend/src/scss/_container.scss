@@ -1,0 +1,45 @@
+
+.todo-container{
+    width:360px;
+    height:700px;
+    background:#eee;
+    border-radius: 15px;
+    margin:30px;
+    box-shadow:  5px 5px 5px darkgray;
+    flex-shrink: 0;
+    border:1px solid black;
+    
+    &-header{
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        margin:10px auto 20px;
+        padding:0 15px;
+    }
+
+    &-part1{
+        display:flex;
+        align-items:center;
+
+        &  div{
+            width:20px;
+            height:20px;
+            border-radius:50%;
+            border:1px solid $mint-color;
+            text-align: center;
+            background:$mint-color;
+        }
+        
+    }
+
+    .num-of-todos, &-header-title{
+        margin: 0 5px;
+    }
+
+    textarea{
+        width:95%; 
+        height:70px;
+        resize: vertical;   
+    }
+}
+

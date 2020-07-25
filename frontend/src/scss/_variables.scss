@@ -1,0 +1,136 @@
+$big-font:32px;
+$mid-font:20px;
+$small-font:16px;
+$mint-color:#87dfd6;
+
+
+@mixin login-btn-style{
+    width:110px;
+    height:40px;
+    font-size:1em;
+    // font-weight: 600;
+    color:#fff;
+    background:none;
+    border:1px solid #fff;
+    font-size:0.9em;
+}
+
+@mixin login-hover-btn-style{
+    background:mediumseagreen;
+    border:none;
+    cursor:pointer;
+    font-size:1em;
+    width:115px;
+}
+
+ @mixin todo-item-style
+{
+    background:#fff;
+    list-style:none;
+    border-radius:10px;
+    padding:10px;
+    
+    box-shadow: 2px 2px 2px darkgray;
+    margin: 15px;
+}
+@mixin grabbing-style{
+    cursor:grabbing;
+    border: 3px solid $mint-color;
+    opacity: 0.6;
+}
+
+@mixin modal-style{
+    .modal-container{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        
+    } 
+    
+    .modal-overlay{
+        
+        background:rgba(0,0,0,0.4);
+        width:100%;
+        height:100%;
+        position:absolute;
+        
+    
+    } 
+    
+    
+    .modal-content{
+        position:relative;
+        background:#fff;
+        border: 1px solid black;
+        border-radius:10px;
+        text-align:center;
+        width:510px;
+        height:400px;
+    
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:flex-start;
+    
+        &-header{
+            display:flex;
+            width:100%;
+            height:50px;
+            align-items: center;
+            background:black;
+            color:#fff;
+            justify-content: space-between;
+            border-radius:10px 10px 0 0;
+            border-bottom:5px solid $mint-color;
+        }
+    
+        &-header p, &-header i{
+            margin:0 15px;
+        }
+    
+        & section{
+            display:flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding:0 20px;
+            width:95%;
+        }
+    
+        &section textarea{
+            width:100%;
+        }
+    
+        & section h3, & section textarea, & section input{
+            margin:5px 0;
+        }
+    
+    }
+    
+    
+    .close-modal-btn{
+        background:$mint-color;
+        border:none;
+        width:100px;
+        height:40px;
+        color:black;
+        cursor:pointer;
+        text-align:center;
+        transition:0.2s;
+    }
+    
+    .close-modal-btn:hover{
+        width:105px;
+        height:41px;
+        font-size:16px;
+        font-weight: 600;
+        background:#fff;
+        border:2px solid $mint-color;
+        cursor:pointer;
+    }
+    
+}

@@ -1,0 +1,31 @@
+@mixin check-drop{
+    opacity:0.8;
+    width:300px;
+    height:40px;
+    background:$mint-color;
+    margin:20px;
+    padding:10px;
+    z-index:1000;
+}
+
+.droppable{
+    @include todo-item-style;
+    width:300px;
+    height:18px;
+    background:none;
+    opacity: 0;
+    margin:0;
+    padding:0;
+    transition:0.5s;
+}
+
+.show{
+    @include check-drop;
+    width:300px;
+    min-height:60px;
+   
+}
+
+.clone{
+    @include todo-item-style;
+}

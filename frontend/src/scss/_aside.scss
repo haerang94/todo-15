@@ -1,0 +1,22 @@
+// aside style
+
+#add-column{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:360px;
+    height:200px;
+    border:2px dashed darkgray;
+    border-radius: 15px;
+    margin:30px;
+    flex-shrink: 0;
+    color: #3f3f44;
+
+     &:hover{
+         cursor:pointer;
+         border: 5px solid #ff847c;
+         font-size:1.5em;
+     }
+
+}
+
