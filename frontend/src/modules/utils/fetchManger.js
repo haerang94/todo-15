@@ -17,17 +17,17 @@ const deleteOptions = {
 const patchOptions = { ...options, method: 'PATCH' };
 
 function getFetchManger(url) {
-  return fetch(baseUrl + url, getOptions).then((res) => res.json());
+  return fetch(url, getOptions).then((res) => res.json());
 }
 
 function postFetchManger(url, body) {
   postOptions['body'] = JSON.stringify(body);
-  return fetch(baseUrl + url, postOptions);
+  return fetch(url, postOptions);
 }
 
 function deleteFetchManager(url, body) {
   if (body) deleteOptions['body'] = JSON.stringify(body);
-  return fetch(baseUrl + url, deleteOptions)
+  return fetch(url, deleteOptions)
     .then((res) => res)
     .catch((e) => console.log(e));
 }
