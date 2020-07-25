@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+require("dotenv").config();
 
 const todoRouter = require("./routes/todo.js");
 const todoListRouter = require("./routes/todoList.js");
@@ -20,6 +21,6 @@ app.use("/api/todolist", todoListRouter);
 app.use("/api/todo-logs", todoLogRouter);
 app.use("/api/users", userRouter);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("running in http://localhost:3000");
 });
